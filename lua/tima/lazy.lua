@@ -12,26 +12,31 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-  "nvim-treesitter/nvim-treesitter",
+  {
+    "nvim-treesitter/nvim-treesitter",
+    lazy = false,
+    config = function() require 'tima.configs.treesitter' end,
+  },
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
     lazy = false,
+    config = function() require 'tima.configs.telescope' end,
     cmd = "Telescope",
   },
-  { "catppuccin/nvim",    name = "catppuccin", lazy = false, priority = 1000 },
-  "nvim-treesitter/playground",
-  { "mbbill/undotree",    lazy = false },
-  { "tpope/vim-fugitive", lazy = false },
+  { "catppuccin/nvim",            name = "catppuccin", lazy = false, priority = 1000 },
+  { "nvim-treesitter/playground", lazy = false },
+  { "mbbill/undotree",            lazy = false },
+  { "tpope/vim-fugitive",         lazy = false },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     lazy = false,
-    config = function () require 'tima.configs.lsp' end,
+    config = function() require 'tima.configs.lsp' end,
     dependencies = {
       -- LSP Support
       { 'neovim/nvim-lspconfig' }, -- Required
-      {                        -- Optional
+      {                            -- Optional
         'williamboman/mason.nvim',
         build = function()
           pcall(vim.cmd, 'MasonUpdate')
@@ -40,21 +45,21 @@ local plugins = {
       { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
       -- Autocompletion
-      { 'hrsh7th/nvim-cmp' }, -- Required
+      { 'hrsh7th/nvim-cmp' },     -- Required
       { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-      { 'L3MON4D3/LuaSnip' }, -- Required
+      { 'L3MON4D3/LuaSnip' },     -- Required
     },
   },
   {
     "zbirenbaum/copilot-cmp",
     lazy = false,
-    config = function () require 'tima.configs.copilot' end,
+    config = function() require 'tima.configs.copilot' end,
     dependencies = { 'zbirenbaum/copilot.lua' },
   },
   {
     "lervag/vimtex",
-    ft="tex",
-    config=function () require 'tima.configs.vimtex' end,
+    ft = "tex",
+    config = function() require 'tima.configs.vimtex' end,
   },
 }
 

@@ -30,3 +30,8 @@ vim.opt.colorcolumn = "100"
 vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.langmap = {
+  'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+  'фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
+}

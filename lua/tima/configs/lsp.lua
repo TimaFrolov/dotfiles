@@ -9,10 +9,11 @@ lspconfig.clangd.setup({})
 lspconfig.rust_analyzer.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.clangd.setup({})
+lspconfig.volar.setup({})
 
 lsp.setup()
 
--- local 
+-- local
 -- lspconfig['tsserver'].setup { on_attach = on_attach }
 -- lspconfig['volar'].setup { on_attach = on_attach }
 -- lspconfig['lua_ls'].setup { on_attach = on_attach }

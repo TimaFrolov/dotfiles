@@ -22,8 +22,11 @@ end)
 
 vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
-vim.keymap.set("n", "<tab>", ":tabnext<cr>")
+vim.keymap.set("n", "<C-t>", ":tabnext<cr>")
 vim.keymap.set("n", "<esc>", ":noh<cr>")
+
+vim.keymap.set("t", "<C-p>", "<C-\\><C-n>")
+vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
 
 -- Plugins
 local telescope = require("telescope.builtin")
@@ -33,7 +36,13 @@ vim.keymap.set("n", "<leader>ss", telescope.live_grep)
 
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 
-vim.keymap.set("n", "<leader>gs", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gst", vim.cmd.Git)
+vim.keymap.set("n", "<leader>gcm", ":Git commit<cr>")
+vim.keymap.set("n", "<leader>gsw", ":Git switch ")
+vim.keymap.set("n", "<leader>gph", ":Git push<cr>")
+vim.keymap.set("n", "<leader>gpl", ":Git pull<cr>")
+vim.keymap.set("n", "<leader>gsh", ":Git stash<cr>")
+vim.keymap.set("n", "<leader>gsp", ":Git stash pop<cr>")
 
 -- Lsp
 local lsp = require 'lsp-zero'
