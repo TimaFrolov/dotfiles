@@ -22,5 +22,6 @@ lspconfig.cmake.setup({})
 lspconfig.pylsp.setup({})
 lspconfig.awk_ls.setup({})
 lspconfig.spectral.setup({})
+lspconfig.ocamllsp.setup({})
 
 lsp.setup()
