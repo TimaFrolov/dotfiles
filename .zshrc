@@ -3,7 +3,7 @@
 
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]}' 'r:|[._-]=** r:|=**' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
 zstyle ':completion:*' max-errors 3 numeric
-zstyle :compinstall filename '~/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 
 autoload -Uz compinit
 compinit
@@ -33,5 +33,16 @@ zstyle ':vcs_info:*' formats ' %s(%b)' # git(main)
 
 PROMPT='[%n@%m %1~]$ '
 
+if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
+then
+    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
 
-[ -f "~/.ghcup/env" ] && source "~/.ghcup/env" # ghcup-env
+if ! [[ "$PATH" =~ "$HOME/.cargo/bin:" ]]
+then
+    PATH="$HOME/.cargo/bin:$PATH"
+fi
+
+export PATH
+
+[ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
