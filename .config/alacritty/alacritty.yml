@@ -1,0 +1,71 @@
+window:
+  dimensions:
+    columns: 142
+    lines: 32
+  padding:
+    x: 0
+    y: 0
+  decorations: full
+  opacity: 1.0
+  startup_mode: Windowed
+  title: Alacritty
+  dynamic_title: true
+  decorations_theme_variant: Dark
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  normal:
+    family: jetbrainsmono nerd font
+    style: Regular
+  bold:
+    family: jetbrainsmono nerd font
+    style: Bold
+  italic:
+    family: jetbrainsmono nerd font
+    style: Italic
+  bold_italic:
+    family: jetbrainsmono nerd font
+    style: Bold Italic
+  size: 10.0
+
+# Gnome (Gnome Terminal Default)
+colors:
+  primary:
+    background: '0x1e1e1e'
+    foreground: '0xffffff'
+
+  normal:
+    black:      '0x171421'
+    red:        '0xc01c28'
+    green:      '0x26a269'
+    yellow:     '0xa2734c'
+    blue:       '0x12488b'
+    magenta:    '0xa347ba'
+    cyan:       '0x2aa1b3'
+    white:      '0xd0cfcc'
+
+  bright:
+    black:      '0x535c64'
+    red:        '0xf66151'
+    green:      '0x33d17a'
+    yellow:     '0xe9ad0c'
+    blue:       '0x2a7bde'
+    magenta:    '0xc061cb'
+    cyan:       '0x33c7de'
+    white:      '0xffffff'
+
+cursor:
+  style:
+    shape: Block
+    blinking: Off
+
+live_config_reload: true
+
+mouse:
+  hide_when_typing: true
+key_bindings:
+  - { key: F11,                    mode: ~Alt,    action: ToggleFullscreen }
+  - { key: V,   mods: Control|Alt, mode: ~Search, action: ToggleViMode     }
