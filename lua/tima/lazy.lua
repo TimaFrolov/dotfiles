@@ -18,6 +18,11 @@ local plugins = {
     config = function() require 'tima.configs.treesitter' end,
   },
   {
+    "nvim-treesitter/nvim-treesitter-context",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = false,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
     lazy = false,
@@ -55,6 +60,17 @@ local plugins = {
     lazy = false,
     config = function() require 'tima.configs.copilot' end,
     dependencies = { 'zbirenbaum/copilot.lua' },
+  },
+  {
+    "jose-elias-alvarez/null-ls.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function() require 'tima.configs.null_ls' end,
+  },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+    config = function() require 'tima.configs.dap' end,
   },
   {
     "lervag/vimtex",
