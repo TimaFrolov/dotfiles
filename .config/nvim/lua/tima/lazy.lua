@@ -34,6 +34,11 @@ local plugins = {
   { "mbbill/undotree",            lazy = false },
   { "tpope/vim-fugitive",         lazy = false },
   {
+    'L3MON4D3/LuaSnip',
+    config = function() require 'tima.configs.snippets' end,
+    build = "make install_jsregexp"
+  },
+  {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
     lazy = false,
