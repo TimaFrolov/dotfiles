@@ -19,6 +19,8 @@ bindkey -v
 bindkey '^R' history-incremental-search-backward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 
 alias ll='ls -alF'
 alias l='ls -aCF'
