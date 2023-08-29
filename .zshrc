@@ -21,6 +21,7 @@ bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
+bindkey '^[v' vi-cmd-mode
 
 alias ll='ls -alF'
 alias l='ls -aCF'
