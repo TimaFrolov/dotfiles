@@ -55,6 +55,19 @@ vim.keymap.set("n", "<leader>gbl", ":Git blame<cr>")
 vim.keymap.set("n", "<leader>grb", ":Git rebase ")
 vim.keymap.set("n", "<leader>gmg", ":Git merge ")
 
+vim.keymap.set("n", "<leader>gah", ":Gitsigns stage_hunk<cr>")
+vim.keymap.set("v", "<leader>gah", ":Gitsigns stage_hunk<cr>")
+vim.keymap.set("n", "<leader>gaf", ":Gitsigns stage_buffer<cr>")
+vim.keymap.set("n", "<leader>gi", ":Gitsigns preview_hunk_inline<cr>")
+vim.keymap.set("v", "<leader>gi", ":Gitsigns preview_hunk_inline<cr>")
+vim.keymap.set("n", "<leader>gdf", ":Gitsigns diffthis<cr>")
+vim.keymap.set("n", "[h", ":Gitsigns prev_hunk<cr>")
+vim.keymap.set("n", "]h", ":Gitsigns next_hunk<cr>")
+vim.keymap.set("n", "<leader>grh", ":Gitsigns reset_hunk<cr>")
+vim.keymap.set("v", "<leader>grh", ":Gitsigns reset_hunk<cr>")
+vim.keymap.set("n", "<leader>grf", ":Gitsigns reset_buffer<cr>")
+vim.keymap.set("n", "<leader>glb", ":Gitsigns toggle_current_line_blame<cr>")
+
 -- Lsp
 local has_words_before = function()
   unpack = unpack or table.unpack
