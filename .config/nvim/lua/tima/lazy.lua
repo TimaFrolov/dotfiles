@@ -93,6 +93,12 @@ local plugins = {
     ft = "tex",
     config = function() require 'tima.configs.vimtex' end,
   },
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    lazy = false,
+    config = function() require 'fidget'.setup() end,
+  }
 }
 
 local options = {
