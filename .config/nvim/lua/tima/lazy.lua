@@ -24,7 +24,7 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons"  },
     lazy = false,
     config = function() require 'tima.configs.telescope' end,
     cmd = "Telescope",
@@ -76,6 +76,12 @@ local plugins = {
     "mfussenegger/nvim-dap",
     lazy = false,
     config = function() require 'tima.configs.dap' end,
+  },
+  {
+    "nvim-lualine/lualine.nvim",
+    lazy = false,
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function() require 'tima.configs.lualine'  end,
   },
   {
     "lervag/vimtex",
