@@ -30,11 +30,13 @@ alias code='code-insiders'
 alias doc2pdf='libreoffice --writer --convert-to pdf'
 alias treel='tree -pugshD'
 
-autoload -Uz vcs_info # enable vcs_info
-precmd () { vcs_info } # always load before displaying the prompt
-zstyle ':vcs_info:*' formats ' %s(%b)' # git(main)
+autoload -Uz vcs_info
+precmd_vcs_info() { vcs_info }
+precmd_functions+=(precmd_vcs_info)
+zstyle ':vcs_info:git:*' formats '%F{166} %b%f '
 
-PROMPT='[%n@%m %1~]$ '
+setopt PROMPT_SUBST
+PROMPT='[%n@%m] %B%F{031}%2~%f%b ${vcs_info_msg_0_}%F{040}$%f '
 
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
