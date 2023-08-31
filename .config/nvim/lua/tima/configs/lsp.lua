@@ -4,9 +4,12 @@ local telescope = require("telescope.builtin")
 lsp.preset("recommended")
 
 local function on_attach(_, bufnr)
-    lsp.default_keymaps({ buffer = bufnr })
-    -- TODO: find a way to move it to mappings.lua, or make better file structure
-    vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
+  lsp.default_keymaps({ buffer = bufnr, omit = { 'gr', 'gd', 'go', 'gi' } })
+  -- TODO: find a way to move it to mappings.lua, or make better file structure
+  vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
+  vim.keymap.set('n', 'gd', telescope.lsp_definitions, { buffer = true })
+  vim.keymap.set('n', 'go', telescope.lsp_type_definitions, { buffer = true })
+  vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = true })
 end
 
 local lspconfig = require 'lspconfig'

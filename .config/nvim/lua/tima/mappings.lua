@@ -54,6 +54,7 @@ vim.keymap.set("n", "<leader>gsp", ":Git stash pop<cr>")
 vim.keymap.set("n", "<leader>gbl", ":Git blame<cr>")
 vim.keymap.set("n", "<leader>grb", ":Git rebase ")
 vim.keymap.set("n", "<leader>gmg", ":Git merge ")
+vim.keymap.set("n", "<leader>gfh", ":Git fetch<cr>")
 
 vim.keymap.set("n", "<leader>gah", ":Gitsigns stage_hunk<cr>")
 vim.keymap.set("v", "<leader>gah", ":Gitsigns stage_hunk<cr>")
