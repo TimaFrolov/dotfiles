@@ -64,8 +64,12 @@ cursor:
 
 live_config_reload: true
 
+shell:
+  program: /usr/bin/tmux
+
 mouse:
   hide_when_typing: true
+
 key_bindings:
   - { key: F11,                    mode: ~Alt,    action: ToggleFullscreen }
   - { key: V,   mods: Control|Alt, mode: ~Search, action: ToggleViMode     }
