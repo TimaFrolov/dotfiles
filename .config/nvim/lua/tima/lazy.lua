@@ -98,7 +98,12 @@ local plugins = {
     tag = "legacy",
     lazy = false,
     config = function() require 'fidget'.setup() end,
-  }
+  },
+  {
+    'numToStr/Comment.nvim',
+    lazy = false,
+    config = function() require 'tima.configs.comment' end,
+  },
 }
 
 local options = {
