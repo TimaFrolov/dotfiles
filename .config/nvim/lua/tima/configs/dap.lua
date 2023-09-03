@@ -7,6 +7,16 @@ dap.adapters.codelldb = {
     args = { "--port", "13000" },
   },
 }
+
+dap.adapters.coreclr = {
+  type = 'server',
+  port = '13001',
+  executable = {
+    command = 'netcoredbg',
+    args = { '--interpreter=vscode', '--server=13001' }
+  }
+}
+
 dap.configurations.cpp = {
   {
     name = "(lldb) Launch",
@@ -19,4 +29,18 @@ dap.configurations.cpp = {
     stopAtEntry = false,
     cwd = "${workspaceFolder}",
   }
+}
+
+dap.configurations.cs = {
+  {
+    name = "(netcoredbg) Launch",
+    type = "coreclr",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to dll:', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+    end,
+    args = {},
+    stopAtEntry = false,
+    cwd = "${workspaceFolder}",
+  },
 }
