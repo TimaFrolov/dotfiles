@@ -22,7 +22,7 @@ dap.adapters.coreclr = {
   }
 }
 
----@type fun(string, string): string
+---@type fun(prompt: string, initPath: string): string
 local function getExecutable(prompt, initPath)
   if not prompt then
     prompt = 'Path to executable:'
@@ -33,7 +33,7 @@ local function getExecutable(prompt, initPath)
   return vim.fn.input(prompt, initPath, 'file')
 end
 
----@type fun(string): table
+---@type fun(prompt: string): string
 local function getArgs(prompt)
   if not prompt then
     prompt = 'Program arguments:'
@@ -41,7 +41,7 @@ local function getArgs(prompt)
   return vim.split(vim.fn.input(prompt), ' ')
 end
 
---- @type fun(string, string): string
+---@type fun(prompt: string, initPath: string): string
 local function getCwd(prompt, initPath)
   if not prompt then
     prompt = 'Working directory:'
