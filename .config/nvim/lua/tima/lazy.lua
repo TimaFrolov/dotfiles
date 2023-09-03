@@ -104,6 +104,18 @@ local plugins = {
     lazy = false,
     config = function() require 'tima.configs.comment' end,
   },
+  {
+    'rcarriga/nvim-dap-ui',
+    lazy = false,
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function() require 'dapui'.setup() end,
+  },
+  {
+    'theHamsta/nvim-dap-virtual-text',
+    lazy = false,
+    dependencies = { 'mfussenegger/nvim-dap' },
+    config = function() require 'nvim-dap-virtual-text'.setup() end,
+  }
 }
 
 local options = {

@@ -9,7 +9,7 @@ dap.adapters.codelldb = {
 }
 dap.configurations.cpp = {
   {
-    name = "(gdb) Launch",
+    name = "(lldb) Launch",
     type = "codelldb",
     request = "launch",
     program = function()

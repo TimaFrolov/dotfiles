@@ -73,6 +73,20 @@ vim.keymap.set("v", "<leader>grh", ":Gitsigns reset_hunk<cr>")
 vim.keymap.set("n", "<leader>grf", ":Gitsigns reset_buffer<cr>")
 vim.keymap.set("n", "<leader>glb", ":Gitsigns toggle_current_line_blame<cr>")
 
+local dapui = require('dapui')
+local dap = require('dap')
+vim.keymap.set("n", "<leader>do", function() dapui.toggle({ reset = true }) end)
+vim.keymap.set("n", "<leader>dc", dap.continue)
+vim.keymap.set("n", "<leader>dn", dap.step_over)
+vim.keymap.set("n", "<leader>dsi", dap.step_into)
+vim.keymap.set("n", "<leader>dso", dap.step_out)
+vim.keymap.set("n", "<leader>dp", dap.pause)
+vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint)
+vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end)
+vim.keymap.set("n", "<leader>dl", function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+vim.keymap.set("n", "<leader>dk", dapui.eval)
+vim.keymap.set("n", "<leader>dt", dap.terminate)
+
 -- Lsp
 local has_words_before = function()
   unpack = unpack or table.unpack
