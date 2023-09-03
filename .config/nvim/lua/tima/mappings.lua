@@ -86,6 +86,8 @@ vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Br
 vim.keymap.set("n", "<leader>dl", function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
 vim.keymap.set("n", "<leader>dk", dapui.eval)
 vim.keymap.set("n", "<leader>dt", dap.terminate)
+vim.keymap.set("n", "<leader>dee", function() dap.set_exception_breakpoints("default") end)
+vim.keymap.set("n", "<leader>ded", function() dap.set_exception_breakpoints({}) end)
 
 -- Lsp
 local has_words_before = function()

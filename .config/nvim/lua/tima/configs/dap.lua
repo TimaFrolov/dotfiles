@@ -8,6 +8,11 @@ dap.adapters.codelldb = {
   },
 }
 
+dap.adapters.cppdbg = {
+  type = 'executable',
+  command = 'OpenDebugAD7',
+}
+
 dap.adapters.coreclr = {
   type = 'server',
   port = '13001',
@@ -17,30 +22,58 @@ dap.adapters.coreclr = {
   }
 }
 
+---@type fun(string, string): string
+local function getExecutable(prompt, initPath)
+  if not prompt then
+    prompt = 'Path to executable:'
+  end
+  if not initPath then
+    initPath = vim.fn.getcwd() .. '/'
+  end
+  return vim.fn.input(prompt, initPath, 'file')
+end
+
+---@type fun(string): table
+local function getArgs(prompt)
+  if not prompt then
+    prompt = 'Program arguments:'
+  end
+  return vim.split(vim.fn.input(prompt), ' ')
+end
+
+--- @type fun(string, string): string
+local function getCwd(prompt, initPath)
+  if not prompt then
+    prompt = 'Working directory:'
+  end
+  if not initPath then
+    initPath = vim.fn.getcwd()
+  end
+  return vim.fn.input(prompt, initPath, 'dir')
+end
+
 dap.configurations.cpp = {
   {
     name = "(lldb) Launch",
     type = "codelldb",
     request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    args = {},
     stopAtEntry = false,
-    cwd = "${workspaceFolder}",
+    program = getExecutable,
+    args = getArgs,
+    cwd = getCwd,
   }
 }
+dap.configurations.c = dap.configurations.cpp
+dap.configurations.rust = dap.configurations.cpp
 
 dap.configurations.cs = {
   {
     name = "(netcoredbg) Launch",
     type = "coreclr",
     request = "launch",
-    program = function()
-      return vim.fn.input('Path to dll:', vim.fn.getcwd() .. '/bin/Debug/', 'file')
-    end,
-    args = {},
     stopAtEntry = false,
-    cwd = "${workspaceFolder}",
+    program = function() getExecutable('Path to dll:', vim.fn.getcwd() .. '/bin/Debug') end,
+    args = getArgs,
+    cwd = getCwd,
   },
 }
