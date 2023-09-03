@@ -25,7 +25,11 @@ end)
 
 vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
-vim.keymap.set("n", "<C-t>", ":tabnext<cr>")
+vim.keymap.set("n", "<leader>tn", ":tabnext<cr>")
+vim.keymap.set("n", "<leader>tp", ":tabprev<cr>")
+vim.keymap.set("n", "<leader>to", ":tabnew<cr>")
+vim.keymap.set("n", "<leader>tr", ":tabclose<cr>")
+vim.keymap.set("n", "<leader>tm", ":term<cr>")
 vim.keymap.set("n", "<esc>", ":noh<cr>")
 
 vim.keymap.set("t", "<C-p>", "<C-\\><C-n>")
