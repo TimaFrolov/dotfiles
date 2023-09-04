@@ -25,5 +25,6 @@ lspconfig.pylsp.setup({ on_attach = on_attach })
 lspconfig.awk_ls.setup({ on_attach = on_attach })
 lspconfig.spectral.setup({ on_attach = on_attach })
 lspconfig.ocamllsp.setup({ on_attach = on_attach })
+lspconfig.asm_lsp.setup({ on_attach = on_attach })
 
 lsp.setup()

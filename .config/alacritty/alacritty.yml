@@ -64,8 +64,8 @@ cursor:
 
 live_config_reload: true
 
-# shell:
-#   program: /usr/bin/tmux
+shell:
+  program: /usr/bin/tmux
 
 mouse:
   hide_when_typing: true

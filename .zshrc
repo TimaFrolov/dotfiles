@@ -17,13 +17,14 @@ bindkey -v
 # End of lines configured by zsh-newuser-install
 
 bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
 bindkey '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey '^[v' vi-cmd-mode
 
-alias ll='ls -alF'
+alias ll='ls -alhF'
 alias l='ls -aCF'
 alias vi='nvim'
 alias code='code-insiders'
