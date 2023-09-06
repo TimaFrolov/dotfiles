@@ -33,12 +33,17 @@ local function getExecutable(prompt, initPath)
   return vim.fn.input(prompt, initPath, 'file')
 end
 
----@type fun(prompt: string): string
+---@type fun(prompt: string): table
 local function getArgs(prompt)
   if not prompt then
     prompt = 'Program arguments:'
   end
-  return vim.split(vim.fn.input(prompt), ' ')
+  local args = vim.split(vim.fn.input(prompt), ' ')
+  if (#args ~= 1 or args[1] ~= '') then
+    return args
+  else
+    return {}
+  end
 end
 
 ---@type fun(prompt: string, initPath: string): string
