@@ -115,7 +115,17 @@ local plugins = {
     lazy = false,
     dependencies = { 'mfussenegger/nvim-dap' },
     config = function() require 'nvim-dap-virtual-text'.setup() end,
-  }
+  },
+  {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    opts = {}
+  },
+  {
+    'kylechui/nvim-surround',
+    event = "VeryLazy",
+    config = function() require 'nvim-surround'.setup() end,
+  },
 }
 
 local options = {
