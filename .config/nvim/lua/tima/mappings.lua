@@ -28,7 +28,7 @@ vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left>
 vim.keymap.set("n", "<leader>tn", ":tabnext<cr>")
 vim.keymap.set("n", "<leader>tp", ":tabprev<cr>")
 vim.keymap.set("n", "<leader>to", ":tabnew<cr>")
-vim.keymap.set("n", "<leader>tr", ":tabclose<cr>")
+vim.keymap.set("n", "<leader>tx", ":tabclose<cr>")
 vim.keymap.set("n", "<leader>tm", ":term<cr>")
 vim.keymap.set("n", "<esc>", ":noh<cr>")
 
@@ -100,6 +100,8 @@ local lsp = require 'lsp-zero'
 
 local luasnip = require('luasnip')
 local cmp = require 'cmp'
+
+vim.keymap.set("n", "<leader>pr", ":LspRestart<cr>")
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<CR>'] = cmp.mapping.confirm({
