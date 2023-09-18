@@ -22,10 +22,10 @@ dap.adapters.coreclr = {
   }
 }
 
----@type fun(prompt: string, initPath: string): string
+---@type fun(prompt: string|nil, initPath: string|nil): string
 local function getExecutable(prompt, initPath)
   if not prompt then
-    prompt = 'Path to executable:'
+    prompt = 'Path to executable: '
   end
   if not initPath then
     initPath = vim.fn.getcwd() .. '/'
@@ -33,7 +33,7 @@ local function getExecutable(prompt, initPath)
   return vim.fn.input(prompt, initPath, 'file')
 end
 
----@type fun(prompt: string): table
+---@type fun(prompt: string|nil): table
 local function getArgs(prompt)
   if not prompt then
     prompt = 'Program arguments:'
@@ -46,12 +46,11 @@ local function getArgs(prompt)
   end
 end
 
----@type fun(prompt: string, initPath: string): string
+---@type fun(prompt: string|nil, initPath: string|nil): string
 local function getCwd(prompt, initPath)
   if not prompt then
-    prompt = 'Working directory:'
-  end
-  if not initPath then
+    prompt = 'Working directory: '
+  end if not initPath then
     initPath = vim.fn.getcwd()
   end
   return vim.fn.input(prompt, initPath, 'dir')
@@ -77,7 +76,7 @@ dap.configurations.cs = {
     type = "coreclr",
     request = "launch",
     stopAtEntry = false,
-    program = function() getExecutable('Path to dll:', vim.fn.getcwd() .. '/bin/Debug') end,
+    program = getExecutable,
     args = getArgs,
     cwd = getCwd,
   },
