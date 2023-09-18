@@ -140,7 +140,7 @@ luasnip.add_snippets("tex", {
   ),
   s([[ooo]], t([[\infty]])),
   s(
-    [[lim]],
+    [[lim ]],
     fmta([[\lim_{<> \to <>}<>]], { i(1), i(2), i(0) })
   ),
   s([[Ee]], t([[\exists]])),
