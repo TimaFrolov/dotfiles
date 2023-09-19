@@ -1,3 +1,3 @@
-require 'telescope'.setup {
+require 'telescope'.setup()
 
-}
+require 'tima.mappings.telescope'

@@ -7,3 +7,5 @@ gitsigns.setup {
   numhl = true,
   update_debounce=10,
 }
+
+require 'tima.mappings.gitsings'

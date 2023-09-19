@@ -50,7 +50,8 @@ end
 local function getCwd(prompt, initPath)
   if not prompt then
     prompt = 'Working directory: '
-  end if not initPath then
+  end
+  if not initPath then
     initPath = vim.fn.getcwd()
   end
   return vim.fn.input(prompt, initPath, 'dir')
@@ -81,3 +82,5 @@ dap.configurations.cs = {
     cwd = getCwd,
   },
 }
+
+require 'tima.mappings.dap'

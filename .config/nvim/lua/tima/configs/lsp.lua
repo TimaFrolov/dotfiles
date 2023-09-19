@@ -1,15 +1,28 @@
 local lsp = require 'lsp-zero'
-local telescope = require("telescope.builtin")
 
-lsp.preset("recommended")
+local mappings = require 'tima.mappings.lsp'
 
-local function on_attach(_, bufnr)
-  lsp.default_keymaps({ buffer = bufnr, omit = { 'gr', 'gd', 'go', 'gi' } })
-  -- TODO: find a way to move it to mappings.lua, or make better file structure
-  vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
-  vim.keymap.set('n', 'gd', telescope.lsp_definitions, { buffer = true })
-  vim.keymap.set('n', 'go', telescope.lsp_type_definitions, { buffer = true })
-  vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = true })
+lsp.preset({
+  float_border = 'rounded',
+  call_servers = 'local',
+  configure_diagnostics = true,
+  setup_servers_on_start = true,
+  set_lsp_keymaps = {
+    preserve_mappings = false,
+    omit = mappings.omit,
+  },
+  manage_nvim_cmp = {
+    set_sources = 'recommended',
+    set_basic_mappings = true,
+    set_extra_mappings = false,
+    use_luasnip = true,
+    set_format = true,
+    documentation_window = true,
+  },
+})
+
+local function on_attach(client, bufnr)
+  mappings.on_attach(client, bufnr)
 end
 
 local lspconfig = require 'lspconfig'
