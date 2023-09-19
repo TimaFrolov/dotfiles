@@ -126,6 +126,7 @@ local plugins = {
     event = "VeryLazy",
     config = function() require 'nvim-surround'.setup() end,
   },
+  { 'tpope/vim-sleuth', lazy = false }
 }
 
 local options = {
