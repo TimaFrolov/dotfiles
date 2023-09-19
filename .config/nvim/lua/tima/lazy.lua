@@ -149,13 +149,6 @@ local options = {
   defaults = {
     lazy = true,
   },
-  performance = {
-    rtp = {
-      disabled_plugins = {
-        "rplugin",
-      },
-    },
-  },
 }
 
 require("lazy").setup(plugins, options)
