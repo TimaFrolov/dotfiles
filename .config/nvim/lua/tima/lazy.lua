@@ -24,7 +24,12 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-lua/plenary.nvim", "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons",
+      'nvim-telescope/telescope-fzf-native.nvim',
+    },
     event = "VeryLazy",
     config = function() require 'tima.configs.telescope' end,
     cmd = "Telescope",
@@ -142,6 +147,11 @@ local plugins = {
   {
     'tpope/vim-sleuth',
     event = "InsertEnter",
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build =
+    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
   }
 }
 
