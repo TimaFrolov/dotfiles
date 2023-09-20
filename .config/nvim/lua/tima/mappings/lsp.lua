@@ -46,15 +46,11 @@ cmp.setup({
   mapping = cmp_mappings,
 })
 
-local function on_attach(_, _)
-  vim.keymap.set('n', 'gr', telescope.lsp_references, { buffer = true })
-  vim.keymap.set('n', 'gd', telescope.lsp_definitions, { buffer = true })
-  vim.keymap.set('n', 'go', telescope.lsp_type_definitions, { buffer = true })
-  vim.keymap.set('n', 'gi', telescope.lsp_implementations, { buffer = true })
-  print(1)
-end
+vim.keymap.set('n', 'gr', telescope.lsp_references)
+vim.keymap.set('n', 'gd', telescope.lsp_definitions)
+vim.keymap.set('n', 'go', telescope.lsp_type_definitions)
+vim.keymap.set('n', 'gi', telescope.lsp_implementations)
 
 return {
-  on_attach = on_attach,
   omit = { 'gr', 'gd', 'go', 'gi' },
 }

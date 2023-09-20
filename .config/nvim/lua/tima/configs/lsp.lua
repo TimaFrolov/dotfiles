@@ -21,23 +21,19 @@ lsp.preset({
   },
 })
 
-local function on_attach(client, bufnr)
-  mappings.on_attach(client, bufnr)
-end
-
 local lspconfig = require 'lspconfig'
 
-lspconfig.lua_ls.setup({ on_attach = on_attach })
-lspconfig.clangd.setup({ on_attach = on_attach })
-lspconfig.rust_analyzer.setup({ on_attach = on_attach })
-lspconfig.tsserver.setup({ on_attach = on_attach })
-lspconfig.clangd.setup({ on_attach = on_attach })
-lspconfig.volar.setup({ on_attach = on_attach })
-lspconfig.cmake.setup({ on_attach = on_attach })
-lspconfig.pylsp.setup({ on_attach = on_attach })
-lspconfig.awk_ls.setup({ on_attach = on_attach })
-lspconfig.spectral.setup({ on_attach = on_attach })
-lspconfig.ocamllsp.setup({ on_attach = on_attach })
-lspconfig.asm_lsp.setup({ on_attach = on_attach })
+lspconfig.lua_ls.setup({})
+lspconfig.clangd.setup({})
+lspconfig.rust_analyzer.setup({})
+lspconfig.tsserver.setup({})
+lspconfig.clangd.setup({})
+lspconfig.volar.setup({})
+lspconfig.cmake.setup({})
+lspconfig.pylsp.setup({})
+lspconfig.awk_ls.setup({})
+lspconfig.spectral.setup({})
+lspconfig.ocamllsp.setup({})
+lspconfig.asm_lsp.setup({})
 
 lsp.setup()
