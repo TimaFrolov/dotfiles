@@ -28,4 +28,6 @@ cmd open &{{
 map gd cd ~/Downloads
 map gc cd ~/git/dotfiles
 
+map <space> toggle
+
 cmd q quit
