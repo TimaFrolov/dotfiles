@@ -20,7 +20,7 @@ local plugins = {
   {
     "nvim-treesitter/nvim-treesitter-context",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "InsertEnter",
+    event = "VeryLazy",
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -42,7 +42,7 @@ local plugins = {
   },
   {
     "mbbill/undotree",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function() require 'tima.configs.undotree' end,
   },
   {
@@ -92,7 +92,7 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function() require 'tima.configs.dap' end,
   },
   {
@@ -103,7 +103,7 @@ local plugins = {
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function() require 'tima.configs.gitsigns' end,
   },
   {
@@ -114,7 +114,7 @@ local plugins = {
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
-    event = "InsertEnter",
+    event = "VeryLazy",
     config = function() require 'fidget'.setup() end,
   },
   {
@@ -130,7 +130,7 @@ local plugins = {
   },
   {
     'theHamsta/nvim-dap-virtual-text',
-    event = "InsertEnter",
+    event = "VeryLazy",
     dependencies = { 'mfussenegger/nvim-dap' },
     config = function() require 'nvim-dap-virtual-text'.setup() end,
   },
@@ -146,7 +146,7 @@ local plugins = {
   },
   {
     'tpope/vim-sleuth',
-    event = "InsertEnter",
+    event = "VeryLazy",
   },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
