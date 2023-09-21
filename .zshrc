@@ -24,12 +24,17 @@ bindkey '^[[1~' beginning-of-line
 bindkey '^[[4~' end-of-line
 bindkey '^[v' vi-cmd-mode
 
+lfcd() {
+    cd "$(command lf -print-last-dir "$@")"
+}
+
 alias ll='ls -alhF'
 alias l='ls -aCF'
 alias vi='nvim'
 alias code='code-insiders'
 alias doc2pdf='libreoffice --writer --convert-to pdf'
 alias treel='tree -pugshD'
+alias lf='lfcd'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
@@ -57,3 +62,5 @@ fi
 export PATH
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
+
+export EDITOR="nvim"

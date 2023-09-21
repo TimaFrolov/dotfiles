@@ -1,0 +1,31 @@
+set shell zsh
+set shellopts '-eu' # -e = exit on errors, -u = error on unset variables
+set ifs "\n" # internal file separator
+
+set hidden true
+set ignorecase true
+set icons true
+
+set scrolloff 8
+
+set cursorpreviewfmt "\033[7;2m" # Use the `dim` attribute instead of underline for the cursor in the preview pane
+
+map ` !true # show the result of execution of previous commands
+
+map x $$f # execute current file (must be executable)
+map X !$f
+
+# This command is called when current file is not a directory. You may want to
+# use either file extensions and/or mime types here. Below uses an editor for
+# text files and a file opener for the rest.
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+map gd cd ~/Downloads
+map gc cd ~/git/dotfiles
+
+cmd q quit
