@@ -1,4 +1,5 @@
 local comment = require 'Comment'
+local ft = require 'Comment.ft'
 
 comment.setup {
   ignore = '^$',
@@ -16,3 +17,4 @@ comment.setup {
   },
 }
 
+ft.set('asm', {'//%s', '/*%s*/'})
