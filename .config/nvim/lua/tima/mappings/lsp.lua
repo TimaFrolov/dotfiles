@@ -9,7 +9,11 @@ local has_words_before = function()
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-vim.keymap.set("n", "<leader>pr", ":LspRestart<cr>")
+vim.keymap.set("n", "<leader>fR", ":LspRestart<cr>")
+vim.keymap.set("n", "<leader>fh", function() vim.lsp.inlay_hint(0, nil) end)
+vim.keymap.set("n", "<leader>fr", function() vim.lsp.buf.rename() end)
+vim.keymap.set("n", "<leader>ff", function() vim.lsp.buf.format({async = true}) end)
+vim.keymap.set("n", "<leader>fa", function() vim.lsp.buf.code_action() end)
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<CR>'] = cmp.mapping.confirm({

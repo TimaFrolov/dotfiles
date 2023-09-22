@@ -21,10 +21,6 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>,", "<C-w>10000<<C-w>40>")
 vim.keymap.set("n", "<leader>-", "<C-w>10000-<C-w>15+")
 
-vim.keymap.set("n", "<leader>ff", function()
-  vim.lsp.buf.format()
-end)
-
 vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
 
 vim.keymap.set("n", "<leader>tn", ":tabnext<cr>")
