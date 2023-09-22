@@ -2,6 +2,7 @@ set shell zsh
 set shellopts '-eu' # -e = exit on errors, -u = error on unset variables
 set ifs "\n" # internal file separator
 
+set drawbox
 set hidden true
 set ignorecase true
 set icons true
@@ -29,5 +30,9 @@ map gd cd ~/Downloads
 map gc cd ~/git/dotfiles
 
 map <space> toggle
+
+# Sibling directories
+map J :updir; set dironly true; down; set dironly false; open
+map K :updir; set dironly true; up; set dironly false; open
 
 cmd q quit
