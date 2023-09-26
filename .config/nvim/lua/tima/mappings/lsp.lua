@@ -46,6 +46,7 @@ cmp.setup({
   sources = {
     { name = "copilot" },
     { name = "nvim_lsp" },
+    { name = "crates" },
   },
   mapping = cmp_mappings,
 })

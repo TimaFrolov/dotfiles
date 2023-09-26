@@ -152,7 +152,19 @@ local plugins = {
     'nvim-telescope/telescope-fzf-native.nvim',
     build =
     'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  }
+  },
+  {
+    'saecki/crates.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    event = "VeryLazy",
+    config = function() require('crates').setup() end,
+  },
+  {
+    'Civitasv/cmake-tools.nvim',
+    dependencies = { 'nvim-lua/plenary.nvim' },
+    event = "VeryLazy",
+    config = function() require 'tima.configs.cmake-tools' end,
+  },
 }
 
 local options = {

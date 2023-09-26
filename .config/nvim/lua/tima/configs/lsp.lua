@@ -29,7 +29,6 @@ lspconfig.lua_ls.setup({
       hint = { enable = true },
     },
   },
-  on_attach = on_attach,
 })
 lspconfig.clangd.setup({})
 lspconfig.rust_analyzer.setup({})

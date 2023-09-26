@@ -3,6 +3,7 @@ require("copilot").setup({
   panel = { enabled = false },
   filetypes = {
     tex = false,
+    toml = false,
   }
 })
 require('copilot_cmp').setup()
