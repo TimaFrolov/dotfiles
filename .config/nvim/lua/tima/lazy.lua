@@ -38,7 +38,7 @@ local plugins = {
   {
     "nvim-treesitter/playground",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "InsertEnter",
+    event = "VeryLazy",
   },
   {
     "mbbill/undotree",
