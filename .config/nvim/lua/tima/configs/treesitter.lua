@@ -1,27 +1,39 @@
+local mappings = require 'tima.mappings.treesitter'
+
 require 'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "c", "cpp", "rust", "python", "lua", "javascript", "typescript", "vue" },
-
-  -- Install parsers synchronously (only applied to `ensure_installed`)
-  sync_install = false,
-
-  -- Automatically install missing parsers when entering buffer
-  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+  sync_install = true,
   auto_install = true,
 
   highlight = {
     enable = true,
-
     disable = { "latex" },
-
-    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-    -- Using this option may slow down your editor, and you may see some duplicate highlights.
-    -- Instead of true it can also be a list of languages
     additional_vim_regex_highlighting = false,
   },
 
   incremental_selection = {
+    enable = true,
+    keymaps = mappings.incremental_selection
+  },
+
+  textobjects = {
+    select = {
       enable = true,
-  }
+      lookahead = true,
+      keymaps = mappings.textobjects.select,
+    },
+    swap = {
+      enable = true,
+      swap_next = mappings.textobjects.swap_next,
+      swap_previous = mappings.textobjects.swap_previous,
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = mappings.textobjects.move.next_start,
+      goto_next_end = mappings.textobjects.move.next_end,
+      goto_previous_start = mappings.textobjects.move.previous_start,
+      goto_previous_end = mappings.textobjects.move.previous_end,
+    }
+  },
 }
