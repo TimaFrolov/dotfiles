@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
   {
     "nvim-treesitter/nvim-treesitter",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.treesitter' end,
     build = ':TSUpdate',
     dependencies = {
@@ -34,62 +34,64 @@ local plugins = {
         'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
       },
     },
-    event = "VeryLazy",
     config = function() require 'tima.configs.telescope' end,
     cmd = "Telescope",
+    keys = "<leader>s",
   },
   { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
   {
     "mbbill/undotree",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.undotree' end,
   },
   {
     "tpope/vim-fugitive",
-    event = "VeryLazy",
+    cmd = "Git",
+    keys = "<leader>g",
     config = function() require 'tima.configs.fugitive' end,
   },
   {
     'L3MON4D3/LuaSnip',
     config = function() require 'tima.configs.snippets' end,
     build = "make install_jsregexp",
-    event = "InsertEnter",
+    event = "InsertCharPre",
   },
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
+    cmd = { "Mason", "MasonUpdate" },
     config = function() require 'tima.configs.lsp' end,
     dependencies = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      {
-        'williamboman/mason.nvim',
-        build = function() pcall(vim.cmd, 'MasonUpdate') end,
-      },
-      { 'williamboman/mason-lspconfig.nvim' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'L3MON4D3/LuaSnip' },
+      'williamboman/mason.nvim',
+      'neovim/nvim-lspconfig',
+      'williamboman/mason-lspconfig.nvim',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
+      'L3MON4D3/LuaSnip',
     },
   },
   {
+    'williamboman/mason.nvim',
+    build = function() pcall(vim.cmd, 'MasonUpdate') end,
+    dependencies = { 'williamboman/mason-lspconfig.nvim', 'neovim/nvim-lspconfig' },
+  },
+  {
     "zbirenbaum/copilot-cmp",
-    event = "InsertEnter",
+    event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.copilot' end,
     dependencies = { 'zbirenbaum/copilot.lua' },
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    event = "InsertEnter",
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function() require 'tima.configs.null_ls' end,
   },
   {
     "mfussenegger/nvim-dap",
-    event = "VeryLazy",
+    cmd = "DapContinue",
+    keys = "<leader>d",
     config = function() require 'tima.configs.dap' end,
     dependencies = {
       {
@@ -110,7 +112,7 @@ local plugins = {
   },
   {
     "lewis6991/gitsigns.nvim",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.gitsigns' end,
   },
   {
@@ -121,12 +123,12 @@ local plugins = {
   {
     "j-hui/fidget.nvim",
     tag = "legacy",
-    event = "VeryLazy",
+    event = "LspAttach",
     config = function() require 'fidget'.setup() end,
   },
   {
     'numToStr/Comment.nvim',
-    event = "InsertEnter",
+    keys = "<leader>c",
     config = function() require 'tima.configs.comment' end,
   },
   {
@@ -136,23 +138,33 @@ local plugins = {
   },
   {
     'kylechui/nvim-surround',
-    event = "InsertEnter",
+    event = { "BufReadPost", "BufNewFile" },
     config = function() require 'nvim-surround'.setup() end,
   },
   {
     'tpope/vim-sleuth',
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     'saecki/crates.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    event = "VeryLazy",
+    ft = "toml",
     config = function() require('crates').setup() end,
   },
   {
     'Civitasv/cmake-tools.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
-    event = "VeryLazy",
+    cmd = {
+      "CMakeBuild",
+      "CMakeRun",
+      "CMakeSettings",
+      "CMakeDebug",
+      "CMakeClean",
+      "CMakeGenerate",
+      "CMakeQuickBuild",
+      "CMakeQuickRun",
+    },
+    cond = function() return vim.fn.filereadable('CMakeLists.txt') == 1 end,
     config = function() require 'tima.configs.cmake-tools' end,
   },
   {
@@ -162,7 +174,7 @@ local plugins = {
       'nvim-telescope/telescope.nvim',
       'nvim-tree/nvim-web-devicons'
     },
-    event = "VeryLazy",
+    cmd = "Octo",
     config = function() require 'octo'.setup() end,
   },
 }
