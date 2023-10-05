@@ -16,11 +16,11 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     config = function() require 'tima.configs.treesitter' end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "VeryLazy",
+    build = ':TSUpdate',
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter-context",
+      "nvim-treesitter/nvim-treesitter-textobjects",
+    }
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -28,18 +28,17 @@ local plugins = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-web-devicons",
-      'nvim-telescope/telescope-fzf-native.nvim',
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build =
+        'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
+      },
     },
     event = "VeryLazy",
     config = function() require 'tima.configs.telescope' end,
     cmd = "Telescope",
   },
   { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
-  {
-    "nvim-treesitter/playground",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    event = "VeryLazy",
-  },
   {
     "mbbill/undotree",
     event = "VeryLazy",
@@ -66,9 +65,7 @@ local plugins = {
       { 'neovim/nvim-lspconfig' },
       {
         'williamboman/mason.nvim',
-        build = function()
-          pcall(vim.cmd, 'MasonUpdate')
-        end,
+        build = function() pcall(vim.cmd, 'MasonUpdate') end,
       },
       { 'williamboman/mason-lspconfig.nvim' },
 
@@ -94,6 +91,16 @@ local plugins = {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
     config = function() require 'tima.configs.dap' end,
+    dependencies = {
+      {
+        'rcarriga/nvim-dap-ui',
+        config = function() require 'dapui'.setup() end,
+      },
+      {
+        'theHamsta/nvim-dap-virtual-text',
+        config = function() require 'nvim-dap-virtual-text'.setup() end,
+      },
+    }
   },
   {
     "nvim-lualine/lualine.nvim",
@@ -123,18 +130,6 @@ local plugins = {
     config = function() require 'tima.configs.comment' end,
   },
   {
-    'rcarriga/nvim-dap-ui',
-    event = "VeryLazy",
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function() require 'dapui'.setup() end,
-  },
-  {
-    'theHamsta/nvim-dap-virtual-text',
-    event = "VeryLazy",
-    dependencies = { 'mfussenegger/nvim-dap' },
-    config = function() require 'nvim-dap-virtual-text'.setup() end,
-  },
-  {
     'windwp/nvim-autopairs',
     event = "InsertEnter",
     opts = {}
@@ -149,11 +144,6 @@ local plugins = {
     event = "VeryLazy",
   },
   {
-    'nvim-telescope/telescope-fzf-native.nvim',
-    build =
-    'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
-  },
-  {
     'saecki/crates.nvim',
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = "VeryLazy",
@@ -164,6 +154,16 @@ local plugins = {
     dependencies = { 'nvim-lua/plenary.nvim' },
     event = "VeryLazy",
     config = function() require 'tima.configs.cmake-tools' end,
+  },
+  {
+    'pwntester/octo.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+      'nvim-tree/nvim-web-devicons'
+    },
+    event = "VeryLazy",
+    config = function() require 'octo'.setup() end,
   },
 }
 
