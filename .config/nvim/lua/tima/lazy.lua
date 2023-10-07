@@ -59,7 +59,7 @@ local plugins = {
   {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
-    event = { "BufReadPre", "BufNewFile" },
+    event = { "BufReadPre", "BufNewFile", "TermOpen" },
     cmd = { "Mason", "MasonUpdate" },
     config = function() require 'tima.configs.lsp' end,
     dependencies = {
@@ -90,7 +90,6 @@ local plugins = {
   },
   {
     "mfussenegger/nvim-dap",
-    cmd = "DapContinue",
     keys = "<leader>d",
     config = function() require 'tima.configs.dap' end,
     dependencies = {
@@ -128,7 +127,7 @@ local plugins = {
   },
   {
     'numToStr/Comment.nvim',
-    keys = "<leader>c",
+    keys = { { "<leader>c", mode = { 'n', 'v' } } },
     config = function() require 'tima.configs.comment' end,
   },
   {
@@ -138,7 +137,7 @@ local plugins = {
   },
   {
     'kylechui/nvim-surround',
-    event = { "BufReadPost", "BufNewFile" },
+    keys = { 'cs', 'ys', 'ds', { 'S', mode = 'v' }, },
     config = function() require 'nvim-surround'.setup() end,
   },
   {
@@ -161,9 +160,8 @@ local plugins = {
       "CMakeDebug",
       "CMakeClean",
       "CMakeGenerate",
-      "CMakeQuickBuild",
-      "CMakeQuickRun",
     },
+    event = "FileWritePre",
     cond = function() return vim.fn.filereadable('CMakeLists.txt') == 1 end,
     config = function() require 'tima.configs.cmake-tools' end,
   },
