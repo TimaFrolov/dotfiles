@@ -83,10 +83,9 @@ local plugins = {
     dependencies = { 'zbirenbaum/copilot.lua' },
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "stevearc/conform.nvim",
     event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "nvim-lua/plenary.nvim" },
-    config = function() require 'tima.configs.null_ls' end,
+    config = function() require 'tima.configs.conform' end,
   },
   {
     "mfussenegger/nvim-dap",
