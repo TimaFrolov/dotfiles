@@ -1,0 +1,85 @@
+@import "catppuccin/themes/mocha.css";
+
+* {
+  color: @text;
+  font-family: "Jetbrains Mono";
+  font-size: 14px;
+}
+
+window#waybar {
+  background-color: shade(@base, 0.9);
+  border: 0px;
+}
+
+#workspaces button {
+  padding: 0 0.4em;
+}
+
+#workspaces button:hover {
+  background: @surface0;
+}
+
+#workspaces button.focused {
+  background-color: @crust;
+}
+
+#battery,
+#backlight,
+#temperature,
+#memory,
+#cpu,
+#network,
+#pulseaudio,
+#idle_inhibitor,
+#language,
+#tray {
+  margin-right: 1em;
+}
+
+#battery.critical.discharging {
+  color: @red;
+}
+
+#battery.warning.discharging {
+  color: @maroon;
+}
+
+#battery.discharging {
+  color: @peach;
+}
+
+#backlight {
+  color: @sky;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+#temperature {
+  color: @teal;
+}
+
+#memory {
+  color: @mauve;
+}
+
+#cpu {
+  color: @flamingo;
+}
+
+#network {
+  color: @blue
+}
+
+#pulseaudio {
+  color: @yellow;
+}
+
+label {
+  color: @subtext0;
+}
+
+window#waybar {
+  background-color: shade(@base, 0.9);
+}
