@@ -48,8 +48,12 @@ window#waybar {
   color: @peach;
 }
 
+#battery.charging {
+  color: @teal;
+}
+
 #backlight {
-  color: @sky;
+  color: @lavender;
 }
 
 #temperature.critical {
