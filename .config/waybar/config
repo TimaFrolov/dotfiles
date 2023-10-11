@@ -42,7 +42,7 @@
         "interval": 1
     },
     "temperature": {
-        "thermal-zone": 0,
+        "thermal-zone": 1,
         "critical-threshold": 80,
         "format": "{temperatureC}°C {icon}",
         "format-icons": [""],
@@ -62,6 +62,7 @@
         "interval": 1
     },
     "network": {
+        "interface": "wlp*",
         "format-wifi": "{essid} ({signaldBm}dBm) {icon}",
         "format-ethernet": "{ipaddr}/{cidr} 󰛳",
         "tooltip-format": "{ifname} via {gwaddr} 󰛳",
@@ -72,8 +73,8 @@
     },
     "pulseaudio": {
         "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": "󰸈 {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon}  {format_source}",
+        "format-bluetooth-muted": "󰸈 {icon}  {format_source}",
         "format-muted": "󰸈 {format_source}",
         "format-source": "{volume}% 󰍬",
         "format-source-muted": "󰍭",
