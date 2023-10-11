@@ -178,9 +178,6 @@ bar {
 # Font
 font pango: JetBrains Mono 10
 
-# Gaps between windows
-gaps inner 5
-
 # Disabel window tile bar
 default_border pixel 2
 
