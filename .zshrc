@@ -39,10 +39,10 @@ alias lf='lfcd'
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
 precmd_functions+=(precmd_vcs_info)
-zstyle ':vcs_info:git:*' formats '%F{166} %b%f '
+zstyle ':vcs_info:git:*' formats '%F{#fab387} %b%f '
 
 setopt PROMPT_SUBST
-PROMPT='[%n@%m] %B%F{031}%2~%f%b ${vcs_info_msg_0_}%F{040}$%f '
+PROMPT='[%F{#b4befe}%n%f@%F{#b4befe}%m%f] %B%F{#89b4fa}%2~%f%b ${vcs_info_msg_0_}%F{#94e2d5}$%f '
 
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
@@ -64,3 +64,6 @@ export PATH
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
 
 export EDITOR="nvim"
+
+source ~/.zsh/catppuccin/themes/catppuccin_mocha-zsh-syntax-highlighting.zsh
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
