@@ -32,3 +32,30 @@ vim.keymap.set("n", "<esc>", ":noh<cr>")
 
 vim.keymap.set("t", "<C-p>", "<C-\\><C-n>")
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>")
+
+local listSwap = (function()
+  local list = false
+
+  local swap = function()
+    list = not list
+    for _, window in pairs(vim.api.nvim_list_wins()) do
+      vim.wo[window][0].list = list
+    end
+  end
+
+  local autocmd = function()
+    vim.opt.list = list
+  end
+
+  vim.api.nvim_create_autocmd({ "BufWinEnter" }, { callback = autocmd })
+
+  return swap
+end)()
+
+vim.keymap.set("n", "<leader>fl", listSwap)
+
+local wrapSwap = function()
+  local window = vim.api.nvim_get_current_win()
+  vim.wo[window][0].wrap = not vim.wo[window][0].wrap
+end
+vim.keymap.set("n", "<leader>fw", wrapSwap)

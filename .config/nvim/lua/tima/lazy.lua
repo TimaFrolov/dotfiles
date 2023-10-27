@@ -131,7 +131,7 @@ local plugins = {
   },
   {
     'windwp/nvim-autopairs',
-    event = "InsertEnter",
+    event = "InsertCharPre",
     opts = {}
   },
   {
@@ -173,6 +173,12 @@ local plugins = {
     },
     cmd = "Octo",
     config = function() require 'octo'.setup() end,
+  },
+  {
+    'https://codeberg.org/esensar/nvim-dev-container',
+    dependencies = 'nvim-treesitter/nvim-treesitter',
+    lazy = false,
+    opts = {},
   },
 }
 
