@@ -29,12 +29,15 @@ lfcd() {
 }
 
 alias ll='ls -alhF'
-alias l='ls -aCF'
+alias ls='ls -aCF'
+alias l='ls'
 alias vi='nvim'
+alias v='nvim'
 alias code='code-insiders'
 alias doc2pdf='libreoffice --writer --convert-to pdf'
 alias treel='tree -pugshD'
 alias lf='lfcd'
+alias bt='bluetoothctl'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
