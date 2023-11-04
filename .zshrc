@@ -33,11 +33,13 @@ alias ls='ls -aCF'
 alias l='ls'
 alias vi='nvim'
 alias v='nvim'
+alias vf='nvim -c "Telescope find_files"'
 alias code='code-insiders'
 alias doc2pdf='libreoffice --writer --convert-to pdf'
 alias treel='tree -pugshD'
 alias lf='lfcd'
 alias bt='bluetoothctl'
+alias c='cd'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
