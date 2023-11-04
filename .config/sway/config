@@ -1,11 +1,26 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
+set $q 24
+set $w 25
+set $e 26
+set $a 38
+set $s 39
+set $d 40
+set $f 41
+set $h 43
+set $j 44
+set $k 45
+set $l 46
+set $c 54
+set $v 55
+set $b 56
+
 # Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
+set $left $h
+set $down $j
+set $up $k
+set $right $l
 
 set $term alacritty
 
@@ -57,31 +72,31 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
     floating_modifier $mod normal
 
     # Reload the configuration file
-    bindsym $mod+Shift+c reload
+    bindcode $mod+Shift+$c reload
 
     # Lock screen
     bindsym $mod+Escape exec $lock
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindcode $mod+Shift+$e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
 # Moving around:
 
     # Move focus around
-    bindsym $mod+$left focus left
-    bindsym $mod+$down focus down
-    bindsym $mod+$up focus up
-    bindsym $mod+$right focus right
+    bindcode $mod+$left focus left
+    bindcode $mod+$down focus down
+    bindcode $mod+$up focus up
+    bindcode $mod+$right focus right
     bindsym $mod+Left focus left
     bindsym $mod+Down focus down
     bindsym $mod+Up focus up
     bindsym $mod+Right focus right
 
     # Move the focused window with the same, but add Shift
-    bindsym $mod+Shift+$left move left
-    bindsym $mod+Shift+$down move down
-    bindsym $mod+Shift+$up move up
-    bindsym $mod+Shift+$right move right
+    bindcode $mod+Shift+$left move left
+    bindcode $mod+Shift+$down move down
+    bindcode $mod+Shift+$up move up
+    bindcode $mod+Shift+$right move right
     bindsym $mod+Shift+Left move left
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
@@ -120,34 +135,34 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
 # Layout stuff:
 
     # Select direction to split focused object
-    bindsym $mod+b splith
-    bindsym $mod+v splitv
+    bindcode $mod+$b splith
+    bindcode $mod+$v splitv
 
     # Switch the current container between different layout styles
-    bindsym $mod+s layout stacking
-    bindsym $mod+w layout tabbed
-    bindsym $mod+e layout toggle split
+    bindcode $mod+$s layout stacking
+    bindcode $mod+$w layout tabbed
+    bindcode $mod+$e layout toggle split
 
     # Make the current focus fullscreen
-    bindsym $mod+f fullscreen
+    bindcode $mod+$f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+d floating toggle
+    bindcode $mod+Shift+$d floating toggle
 
     # Swap focus between the tiling area and the floating area
-    bindsym $mod+d focus mode_toggle
+    bindcode $mod+$d focus mode_toggle
 
     # Move focus to the parent container
-    bindsym $mod+a focus parent
+    bindcode $mod+$a focus parent
 
 # Scratchpad:
 
     # Move the currently focused window to the scratchpad
-    bindsym $mod+Shift+q move scratchpad
+    bindcode $mod+Shift+$q move scratchpad
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+q scratchpad show
+    bindcode $mod+$q scratchpad show 
 
 # Resizing containers:
 
@@ -156,10 +171,10 @@ mode "resize" {
     # right will grow the containers width
     # up will shrink the containers height
     # down will grow the containers height
-    bindsym $left resize shrink width 10px
-    bindsym $down resize grow height 10px
-    bindsym $up resize shrink height 10px
-    bindsym $right resize grow width 10px
+    bindcode $left resize shrink width 10px
+    bindcode $down resize grow height 10px
+    bindcode $up resize shrink height 10px
+    bindcode $right resize grow width 10px
     bindsym Left resize shrink width 10px
     bindsym Down resize grow height 10px
     bindsym Up resize shrink height 10px
