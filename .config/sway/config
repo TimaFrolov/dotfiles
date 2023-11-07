@@ -1,9 +1,12 @@
-# Logo key. Use Mod1 for Alt.
 set $mod Mod4
+set $alt Mod1
 
 set $q 24
 set $w 25
 set $e 26
+set $r 27
+set $t 28
+set $o 32
 set $a 38
 set $s 39
 set $d 40
@@ -12,6 +15,7 @@ set $h 43
 set $j 44
 set $k 45
 set $l 46
+set $z 52
 set $c 54
 set $v 55
 set $b 56
@@ -40,7 +44,7 @@ input type:keyboard {
     xkb_layout us,ru
     repeat_delay 250
     repeat_rate 40
-    xkb_options grp:ctrl_space_toggle
+    xkb_options grp:caps_toggle
 }
 
 input type:touchpad {
@@ -61,11 +65,7 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
     bindsym $mod+Return exec $term
 
     # Kill focused window
-    bindsym Mod1+F4 kill
-
-    # open menu
-    bindsym $mod+o exec $menu drun
-    bindsym $mod+Shift+o exec $menu run
+    bindsym $alt+F4 kill
 
     # Drag windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -128,8 +128,8 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
     bindsym $mod+Shift+0 move container to workspace number 0
 
 # 
-    bindsym $mod+Ctrl+1 exec brave-browser
-    bindsym $mod+Ctrl+2 exec telegram
+    bindsym $mod+Ctrl+1 exec 
+    bindsym $mod+Ctrl+2 exec 
 
 
 # Layout stuff:
@@ -184,7 +184,24 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindcode $mod+$r mode "resize"
+
+# Applications menu
+mode "open" {
+    bindcode $a exec $menu drun; mode "default"
+    bindcode $c exec $menu run; mode "default"
+
+    bindcode $t exec telegram; mode "default"
+    bindcode $b exec brave-browser; mode "default"
+    bindcode $f exec firefox; mode "default"
+    bindcode $z exec zathura; mode "default"
+
+    # Return to default mode
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindcode $mod+$o mode "default"
+}
+bindcode $mod+$o mode "open"
 
 # Bindings for XF86 keys
 bindsym --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
