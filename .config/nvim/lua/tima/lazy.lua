@@ -180,6 +180,11 @@ local plugins = {
     lazy = false,
     opts = {},
   },
+  {
+    'NvChad/nvim-colorizer.lua',
+    lazy = false,
+    config = function() require 'tima.configs.colorizer' end,
+  }
 }
 
 local options = {
