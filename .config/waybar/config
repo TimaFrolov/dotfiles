@@ -1,6 +1,6 @@
 {
     "position": "bottom",
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode", "custom/media"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "sway/language", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
     "sway/workspaces": {
@@ -17,6 +17,9 @@
         "format-icons": ["", ""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
+    },
+    "sway/mode": {
+        "format": " {}",
     },
     "idle_inhibitor": {
         "format": "{icon}",
