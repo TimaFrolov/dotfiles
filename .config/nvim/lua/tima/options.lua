@@ -47,3 +47,6 @@ vim.opt.listchars = {
   precedes = '❮',
   nbsp = '␣',
 }
+
+vim.opt.spelllang = 'en,ru'
+vim.opt.spell = true
