@@ -182,4 +182,7 @@ luasnip.add_snippets("tex", {
       }
     )
   ),
+  s([[<|]], t([[\triangleleft]])),
+  s([[<=|]], t([[\trianglelefteq]])),
+  s([[~=]], t([[\simeq]])),
 }, { type = "autosnippets", key = "all_auto" })
