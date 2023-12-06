@@ -184,7 +184,13 @@ local plugins = {
     'NvChad/nvim-colorizer.lua',
     lazy = false,
     config = function() require 'tima.configs.colorizer' end,
-  }
+  },
+  { 'folke/neodev.nvim', event = { "BufReadPre" }, opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = { "VeryLazy" },
+    config = function() require 'tima.configs.which-key' end,
+  },
 }
 
 local options = {

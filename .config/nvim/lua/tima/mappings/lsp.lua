@@ -28,13 +28,13 @@ local swap_inlay_hints = (function()
   return swap
 end)()
 
-vim.keymap.set("n", "<leader>fR", ":LspRestart<cr>")
-vim.keymap.set("n", "<leader>fI", ":LspInfo<cr>")
-vim.keymap.set("n", "<leader>fL", ":LspLog<cr>")
+vim.keymap.set("n", "<leader>fR", ":LspRestart<cr>", { desc = "[R]estart LSP client" })
+vim.keymap.set("n", "<leader>fI", ":LspInfo<cr>", { desc = "Show LSP client [I]nfo" })
+vim.keymap.set("n", "<leader>fL", ":LspLog<cr>", { desc = "Show LSP client [L]og" })
 
-vim.keymap.set("n", "<leader>fh", swap_inlay_hints)
-vim.keymap.set("n", "<leader>fr", function() vim.lsp.buf.rename() end)
-vim.keymap.set("n", "<leader>fa", function() vim.lsp.buf.code_action() end)
+vim.keymap.set("n", "<leader>fh", swap_inlay_hints, { desc = "Toggle inlay [H]ints" })
+vim.keymap.set("n", "<leader>fr", vim.lsp.buf.rename, { desc = "[R]ename lsp symbol" })
+vim.keymap.set("n", "<leader>fa", vim.lsp.buf.code_action, { desc = "Show code [A]ctions" })
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<CR>'] = cmp.mapping.confirm({
@@ -72,10 +72,10 @@ cmp.setup({
   mapping = cmp_mappings,
 })
 
-vim.keymap.set('n', 'gr', telescope.lsp_references)
-vim.keymap.set('n', 'gd', telescope.lsp_definitions)
-vim.keymap.set('n', 'go', telescope.lsp_type_definitions)
-vim.keymap.set('n', 'gi', telescope.lsp_implementations)
+vim.keymap.set('n', 'gr', telescope.lsp_references, { desc = "[G]o to [R]eferences" })
+vim.keymap.set('n', 'gd', telescope.lsp_definitions, { desc = "[G]o to [D]efinitions" })
+vim.keymap.set('n', 'go', telescope.lsp_type_definitions, { desc = "[GO] to type definitions" })
+vim.keymap.set('n', 'gi', telescope.lsp_implementations, { desc = "[G]o to [I]mplementations" })
 
 return {
   omit = { 'gr', 'gd', 'go', 'gi' },
