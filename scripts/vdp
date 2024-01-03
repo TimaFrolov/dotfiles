@@ -1,0 +1,38 @@
+#!/bin/bash
+
+list()
+{
+    swaymsg -t get_outputs | jq -r '.[] | .name' | grep 'HEADLESS'
+}
+
+create()
+{
+    swaymsg create_output
+    list
+}
+
+remove()
+{
+    swaymsg output $(list | fzf) unplug
+}
+
+show()
+{
+    DP=$(list | fzf)
+    wl-mirror $DP >/dev/null 2>&1 &
+    disown
+}
+
+main()
+{
+    case $1 in
+        c|create) create; exit 0;;
+        r|remove) remove; exit 0;;
+        l|list) list; exit 0;;
+        s|show) show; exit 0;;
+        exit) exit 0;;
+    esac
+    exit 1
+}
+
+(main $1) || main $(echo -e "create\nremove\nlist\nexit\nshow" | fzf)

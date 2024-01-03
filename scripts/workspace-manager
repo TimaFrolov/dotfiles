@@ -1,0 +1,44 @@
+#!/bin/bash
+
+FILENAME=$HOME/.local/share/workspaces
+
+remove_path()
+{
+    sed -i "/^$(echo $1 | sed 's/\//\\\//g')\$/d" $FILENAME
+}
+
+add()
+{
+    WS=$1
+    if [ -z $WS ]; then
+        WS=$(pwd)
+    else 
+        WS=$(realpath $WS)
+    fi
+    remove_path $WS
+    echo $WS >> $FILENAME
+    echo $(pwd)
+}
+
+pick()
+{
+    cat $FILENAME | fzf
+}
+
+remove()
+{
+    remove_path $(cat $FILENAME | fzf)
+}
+
+main()
+{
+    case $1 in
+        a|add) add $2; exit 0;;
+        p|pick) pick; exit 0;;
+        r|rm|remove|d|del|delete) remove; exit 0;;
+        exit) exit 0;;
+    esac
+    exit 1
+}
+
+(main $@) || main $(echo -e "add\npick\nremove\nexit" | fzf)

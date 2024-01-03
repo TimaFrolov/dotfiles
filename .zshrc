@@ -28,6 +28,10 @@ lfcd() {
     cd "$(command lf -print-last-dir "$@")"
 }
 
+wmcd() {
+    cd "$(command workspace-manager "$@")"
+}
+
 alias ll='ls -alhF'
 alias ls='ls -aCF'
 alias l='ls'
@@ -38,6 +42,7 @@ alias code='code-insiders'
 alias doc2pdf='libreoffice --writer --convert-to pdf'
 alias treel='tree -pugshD'
 alias lf='lfcd'
+alias wm='wmcd'
 alias bt='bluetoothctl'
 alias c='cd'
 
@@ -52,6 +57,11 @@ PROMPT='[%F{#b4befe}%n%f@%F{#b4befe}%m%f] %B%F{#89b4fa}%2~%f%b ${vcs_info_msg_0_
 if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
 then
     PATH="$HOME/.local/bin:$HOME/bin:$PATH"
+fi
+
+if ! [[ "$PATH" =~ "$HOME/.local/bin/scripts:" ]]
+then
+    PATH="$HOME/.local/bin/scripts:$PATH"
 fi
 
 if ! [[ "$PATH" =~ "$HOME/.cargo/bin:" ]]
