@@ -45,6 +45,9 @@ alias lf='lfcd'
 alias wm='wmcd'
 alias bt='bluetoothctl'
 alias c='cd'
+alias '??'='gh copilot suggest -t shell'
+alias 'git?'='gh copilot suggest -t git'
+alias 'gh?'='gh copilot suggest -t gh'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
