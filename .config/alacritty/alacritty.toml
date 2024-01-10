@@ -1,0 +1,62 @@
+import = ["/home/tima/.config/alacritty/catppuccin/catppuccin-mocha.toml"]
+live_config_reload = true
+
+[cursor.style]
+blinking = "Off"
+shape = "Block"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "jetbrainsmono nerd font"
+style = "Bold"
+
+[font.bold_italic]
+family = "jetbrainsmono nerd font"
+style = "Bold Italic"
+
+[font.italic]
+family = "jetbrainsmono nerd font"
+style = "Italic"
+
+[font.normal]
+family = "jetbrainsmono nerd font"
+style = "Regular"
+
+[[keyboard.bindings]]
+action = "ToggleFullscreen"
+key = "F11"
+mode = "~Alt"
+
+[[keyboard.bindings]]
+action = "ToggleViMode"
+key = "V"
+mode = "~Search"
+mods = "Control|Alt"
+
+[mouse]
+hide_when_typing = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/tmux"
+
+[window]
+decorations = "full"
+decorations_theme_variant = "Dark"
+dynamic_title = true
+opacity = 1.0
+startup_mode = "Windowed"
+title = "Alacritty"
+
+[window.dimensions]
+columns = 142
+lines = 32
+
+[window.padding]
+x = 0
+y = 0
