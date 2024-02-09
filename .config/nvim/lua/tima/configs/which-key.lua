@@ -6,6 +6,7 @@ require('which-key').register {
   ['<leader>c'] = { name = '[C]omment', _ = 'which_key_ignore' },
   ['<leader>v'] = { name = '[V]isual selection', _ = 'which_key_ignore' },
   ['<leader>m'] = { name = '[M]ove', _ = 'which_key_ignore' },
+  ['<leader>o'] = { name = 'N[o]ice', _ = 'which_key_ignore' },
   ['<leader>mn'] = { name = '[M]ove to [Next]', _ = 'which_key_ignore' },
   ['<leader>mp'] = { name = '[M]ove to [Previous]', _ = 'which_key_ignore' },
   ['<leader>f'] = { name = '[F]ile', _ = 'which_key_ignore' },

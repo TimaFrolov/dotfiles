@@ -119,12 +119,6 @@ local plugins = {
     config = function() require 'tima.configs.vimtex' end,
   },
   {
-    "j-hui/fidget.nvim",
-    tag = "legacy",
-    event = "LspAttach",
-    config = function() require 'fidget'.setup() end,
-  },
-  {
     'numToStr/Comment.nvim',
     keys = { { "<leader>c", mode = { 'n', 'v' } } },
     config = function() require 'tima.configs.comment' end,
@@ -190,6 +184,16 @@ local plugins = {
     'folke/which-key.nvim',
     event = { "VeryLazy" },
     config = function() require 'tima.configs.which-key' end,
+  },
+  {
+    "folke/noice.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", 'nvim-treesitter/nvim-treesitter' },
+    event = { "VeryLazy" },
+    config = function() require 'tima.configs.noice' end,
+  },
+  {
+    'rcarriga/nvim-notify',
+    config = function() require 'tima.configs.nvim-notify' end,
   },
 }
 
