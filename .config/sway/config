@@ -6,6 +6,7 @@ set $w 25
 set $e 26
 set $r 27
 set $t 28
+set $i 31
 set $o 32
 set $a 38
 set $s 39
@@ -29,6 +30,8 @@ set $right $l
 set $term alacritty
 
 set $menu wofi --show
+
+focus_follows_mouse no
 
 output * bg wallpaper.png fill
 
@@ -154,6 +157,8 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
 
     # Move focus to the parent container
     bindcode $mod+$a focus parent
+
+    bindcode $mod+$i focus child
 
 # Scratchpad:
 
