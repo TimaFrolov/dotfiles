@@ -22,15 +22,12 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>,", "<C-w>10000<<C-w>40>", { desc = "Make window smaller (horizontally)" })
 vim.keymap.set("n", "<leader>-", "<C-w>10000-<C-w>15+", { desc = "Make window smaller (vertically)" })
 
-vim.keymap.set("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>",
-  { desc = "Change word under cursor" })
-
 vim.keymap.set("n", "<leader>tn", ":tabnext<cr>", { desc = "[T]ab [N]ext" })
 vim.keymap.set("n", "<leader>tp", ":tabprev<cr>", { desc = "[T]ab [P]revious" })
 vim.keymap.set("n", "<leader>to", ":tabnew<cr>", { desc = "[T]ab [O]pen new" })
 vim.keymap.set("n", "<leader>tx", ":tabclose<cr>", { desc = "[T]ab close(X)" })
 vim.keymap.set("n", "<leader>tm", ":term<cr>", { desc = "Open [T]er[M]inal" })
-vim.keymap.set("n", "<esc>", ":noh<cr>")
+vim.keymap.set("n", "<Esc>", function () vim.opt.hlsearch = false end)
 
 vim.keymap.set("t", "<C-p>", "<C-\\><C-n>", { desc = "Exit terminal insert mode" })
 vim.keymap.set("t", "<C-w>", "<C-\\><C-n><C-w>", { desc = "Exit terminal insert mode" })

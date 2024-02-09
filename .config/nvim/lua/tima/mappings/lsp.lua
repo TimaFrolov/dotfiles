@@ -31,6 +31,7 @@ end)()
 vim.keymap.set("n", "<leader>fR", ":LspRestart<cr>", { desc = "[R]estart LSP client" })
 vim.keymap.set("n", "<leader>fI", ":LspInfo<cr>", { desc = "Show LSP client [I]nfo" })
 vim.keymap.set("n", "<leader>fL", ":LspLog<cr>", { desc = "Show LSP client [L]og" })
+vim.keymap.set("n", "<leader>fC", vim.lsp.codelens.refresh, { desc = "Refresh LSP [C]odelens" })
 
 vim.keymap.set("n", "<leader>fh", swap_inlay_hints, { desc = "Toggle inlay [H]ints" })
 vim.keymap.set("n", "<leader>fr", vim.lsp.buf.rename, { desc = "[R]ename lsp symbol" })
