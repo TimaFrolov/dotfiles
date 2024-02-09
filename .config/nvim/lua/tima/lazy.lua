@@ -38,7 +38,7 @@ local plugins = {
     cmd = "Telescope",
     keys = "<leader>s",
   },
-  { "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
+  { "catppuccin/nvim",   name = "catppuccin", lazy = false, priority = 1000 },
   {
     "mbbill/undotree",
     event = { "BufReadPre", "BufNewFile" },

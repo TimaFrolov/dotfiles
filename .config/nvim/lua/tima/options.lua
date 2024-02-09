@@ -37,7 +37,7 @@ vim.opt.langmap = {
   'фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
 }
 
-vim.opt.mouse=''
+vim.opt.mouse = ''
 
 vim.opt.listchars = {
   tab = '  ',
