@@ -13,12 +13,12 @@ create()
 
 remove()
 {
-    swaymsg output $(list | fzf) unplug
+    swaymsg output $(list | fzf-tmux -p) unplug
 }
 
 show()
 {
-    DP=$(list | fzf)
+    DP=$(list | fzf-tmux -p)
     wl-mirror $DP >/dev/null 2>&1 &
     disown
 }
@@ -35,4 +35,4 @@ main()
     exit 1
 }
 
-(main $1) || main $(echo -e "create\nremove\nlist\nexit\nshow" | fzf)
+(main $1) || main $(echo -e "create\nremove\nlist\nexit\nshow" | fzf-tmux -p)

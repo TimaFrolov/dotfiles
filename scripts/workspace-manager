@@ -22,12 +22,18 @@ add()
 
 pick()
 {
-    cat $FILENAME | fzf
+    cat $FILENAME | fzf-tmux -p
 }
 
 remove()
 {
-    remove_path $(cat $FILENAME | fzf)
+    WS=$1
+    if [ -z $WS ]; then
+        WS=$(cat $FILENAME | fzf-tmux -p)
+    else 
+        WS=$(realpath $WS)
+    fi
+    remove_path $WS
 }
 
 main()
@@ -35,10 +41,10 @@ main()
     case $1 in
         a|add) add $2; exit 0;;
         p|pick) pick; exit 0;;
-        r|rm|remove|d|del|delete) remove; exit 0;;
+        r|rm|remove|d|del|delete) remove $2; exit 0;;
         exit) exit 0;;
     esac
     exit 1
 }
 
-(main $@) || main $(echo -e "add\npick\nremove\nexit" | fzf)
+(main $@) || main $(echo -e "add\npick\nremove\nexit" | fzf-tmux -p)

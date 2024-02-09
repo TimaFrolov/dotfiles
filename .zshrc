@@ -32,6 +32,7 @@ wmcd() {
     cd "$(command workspace-manager "$@")"
 }
 
+alias fzf='fzf-tmux -p'
 alias ll='ls -alhF'
 alias ls='ls -aCF'
 alias l='ls'
