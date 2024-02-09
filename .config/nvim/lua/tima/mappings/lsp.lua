@@ -35,6 +35,7 @@ vim.keymap.set("n", "<leader>fL", ":LspLog<cr>", { desc = "Show LSP client [L]og
 vim.keymap.set("n", "<leader>fh", swap_inlay_hints, { desc = "Toggle inlay [H]ints" })
 vim.keymap.set("n", "<leader>fr", vim.lsp.buf.rename, { desc = "[R]ename lsp symbol" })
 vim.keymap.set("n", "<leader>fa", vim.lsp.buf.code_action, { desc = "Show code [A]ctions" })
+vim.keymap.set("n", "<leader>fs", ":ClangdSwitchSourceHeader<cr>", { desc = "[S]witch source/header" })
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
   ['<CR>'] = cmp.mapping.confirm({

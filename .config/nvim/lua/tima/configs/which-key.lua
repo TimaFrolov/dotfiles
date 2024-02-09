@@ -3,7 +3,7 @@ require('which-key').register {
   ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
   ['<leader>t'] = { name = '[T]ab/[T]erm', _ = 'which_key_ignore' },
   ['<leader>d'] = { name = '[D]ap', _ = 'which_key_ignore' },
-  ['<leader>c'] = { name = '[C]omment', _ = 'which_key_ignore' },
+  ['<leader>c'] = { name = '[C]omment/[C]loak', _ = 'which_key_ignore' },
   ['<leader>v'] = { name = '[V]isual selection', _ = 'which_key_ignore' },
   ['<leader>m'] = { name = '[M]ove', _ = 'which_key_ignore' },
   ['<leader>o'] = { name = 'N[o]ice', _ = 'which_key_ignore' },

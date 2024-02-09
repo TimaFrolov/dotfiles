@@ -186,6 +186,11 @@ local plugins = {
     config = function() require 'tima.configs.which-key' end,
   },
   {
+    'laytan/cloak.nvim',
+    event = { "BufReadPre", "BufNewFile" },
+    config = function() require 'tima.configs.cloak' end,
+  },
+  {
     "folke/noice.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", 'nvim-treesitter/nvim-treesitter' },
     event = { "VeryLazy" },
