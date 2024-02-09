@@ -13,8 +13,10 @@
     },
     "sway/scratchpad": {
         "format": "{icon} {count}",
-        "show-empty": false,
-        "format-icons": ["", ""],
+        "show-empty": true,
+        "format-icons": "",
+        "on-click": "swaymsg scratchpad show",
+        "on-click-right": "swaymsg move window to scratchpad",
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
