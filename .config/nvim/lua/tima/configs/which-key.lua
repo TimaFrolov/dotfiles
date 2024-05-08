@@ -20,6 +20,6 @@ require('which-key').register {
   ['<leader>gl'] = { name = '[G]it [L]ine blame', _ = 'which_key_ignore' },
   ['<leader>gm'] = { name = '[G]it [M]erge', _ = 'which_key_ignore' },
   ['<leader>gp'] = { name = '[G]it [P]ush/[P]ull', _ = 'which_key_ignore' },
-  ['<leader>gr'] = { name = '[G]it [R]eset/[R]ebase', _ = 'which_key_ignore' },
+  ['<leader>gr'] = { name = '[G]it [R]eset/[R]ebase/[R]eflog', _ = 'which_key_ignore' },
   ['<leader>gs'] = { name = '[G]it [S]tash/[S]tatus/[S]witch', _ = 'which_key_ignore' },
 }
