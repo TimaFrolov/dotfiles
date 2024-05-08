@@ -95,10 +95,11 @@ local plugins = {
       {
         'rcarriga/nvim-dap-ui',
         config = function() require 'dapui'.setup() end,
+        dependencies = { "nvim-neotest/nvim-nio" }
       },
       {
         'theHamsta/nvim-dap-virtual-text',
-        config = function() require 'nvim-dap-virtual-text'.setup() end,
+        config = function() require 'nvim-dap-virtual-text'.setup({}) end,
       },
     }
   },
