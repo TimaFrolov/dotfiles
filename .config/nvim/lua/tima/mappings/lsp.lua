@@ -1,4 +1,3 @@
-local lsp = require 'lsp-zero'
 local luasnip = require 'luasnip'
 local cmp = require 'cmp'
 local telescope = require("telescope.builtin")
@@ -37,7 +36,7 @@ vim.keymap.set("n", "<leader>fa", vim.lsp.buf.code_action, { desc = "Show code [
 vim.keymap.set("n", "<leader>fs", ":ClangdSwitchSourceHeader<cr>", { desc = "[S]witch source/header" })
 vim.keymap.set("n", "<leader>fc", vim.lsp.codelens.refresh, { desc = "Refresh LSP [C]odelens" })
 
-local cmp_mappings = lsp.defaults.cmp_mappings({
+local cmp_mappings = {
   ['<C-y>'] = cmp.mapping.confirm({
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
@@ -58,16 +57,7 @@ local cmp_mappings = lsp.defaults.cmp_mappings({
       luasnip.jump(-1)
     end
   end, { "i", "s" }),
-})
-
-cmp.setup({
-  sources = {
-    { name = "copilot" },
-    { name = "nvim_lsp" },
-    { name = "crates" },
-  },
-  mapping = cmp_mappings,
-})
+}
 
 vim.keymap.set('n', 'gr', telescope.lsp_references, { desc = "[G]o to [R]eferences" })
 vim.keymap.set('n', 'gd', telescope.lsp_definitions, { desc = "[G]o to [D]efinitions" })
@@ -76,4 +66,5 @@ vim.keymap.set('n', 'gi', telescope.lsp_implementations, { desc = "[G]o to [I]mp
 
 return {
   omit = { 'gr', 'gd', 'go', 'gi' },
+  cmp = cmp_mappings,
 }

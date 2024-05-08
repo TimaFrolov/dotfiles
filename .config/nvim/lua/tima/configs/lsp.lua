@@ -1,4 +1,5 @@
 local lsp = require 'lsp-zero'
+local cmp = require 'cmp'
 
 local mappings = require 'tima.mappings.lsp'
 
@@ -50,3 +51,13 @@ lsp.on_attach(function(_, bufnr)
 end)
 
 lsp.setup()
+
+cmp.setup({
+  sources = {
+    { name = "copilot" },
+    { name = "nvim_lsp" },
+    { name = "luasnip" },
+    { name = "crates" },
+  },
+  mapping = mappings.cmp,
+})
