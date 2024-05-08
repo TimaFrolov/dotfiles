@@ -32,6 +32,8 @@ vim.g.mapleader = " "
 
 vim.opt.clipboard = "unnamedplus"
 
+vim.opt.conceallevel = 2
+
 vim.opt.langmap = {
   'ФИСВУАПРШОЛДЬТЩЗЙКЫЕГМЦЧНЯ;ABCDEFGHIJKLMNOPQRSTUVWXYZ',
   'фисвуапршолдьтщзйкыегмцчня;abcdefghijklmnopqrstuvwxyz'
