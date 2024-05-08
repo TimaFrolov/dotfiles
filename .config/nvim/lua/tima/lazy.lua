@@ -206,6 +206,11 @@ local plugins = {
     config = function() require 'tima.configs.neo-zoom' end,
     event = { "VeryLazy" },
   },
+  {
+    'whonore/Coqtail',
+    ft = 'coq',
+    -- TODO: disable default mapping and define my own as default ones overwrite my mappings for other plugins
+  },
 }
 
 local options = {
