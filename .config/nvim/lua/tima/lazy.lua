@@ -200,6 +200,11 @@ local plugins = {
     'rcarriga/nvim-notify',
     config = function() require 'tima.configs.nvim-notify' end,
   },
+  {
+    'nyngwang/NeoZoom.lua',
+    config = function() require 'tima.configs.neo-zoom' end,
+    event = { "VeryLazy" },
+  },
 }
 
 local options = {
