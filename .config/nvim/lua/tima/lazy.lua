@@ -177,7 +177,7 @@ local plugins = {
   },
   {
     'NvChad/nvim-colorizer.lua',
-    lazy = false,
+    event = { "BufWinEnter" },
     config = function() require 'tima.configs.colorizer' end,
   },
   { 'folke/neodev.nvim', event = { "BufReadPre" }, opts = {} },
