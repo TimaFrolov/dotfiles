@@ -38,28 +38,24 @@ vim.keymap.set("n", "<leader>fs", ":ClangdSwitchSourceHeader<cr>", { desc = "[S]
 vim.keymap.set("n", "<leader>fc", vim.lsp.codelens.refresh, { desc = "Refresh LSP [C]odelens" })
 
 local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<CR>'] = cmp.mapping.confirm({
+  ['<C-y>'] = cmp.mapping.confirm({
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   }),
-  ["<Tab>"] = cmp.mapping(function(fallback)
+  ['<C-n>'] = cmp.mapping(function()
     if cmp.visible() then
       cmp.select_next_item()
     elseif luasnip.expand_or_jumpable() then
       luasnip.expand_or_jump()
     elseif has_words_before() then
       cmp.complete()
-    else
-      fallback()
     end
   end, { "i", "s" }),
-  ["<S-Tab>"] = cmp.mapping(function(fallback)
+  ['<C-p>'] = cmp.mapping(function()
     if cmp.visible() then
       cmp.select_prev_item()
     elseif luasnip.jumpable(-1) then
       luasnip.jump(-1)
-    else
-      fallback()
     end
   end, { "i", "s" }),
 })
