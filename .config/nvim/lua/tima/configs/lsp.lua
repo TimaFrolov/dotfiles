@@ -42,6 +42,7 @@ lspconfig.spectral.setup({})
 lspconfig.ocamllsp.setup({})
 lspconfig.asm_lsp.setup({})
 lspconfig.gopls.setup({})
+lspconfig.coq_lsp.setup({})
 
 lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({
