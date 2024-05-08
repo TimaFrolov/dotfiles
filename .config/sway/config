@@ -226,7 +226,7 @@ bar {
 font pango: JetBrains Mono 10
 
 # Disabel window tile bar
-default_border pixel 2
+default_border none
 
 # Include system config files
 include /etc/sway/config.d/*
