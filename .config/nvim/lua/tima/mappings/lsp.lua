@@ -14,12 +14,12 @@ local swap_inlay_hints = (function()
   local swap = function()
     hints = not hints
     for _, bufnr in pairs(vim.api.nvim_list_bufs()) do
-      vim.lsp.inlay_hint.enable(bufnr, hints)
+      vim.lsp.inlay_hint.enable(hints, {bufnr=bufnr})
     end
   end
 
   local autocmd = function()
-    vim.lsp.inlay_hint.enable(0, hints)
+    vim.lsp.inlay_hint.enable(hints, {bufnr=nil})
   end
 
   vim.api.nvim_create_autocmd({ "BufReadPre", "BufNewFile" }, { callback = autocmd })
