@@ -14,7 +14,7 @@ lsp.preset({
   },
   manage_nvim_cmp = {
     set_sources = 'recommended',
-    set_basic_mappings = true,
+    set_basic_mappings = false,
     set_extra_mappings = false,
     use_luasnip = true,
     set_format = true,
