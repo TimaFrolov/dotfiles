@@ -62,26 +62,6 @@ zstyle ':vcs_info:git:*' formats '%F{#fab387} %b%f '
 setopt PROMPT_SUBST
 PROMPT='[%F{#b4befe}%n%f@%F{#b4befe}%m%f] %B%F{#89b4fa}%2~%f%b ${vcs_info_msg_0_}%F{#94e2d5}$%f '
 
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-
-if ! [[ "$PATH" =~ "$HOME/.local/bin/scripts:" ]]
-then
-    PATH="$HOME/.local/bin/scripts:$PATH"
-fi
-
-if ! [[ "$PATH" =~ "$HOME/.cargo/bin:" ]]
-then
-    PATH="$HOME/.cargo/bin:$PATH"
-fi
-
-if ! [[ "$PATH" =~ "$HOME/go/bin:" ]]
-then
-    PATH="$HOME/go/bin:$PATH"
-fi
-
 export PATH
 
 [ -f "$HOME/.ghcup/env" ] && source "$HOME/.ghcup/env" # ghcup-env
