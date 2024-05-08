@@ -20,6 +20,7 @@ set $z 52
 set $c 54
 set $v 55
 set $b 56
+set $n 57
 
 # Home row direction keys, like vim
 set $left $h
@@ -173,6 +174,20 @@ exec_always {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindcode $mod+$q scratchpad show 
+
+# Notifications:
+
+mode "notifications" {
+    # Close all current notifications
+    bindcode $c exec dunstctl close-all; mode "default"
+
+    bindcode $t exec dunstctl set-paused toggle; mode "default"
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindcode $mod+$n mode "default"
+}
+bindcode $mod+$n mode "notifications"
 
 # Resizing containers:
 
