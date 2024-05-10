@@ -12,4 +12,3 @@ require('cloak').setup({
     },
   },
 })
-require('tima.mappings.cloak')

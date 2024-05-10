@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>ct", ":CloakToggle<cr>", { desc = "[C]loak [T]oggle" })
+return { { "<leader>ct", ":CloakToggle<cr>", mode = "n", desc = "[C]loak [T]oggle" } }

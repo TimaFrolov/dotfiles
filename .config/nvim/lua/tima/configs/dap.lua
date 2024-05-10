@@ -82,5 +82,3 @@ dap.configurations.cs = {
     cwd = getCwd,
   },
 }
-
-require 'tima.mappings.dap'

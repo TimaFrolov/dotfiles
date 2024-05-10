@@ -1,20 +1,21 @@
-vim.keymap.set("n", "<leader>gst", vim.cmd.Git, { desc = "[G]it [ST]atus" })
-vim.keymap.set("n", "<leader>glg", ":Git log<cr>", { desc = "[G]it [L]o[G]", silent = true })
-vim.keymap.set("n", "<leader>gcm", ":Git commit<cr>", { desc = "[G]it [C]o[M]mit", silent = true })
-vim.keymap.set("n", "<leader>gca", ":Git commit --amend<cr>", { desc = "[G]it [C]ommit --[A]mend", silent = true })
-vim.keymap.set("n", "<leader>gcf", ":Git commit --fixup=", { desc = "[G]it [C]ommit --[F]ixup", silent = true })
-vim.keymap.set("n", "<leader>gsw", ":Git switch ", { desc = "[G]it [SW]itch" })
-vim.keymap.set("n", "<leader>gph", ":Git push<cr>", { desc = "[G]it [P]us[H]", silent = true })
-vim.keymap.set("n", "<leader>gpf", ":Git push --force-with-lease<cr>",
-  { desc = "[G]it [P]ush by [F]orce", silent = true })
-vim.keymap.set("n", "<leader>gpl", ":Git pull<cr>", { desc = "[G]it [P]ul[L]", silent = true })
-vim.keymap.set("n", "<leader>gsh", ":Git stash --all<cr>", { desc = "[G]it [S]tas[H]", silent = true })
-vim.keymap.set("n", "<leader>gsp", ":Git stash pop<cr>", { desc = "[G]it [S]tash [P]op", silent = true })
-vim.keymap.set("n", "<leader>gbl", ":Git blame -w -C -C -C<cr>", { desc = "[G]it [BL]ame", silent = true })
-vim.keymap.set("n", "<leader>grb", ":Git rebase ", { desc = "[G]it [R]e[B]ase" })
-vim.keymap.set("n", "<leader>gri", ":Git rebase --interactive ", { desc = "[G]it [R]ebase [I]nteractive" })
-vim.keymap.set("n", "<leader>grc", ":Git rebase --continue<cr>", { desc = "[G]it [R]ebase [C]ontinue", silent = true })
-vim.keymap.set("n", "<leader>grs", ":Git reset ", { desc = "[G]it [R]e[S]et" })
-vim.keymap.set("n", "<leader>grl", ":Git reflog<cr>", { desc = "[G]it [R]ef[L]og" })
-vim.keymap.set("n", "<leader>gmg", ":Git merge ", { desc = "[G]it [M]er[G]e" })
-vim.keymap.set("n", "<leader>gfh", ":Git fetch<cr>", { desc = "[G]it [F]etc[H]", silent = true })
+return {
+  { "<leader>gst", vim.cmd.Git,                        desc = "[G]it [ST]atus" },
+  { "<leader>glg", ":Git log<cr>",                     desc = "[G]it [L]o[G]",               silent = true },
+  { "<leader>gcm", ":Git commit<cr>",                  desc = "[G]it [C]o[M]mit",            silent = true },
+  { "<leader>gca", ":Git commit --amend<cr>",          desc = "[G]it [C]ommit --[A]mend",    silent = true },
+  { "<leader>gcf", ":Git commit --fixup=",             desc = "[G]it [C]ommit --[F]ixup",    silent = true },
+  { "<leader>gsw", ":Git switch ",                     desc = "[G]it [SW]itch" },
+  { "<leader>gph", ":Git push<cr>",                    desc = "[G]it [P]us[H]",              silent = true },
+  { "<leader>gpf", ":Git push --force-with-lease<cr>", desc = "[G]it [P]ush by [F]orce",     silent = true },
+  { "<leader>gpl", ":Git pull<cr>",                    desc = "[G]it [P]ul[L]",              silent = true },
+  { "<leader>gsh", ":Git stash --all<cr>",             desc = "[G]it [S]tas[H]",             silent = true },
+  { "<leader>gsp", ":Git stash pop<cr>",               desc = "[G]it [S]tash [P]op",         silent = true },
+  { "<leader>gbl", ":Git blame -w -C -C -C<cr>",       desc = "[G]it [BL]ame",               silent = true },
+  { "<leader>grb", ":Git rebase ",                     desc = "[G]it [R]e[B]ase" },
+  { "<leader>gri", ":Git rebase --interactive ",       desc = "[G]it [R]ebase [I]nteractive" },
+  { "<leader>grc", ":Git rebase --continue<cr>",       desc = "[G]it [R]ebase [C]ontinue",   silent = true },
+  { "<leader>grs", ":Git reset ",                      desc = "[G]it [R]e[S]et" },
+  { "<leader>grl", ":Git reflog<cr>",                  desc = "[G]it [R]ef[L]og" },
+  { "<leader>gmg", ":Git merge ",                      desc = "[G]it [M]er[G]e" },
+  { "<leader>gfh", ":Git fetch<cr>",                   desc = "[G]it [F]etc[H]",             silent = true },
+}

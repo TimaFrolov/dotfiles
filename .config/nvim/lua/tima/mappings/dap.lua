@@ -1,19 +1,13 @@
-local dapui = require('dapui')
-local dap = require('dap')
-vim.keymap.set("n", "<leader>do", function() dapui.toggle({ reset = true }) end, { desc = "[D]ap [O]pen UI" })
-vim.keymap.set("n", "<leader>dc", dap.continue, { desc = "[D]ap [C]ontinue" })
-vim.keymap.set("n", "<leader>dn", dap.step_over, { desc = "[D]ap step to [N]ext line" })
-vim.keymap.set("n", "<leader>dsi", dap.step_into, { desc = "[D]ap [S]tep [I]nto" })
-vim.keymap.set("n", "<leader>dso", dap.step_out, { desc = "[D]ap [S]tep [O]ut" })
-vim.keymap.set("n", "<leader>dp", dap.pause, { desc = "[D]ap [p]ause" })
-vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "[D]ap set [B]reakpoint" })
-vim.keymap.set("n", "<leader>dB", function() dap.set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,
-  { desc = "[D]ap set conditional [B]reakpoint" })
-vim.keymap.set("n", "<leader>dl", function() dap.set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end,
-  { desc = "[D]ap set [L]ogpoint" })
-vim.keymap.set("n", "<leader>dk", dapui.eval, { desc = "[D]ap show current symbol" })
-vim.keymap.set("n", "<leader>dt", dap.terminate, { desc = "[D]ap [T]erminate" })
-vim.keymap.set("n", "<leader>dee", function() dap.set_exception_breakpoints("default") end,
-  { desc = "[D]ap stop on [E]xceptions [E]nable" })
-vim.keymap.set("n", "<leader>ded", function() dap.set_exception_breakpoints({}) end,
-  { desc = "[D]ap stop on [E]xceptions [D]isable" })
+return {
+  { "<leader>dc",  function() require('dap').continue() end,                                                    desc = "[D]ap [C]ontinue" },
+  { "<leader>dn",  function() require('dap').step_over() end,                                                   desc = "[D]ap step to [N]ext line" },
+  { "<leader>dsi", function() require('dap').step_into() end,                                                   desc = "[D]ap [S]tep [I]nto" },
+  { "<leader>dso", function() require('dap').step_out() end,                                                    desc = "[D]ap [S]tep [O]ut" },
+  { "<leader>dp",  function() require('dap').pause() end,                                                       desc = "[D]ap [p]ause" },
+  { "<leader>db",  function() require('dap').toggle_breakpoint() end,                                           desc = "[D]ap set [B]reakpoint" },
+  { "<leader>dB",  function() require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: ')) end,        desc = "[D]ap set conditional [B]reakpoint" },
+  { "<leader>dl",  function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end, desc = "[D]ap set [L]ogpoint" },
+  { "<leader>dt",  function() require('dap').terminate() end,                                                   desc = "[D]ap [T]erminate" },
+  { "<leader>dee", function() require('dap').set_exception_breakpoints("default") end,                          desc = "[D]ap stop on [E]xceptions [E]nable" },
+  { "<leader>ded", function() require('dap').set_exception_breakpoints({}) end,                                 desc = "[D]ap stop on [E]xceptions [D]isable" },
+}

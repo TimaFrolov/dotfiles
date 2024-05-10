@@ -1,5 +1,4 @@
 local neo_zoom = require('neo-zoom')
-require('tima.mappings.neo-zoom')
 
 neo_zoom.setup {
   popup = { enabled = false },

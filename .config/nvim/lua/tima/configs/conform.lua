@@ -1,5 +1,4 @@
 local conform = require 'conform'
-require 'tima.mappings.conform'
 
 conform.setup({
   formatters_by_ft = {

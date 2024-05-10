@@ -1,11 +1,11 @@
-local telescope = require("telescope.builtin")
-
-vim.keymap.set("n", "<leader>sf", telescope.find_files, { desc = "[S]earch for [F]iles" })
-vim.keymap.set("n", "<leader>sg", telescope.live_grep, { desc = "[S]earch via [G]rep" })
-vim.keymap.set("n", "<leader>sb", telescope.buffers, { desc = "[S]earch for [B]uffers" })
-vim.keymap.set("n", "<leader>sd", telescope.lsp_document_symbols, { desc = "[S]earch for [D]ocument LSP symbols" })
-vim.keymap.set("n", "<leader>sp", telescope.lsp_workspace_symbols, { desc = "[S]earch for [P]roject LSP symbols" })
-vim.keymap.set("n", "<leader>se", telescope.diagnostics, { desc = "[S]earch for [E]rrors" })
-vim.keymap.set("n", "<leader>sm", telescope.marks, { desc = "[S]earch for [M]arks" })
-vim.keymap.set("n", "<leader>sk", telescope.keymaps, { desc = "[S]earch for [K]eymaps" })
-vim.keymap.set("n", "<leader>sh", telescope.help_tags, { desc = "[S]earch for [H]elp tags" })
+return {
+  { "<leader>sf", function() require("telescope.builtin").find_files() end,            desc = "[S]earch for [F]iles" },
+  { "<leader>sg", function() require("telescope.builtin").live_grep() end,             desc = "[S]earch via [G]rep" },
+  { "<leader>sb", function() require("telescope.builtin").buffers() end,               desc = "[S]earch for [B]uffers" },
+  { "<leader>sd", function() require("telescope.builtin").lsp_document_symbols() end,  desc = "[S]earch for [D]ocument LSP symbols" },
+  { "<leader>sp", function() require("telescope.builtin").lsp_workspace_symbols() end, desc = "[S]earch for [P]roject LSP symbols" },
+  { "<leader>se", function() require("telescope.builtin").diagnostics() end,           desc = "[S]earch for [E]rrors" },
+  { "<leader>sm", function() require("telescope.builtin").marks() end,                 desc = "[S]earch for [M]arks" },
+  { "<leader>sk", function() require("telescope.builtin").keymaps() end,               desc = "[S]earch for [K]eymaps" },
+  { "<leader>sh", function() require("telescope.builtin").help_tags() end,             desc = "[S]earch for [H]elp tags" },
+}

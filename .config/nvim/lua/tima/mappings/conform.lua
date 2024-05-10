@@ -1,4 +1,3 @@
-local conform = require 'conform'
-
-vim.keymap.set({ "n", "v" }, "<leader>ff", function() conform.format({ lsp_fallback = true, async = true }) end,
-  { desc = "[F]ile [F]ormat" })
+return {
+  { "<leader>ff", function() require('conform').format({ lsp_fallback = true, async = true }) end, mode = { "n", "v" }, desc = "[F]ile [F]ormat" }
+}

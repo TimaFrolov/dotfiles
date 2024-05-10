@@ -1,8 +1,6 @@
 local lsp = require 'lsp-zero'
 local cmp = require 'cmp'
 
-local mappings = require 'tima.mappings.lsp'
-
 lsp.preset({
   float_border = 'rounded',
   call_servers = 'local',
@@ -10,7 +8,7 @@ lsp.preset({
   setup_servers_on_start = true,
   set_lsp_keymaps = {
     preserve_mappings = false,
-    omit = mappings.omit,
+    omit = { 'gr', 'gd', 'go', 'gi' },
   },
   manage_nvim_cmp = {
     set_sources = 'recommended',
@@ -60,5 +58,5 @@ cmp.setup({
     { name = "luasnip" },
     { name = "crates" },
   },
-  mapping = mappings.cmp,
+  mapping = require('tima.mappings.cmp'),
 })

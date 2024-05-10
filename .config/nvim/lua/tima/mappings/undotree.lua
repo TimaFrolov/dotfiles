@@ -1,1 +1,1 @@
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, { desc = "Open [U]ndo menu" })
+return { { "<leader>u", vim.cmd.UndotreeToggle, desc = "Open [U]ndo menu" } }
