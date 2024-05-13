@@ -9,8 +9,10 @@ return {
       build =
       'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build'
     },
+    'nvim-telescope/telescope-ui-select.nvim',
+    'nvim-telescope/telescope-file-browser.nvim'
   },
   config = function() require 'tima.configs.telescope' end,
-  cmd = "Telescope",
+  lazy = false,
   keys = require 'tima.mappings.telescope',
 }
