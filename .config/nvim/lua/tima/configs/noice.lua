@@ -15,6 +15,11 @@ require('noice').setup({
     command_palette = true,
     long_message_to_split = true,
   },
+  views = {
+    mini = {
+      position = { row = 0 },
+    }
+  }
 })
 
 require('tima.mappings.noice')
