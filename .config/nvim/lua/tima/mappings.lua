@@ -2,8 +2,8 @@
 
 vim.g.mapleader = " "
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down" })
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up" })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move line down", silent = true })
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move line up", silent = true })
 
 vim.keymap.set("n", "J", "mzJ`z", { desc = "help J" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "help CTRL-d" })
@@ -20,12 +20,12 @@ vim.keymap.set("n", "<leader>l", "<C-w>l")
 vim.keymap.set("n", "<leader>,", "<C-w>10000<<C-w>40>", { desc = "Make window smaller (horizontally)" })
 vim.keymap.set("n", "<leader>-", "<C-w>10000-<C-w>15+", { desc = "Make window smaller (vertically)" })
 
-vim.keymap.set("n", "<leader>tn", ":tabnext<cr>", { desc = "[T]ab [N]ext" })
-vim.keymap.set("n", "<leader>tp", ":tabprev<cr>", { desc = "[T]ab [P]revious" })
-vim.keymap.set("n", "<leader>to", ":tabnew<cr>", { desc = "[T]ab [O]pen new" })
-vim.keymap.set("n", "<leader>tx", ":tabclose<cr>", { desc = "[T]ab close(X)" })
-vim.keymap.set("n", "<leader>ts", ":tab split<cr>", { desc = "[T]ab [S]plit" })
-vim.keymap.set("n", "<leader>tm", ":term<cr>", { desc = "Open [T]er[M]inal" })
+vim.keymap.set("n", "<leader>tn", ":tabnext<cr>", { desc = "[T]ab [N]ext", silent = true })
+vim.keymap.set("n", "<leader>tp", ":tabprev<cr>", { desc = "[T]ab [P]revious", silent = true })
+vim.keymap.set("n", "<leader>to", ":tabnew<cr>", { desc = "[T]ab [O]pen new", silent = true })
+vim.keymap.set("n", "<leader>tx", ":tabclose<cr>", { desc = "[T]ab close(X)", silent = true })
+vim.keymap.set("n", "<leader>ts", ":tab split<cr>", { desc = "[T]ab [S]plit", silent = true })
+vim.keymap.set("n", "<leader>tm", ":term<cr>", { desc = "Open [T]er[M]inal", silent = true })
 vim.keymap.set("n", "<Esc>", function() vim.opt.hlsearch = false end)
 
 vim.keymap.set("t", "<C-p>", "<C-\\><C-n>", { desc = "Exit terminal insert mode" })

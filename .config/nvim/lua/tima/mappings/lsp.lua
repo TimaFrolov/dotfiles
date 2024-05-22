@@ -19,13 +19,13 @@ end)()
 
 
 return {
-  { "<leader>fR", ":LspRestart<cr>",                                                  desc = "[R]estart LSP client" },
-  { "<leader>fI", ":LspInfo<cr>",                                                     desc = "Show LSP client [I]nfo" },
-  { "<leader>fL", ":LspLog<cr>",                                                      desc = "Show LSP client [L]og" },
+  { "<leader>fR", ":LspRestart<cr>",                                                  desc = "[R]estart LSP client",     silent = true },
+  { "<leader>fI", ":LspInfo<cr>",                                                     desc = "Show LSP client [I]nfo",   silent = true },
+  { "<leader>fL", ":LspLog<cr>",                                                      desc = "Show LSP client [L]og",    silent = true },
   { "<leader>fh", swap_inlay_hints,                                                   desc = "Toggle inlay [H]ints" },
   { "<leader>fr", vim.lsp.buf.rename,                                                 desc = "[R]ename lsp symbol" },
   { "<leader>fa", vim.lsp.buf.code_action,                                            desc = "Show code [A]ctions" },
-  { "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                                    desc = "[S]witch source/header" },
+  { "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                                    desc = "[S]witch source/header",   silent = true },
   { "<leader>fc", vim.lsp.codelens.refresh,                                           desc = "Refresh LSP [C]odelens" },
   { 'gr',         function() require("telescope.builtin").lsp_references() end,       desc = "[G]o to [R]eferences" },
   { 'gd',         function() require("telescope.builtin").lsp_definitions() end,      desc = "[G]o to [D]efinitions" },
