@@ -53,6 +53,8 @@ alias c='cd'
 alias '??'='gh copilot suggest -t shell'
 alias 'git?'='gh copilot suggest -t git'
 alias 'gh?'='gh copilot suggest -t gh'
+alias g='git'
+alias wshowkeys='command wshowkeys -F jebrains-mono -a bottom'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
