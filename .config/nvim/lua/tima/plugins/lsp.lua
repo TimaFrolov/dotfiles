@@ -32,4 +32,5 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.conform' end,
   },
+  { 'folke/neodev.nvim', event = { "BufReadPre" }, opts = {} }
 }
