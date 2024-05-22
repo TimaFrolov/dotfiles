@@ -33,8 +33,8 @@ wmcd() {
 }
 
 alias fzf='fzf-tmux -p'
-alias ll='ls -alhF'
-alias ls='ls -aCF'
+alias ll='ls -alhF --color'
+alias ls='ls -aCF --color'
 alias l='ls'
 alias vi='nvim'
 alias v='nvim'
