@@ -43,7 +43,7 @@
         "interval": 1
     },
     "memory": {
-        "format": "{used:.2f}GiB  {swapUsed:.2f}GiB",
+        "format": "{used:.2f}GiB   {swapUsed:.2f}GiB",
         "interval": 1
     },
     "temperature": {
