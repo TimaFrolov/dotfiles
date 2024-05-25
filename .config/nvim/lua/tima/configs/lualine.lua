@@ -23,7 +23,7 @@ lualine.setup {
         cond = require("noice").api.status.search.has,
       },
     },
-    lualine_y = {},
+    lualine_y = { 'encoding', 'fileformat', 'filetype' },
     lualine_z = { 'location' },
   },
   inactive_sections = {
