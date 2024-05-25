@@ -64,6 +64,11 @@ exec_always {
   kanshi &
 }
 
+exec_always {
+  pkill wvkbd-mobintl
+  wvkbd-mobintl --hidden &
+}
+
 # input "1386:21073:Wacom_HID_5251_Pen" { 
 #     map_to_output eDP-1
 #     tool_mode pen relative
@@ -220,6 +225,7 @@ mode "open" {
     bindcode $b exec brave-browser; mode "default"
     bindcode $f exec firefox; mode "default"
     bindcode $z exec zathura; mode "default"
+    bindcode $k exec command kill -s RTMIN $(pgrep wvkbd-mobintl); mode "default"
 
     # Return to default mode
     bindsym Return mode "default"

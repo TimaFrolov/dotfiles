@@ -1,8 +1,8 @@
 {
     "position": "bottom",
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode", "custom/media"],
+    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
     "modules-center": ["clock"],
-    "modules-right": ["tray", "sway/language", "idle_inhibitor", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
+    "modules-right": ["tray", "sway/language", "idle_inhibitor", "custom/keyboard", "pulseaudio", "network", "cpu", "memory", "temperature", "backlight", "battery"],
     "sway/workspaces": {
         "disable-scroll": true,
         "format": "{name} {icon}",
@@ -91,6 +91,10 @@
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol"
-    }
+    },
+    "custom/keyboard": {
+        "format": "󰌌",
+        "on-click": "command kill -s RTMIN $(pgrep wvkbd-mobintl)",
+    },
 }
 
