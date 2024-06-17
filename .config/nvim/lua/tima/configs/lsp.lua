@@ -29,7 +29,7 @@ lspconfig.lua_ls.setup({
     },
   },
 })
-lspconfig.clangd.setup({ cmd = { "clangd", "--malloc-trim", "-j=2" } })
+lspconfig.clangd.setup({ cmd = { "clangd", "--malloc-trim", "-j", "2" } })
 lspconfig.rust_analyzer.setup({})
 lspconfig.tsserver.setup({})
 lspconfig.volar.setup({})
