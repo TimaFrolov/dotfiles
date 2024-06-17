@@ -25,7 +25,7 @@ return {
   { "<leader>fh", swap_inlay_hints,                                                   desc = "Toggle inlay [H]ints" },
   { "<leader>fr", vim.lsp.buf.rename,                                                 desc = "[R]ename lsp symbol" },
   { "<leader>fa", vim.lsp.buf.code_action,                                            desc = "Show code [A]ctions" },
-  { "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                                    desc = "[S]witch source/header",   silent = true },
+  { "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                                    desc = "[S]witch source/header",   silent = true, ft = "cpp" },
   { "<leader>fc", vim.lsp.codelens.refresh,                                           desc = "Refresh LSP [C]odelens" },
   { 'gr',         function() require("telescope.builtin").lsp_references() end,       desc = "[G]o to [R]eferences" },
   { 'gd',         function() require("telescope.builtin").lsp_definitions() end,      desc = "[G]o to [D]efinitions" },
