@@ -32,5 +32,16 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     config = function() require 'tima.configs.conform' end,
   },
-  { 'folke/neodev.nvim', event = { "BufReadPre" }, opts = {} }
+  {
+    {
+      "folke/lazydev.nvim",
+      ft = "lua",
+      opts = {
+        library = {
+          { path = "luvit-meta/library", words = { "vim%.uv" } },
+        },
+      },
+    },
+    "Bilal2453/luvit-meta",
+  }
 }
