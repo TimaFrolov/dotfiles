@@ -1,5 +1,5 @@
 return {
-  { 'tpope/vim-rhubarb', lazy = false },
+  { 'tpope/vim-rhubarb', enabled = false, },
   {
     "ldelossa/gh.nvim",
     event = { "VeryLazy" },
