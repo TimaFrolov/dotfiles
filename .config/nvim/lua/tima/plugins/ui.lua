@@ -2,7 +2,7 @@ return {
   {
     "folke/noice.nvim",
     keys = require 'tima.mappings.noice',
-    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify", 'nvim-treesitter/nvim-treesitter' },
+    dependencies = { "MunifTanjim/nui.nvim", "rcarriga/nvim-notify" },
     event = { "VeryLazy" },
     config = function() require 'tima.configs.noice' end,
   },

@@ -15,6 +15,6 @@ return {
     opts = {
       debug = true,
     },
-    lazy = false,
+    cmd = { "CopilotChat" },
   },
 }

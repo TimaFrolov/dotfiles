@@ -13,6 +13,5 @@ return {
     'nvim-telescope/telescope-file-browser.nvim'
   },
   config = function() require 'tima.configs.telescope' end,
-  lazy = false,
   keys = require 'tima.mappings.telescope',
 }
