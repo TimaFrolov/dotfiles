@@ -32,7 +32,8 @@ window#waybar {
 #pulseaudio,
 #idle_inhibitor,
 #language,
-#tray {
+#tray,
+#custom-keyboard {
   margin-right: 1em;
 }
 
