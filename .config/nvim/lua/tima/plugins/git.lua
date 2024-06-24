@@ -2,6 +2,7 @@ return {
   {
     "tpope/vim-fugitive",
     cmd = "Git",
+    dependencies = { "nvim-telescope/telescope.nvim" },
     keys = require 'tima.mappings.fugitive',
   },
   {
