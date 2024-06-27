@@ -11,4 +11,9 @@ return {
     keys = require 'tima.mappings.gitsigns',
     config = function() require 'tima.configs.gitsigns' end,
   },
+  {
+    "kdheepak/lazygit.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    keys = require 'tima.mappings.lazygit',
+  }
 }
