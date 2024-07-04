@@ -1,0 +1,37 @@
+[pull]
+	rebase = true
+[core]
+	editor = nvim
+	excludesFile = ~/.gitignore
+[alias]
+	st = status
+	wt = worktree
+	wtl = worktree list
+	wtr = worktree remove
+	wta = worktree add
+	sh = stash --all
+	sp = stash pop
+	pl = pull
+	ph = push
+	sw = switch
+	sm = submodule
+	smu = submodule update --init --recursive
+	rb = rebase --autosquash
+	fh = fetch
+[init]
+	defaultBranch = main
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	default = current
+	autoSetupRemote = true
+[rerere]
+	enabled = true
+[rebase]
+	updateRefs = true
+	autoSquash = true
+[include]
+	path = local/.gitconfig
