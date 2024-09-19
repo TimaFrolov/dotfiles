@@ -201,4 +201,5 @@ luasnip.add_snippets("tex", {
   s([[ww]], t([[\omega]])),
   s([[dp]], t([[\partial]])),
   s([[\int\int]], t([[\iint]])),
+  s([[Ff]], t([[\mathcal{F}]])),
 }, { type = "autosnippets", key = "all_auto" })
