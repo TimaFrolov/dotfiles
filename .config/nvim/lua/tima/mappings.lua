@@ -57,3 +57,9 @@ local wrapSwap = function()
   vim.wo[window][0].wrap = not vim.wo[window][0].wrap
 end
 vim.keymap.set("n", "<leader>fw", wrapSwap, { desc = "[F]ile toggle [W]rap" })
+
+vim.keymap.del('n', 'grn')
+vim.keymap.del('n', 'gra')
+vim.keymap.del('n', 'grr')
+vim.keymap.del('n', 'gc')
+vim.keymap.del('n', 'gcc')

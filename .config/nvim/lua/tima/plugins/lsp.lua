@@ -20,6 +20,7 @@ return {
     config = function() require 'tima.configs.snippets' end,
     build = "make install_jsregexp",
     event = "InsertCharPre",
+    dependencies = { 'saadparwaiz1/cmp_luasnip' },
   },
   {
     'williamboman/mason.nvim',

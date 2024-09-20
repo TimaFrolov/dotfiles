@@ -31,7 +31,7 @@ lspconfig.lua_ls.setup({
 })
 lspconfig.clangd.setup({ cmd = { "clangd", "--malloc-trim", "-j", "2" } })
 lspconfig.rust_analyzer.setup({})
-lspconfig.tsserver.setup({})
+lspconfig.ts_ls.setup({})
 lspconfig.volar.setup({})
 lspconfig.cmake.setup({})
 lspconfig.pylsp.setup({})
