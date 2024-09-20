@@ -11,6 +11,38 @@ luasnip.config.setup({
   enable_autosnippets = true,
 })
 
+local math_nodes = {
+  displayed_equation = true,
+  inline_formula = true,
+  math_environment = true,
+}
+
+local text_nodes = {
+  text_mode = true,
+  label_definition = true,
+  label_reference = true,
+}
+
+local function is_math_mode(_, _, _)
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local row, col = pos[1] - 1, pos[2]
+  local node = vim.treesitter.get_parser(0, "latex")
+      :parse({ row, col, row, col })[1]
+      :root()
+      :named_descendant_for_range(row, col, row, col)
+  while node ~= nil do
+    vim.fn.printf(node:type())
+    if math_nodes[node:type()] then
+      return true
+    elseif text_nodes[node:type()] then
+      return false
+    else
+      node = node:parent()
+    end
+  end
+  return false
+end
+
 luasnip.add_snippets("lua", {
   s("snip",
     fmta([[s("<>",
@@ -32,9 +64,8 @@ luasnip.add_snippets("lua", {
 })
 
 luasnip.add_snippets("tex", {
-  s([[dd]], { t([[\delta]]), }),
   s(
-    [[beg ]],
+    [[beg]],
     fmta(
       [[\begin{<>}
 <>
@@ -46,6 +77,10 @@ luasnip.add_snippets("tex", {
       }
     )
   ),
+})
+
+luasnip.add_snippets("tex", {
+  s({ trig = [[dd]], condition = is_math_mode }, { t([[\delta]]), }),
   s(
     [[//]],
     fmta(
@@ -58,7 +93,7 @@ luasnip.add_snippets("tex", {
     )
   ),
   s(
-    { trig = [[(%d+)/]], regTrig = true },
+    { trig = [[(%w[%w_\^]+)/]], condition = is_math_mode, regTrig = true },
     fmta(
       [[\frac{<>}{<>}<>]],
       {
@@ -69,7 +104,7 @@ luasnip.add_snippets("tex", {
     )
   ),
   s(
-    [[bar]],
+    { trig = [[bar]], condition = is_math_mode },
     fmta(
       [[\overline{<>}<>]],
       {
@@ -78,7 +113,7 @@ luasnip.add_snippets("tex", {
       })
   ),
   s(
-    { trig = [[(%a)bar]], regTrig = true },
+    { trig = [[(%a)bar]], condition = is_math_mode, regTrig = true },
     fmta(
       [[\overline{<>}<>]],
       {
@@ -88,7 +123,7 @@ luasnip.add_snippets("tex", {
     )
   ),
   s(
-    [[hat]],
+    { trig = [[hat]], condition = is_math_mode },
     fmta(
       [[\hat{<>}<>]],
       {
@@ -97,7 +132,7 @@ luasnip.add_snippets("tex", {
       })
   ),
   s(
-    { trig = [[(%a)hat]], regTrig = true },
+    { trig = [[(%a)hat]], condition = is_math_mode, regTrig = true },
     fmta(
       [[\hat{<>}<>]],
       {
@@ -106,31 +141,31 @@ luasnip.add_snippets("tex", {
       }
     )
   ),
-  s([[!>]], t([[\mapsto]])),
-  s([[->]], t([[\to]])),
-  s({ trig = [[<->]], priority = 2000 }, t([[\leftrightarrow]])),
-  s([[=>]], t([[\Rightarrow]])),
-  s({ trig = [[<=>]], priority = 2000 }, t([[\Leftrightarrow]])),
-  s([[cc]], t([[\subset]])),
-  s([[\notin]], t([[\not\in]])),
-  s([[inn]], t([[\in]])),
-  s([[Nn]], t([[\cap]])),
-  s([[Uu]], t([[\cup]])),
-  s([[uuu]], t([[\bigcup]])),
-  s([[nnn]], t([[\bigcap]])),
-  s([[OO]], t([[\emptyset]])),
-  s([[NN]], t([[\mathbb{N}]])),
-  s([[RR]], t([[\mathbb{R}]])),
-  s([[QQ]], t([[\mathbb{Q}]])),
-  s([[ZZ]], t([[\mathbb{Z}]])),
-  s([[CC]], t([[\mathbb{C}]])),
-  s([[LL]], t([[\mathbb{L}]])),
+  s({ trig = [[!>]], condition = is_math_mode }, t([[\mapsto]])),
+  s({ trig = [[->]], condition = is_math_mode }, t([[\to]])),
+  s({ trig = [[<->]], condition = is_math_mode, priority = 2000 }, t([[\leftrightarrow]])),
+  s({ trig = [[=>]], condition = is_math_mode }, t([[\Rightarrow]])),
+  s({ trig = [[<=>]], condition = is_math_mode, priority = 2000 }, t([[\Leftrightarrow]])),
+  s({ trig = [[cc]], condition = is_math_mode }, t([[\subset]])),
+  s({ trig = [[\notin]], condition = is_math_mode }, t([[\not\in]])),
+  s({ trig = [[inn]], condition = is_math_mode }, t([[\in]])),
+  s({ trig = [[Nn]], condition = is_math_mode }, t([[\cap]])),
+  s({ trig = [[Uu]], condition = is_math_mode }, t([[\cup]])),
+  s({ trig = [[uuu]], condition = is_math_mode }, t([[\bigcup]])),
+  s({ trig = [[nnn]], condition = is_math_mode }, t([[\bigcap]])),
+  s({ trig = [[OO]], condition = is_math_mode }, t([[\emptyset]])),
+  s({ trig = [[NN]], condition = is_math_mode }, t([[\mathbb{N}]])),
+  s({ trig = [[RR]], condition = is_math_mode }, t([[\mathbb{R}]])),
+  s({ trig = [[QQ]], condition = is_math_mode }, t([[\mathbb{Q}]])),
+  s({ trig = [[ZZ]], condition = is_math_mode }, t([[\mathbb{Z}]])),
+  s({ trig = [[CC]], condition = is_math_mode }, t([[\mathbb{C}]])),
+  s({ trig = [[LL]], condition = is_math_mode }, t([[\mathbb{L}]])),
   s(
-    [[tt]],
+    { trig = [[tt]], condition = is_math_mode },
     fmta([[\text{<>}<>]], { i(1), i(0) })
   ),
   s(
-    [[case ]],
+    { trig = [[case ]], condition = is_math_mode },
     fmta(
       [[\begin{cases}
 <>
@@ -138,38 +173,37 @@ luasnip.add_snippets("tex", {
       { i(1), i(0) }
     )
   ),
-  s([[ooo]], t([[\infty]])),
+  s({ trig = [[ooo]], condition = is_math_mode }, t([[\infty]])),
   s(
-    [[lim ]],
+    { trig = [[lim ]], condition = is_math_mode },
     fmta([[\lim_{<> \to <>}<>]], { i(1), i(2), i(0) })
   ),
-  s([[Ee]], t([[\exists]])),
-  s([[Aa]], t([[\forall]])),
-  s([[<= ]], t([[\leq ]])),
-  s([[<==]], t([[\Leftarrow]])),
-  s([[>= ]], t([[\geq ]])),
-  s([[+-]], t([[\pm]])),
-  s([[\-]], t([[\setminus]])),
-  s([[<)]], t([[\sphericalangle]])),
+  s({ trig = [[Ee]], condition = is_math_mode }, t([[\exists]])),
+  s({ trig = [[Aa]], condition = is_math_mode }, t([[\forall]])),
+  s({ trig = [[<= ]], condition = is_math_mode }, t([[\leq ]])),
+  s({ trig = [[<==]], condition = is_math_mode }, t([[\Leftarrow]])),
+  s({ trig = [[>= ]], condition = is_math_mode }, t([[\geq ]])),
+  s({ trig = [[+-]], condition = is_math_mode }, t([[\pm]])),
+  s({ trig = [[\-]], condition = is_math_mode }, t([[\setminus]])),
+  s({ trig = [[<)]], condition = is_math_mode }, t([[\sphericalangle]])),
   s(
-    [[~~]],
+    { trig = [[~~]], condition = is_math_mode },
     fmta([[\tilde{<>}<>]], { i(1), i(0) })
   ),
-  s([[ee]], t([[\epsilon]])),
-  s([[aa]], t([[\alpha]])),
-  s([[bb]], t([[\beta]])),
-  s([[dd]], t([[\delta]])),
-  s([[gg]], t([[\gamma]])),
-  s([[ll]], t([[\lambda]])),
-  s([[ss]], t([[\sigma]])),
-  s({ trig = [[\dd]], priority = 2000 }, t([[\dd]])),
-  s([[\da]], t([[\downarrow]])),
-  s([[\ua]], t([[\uparrow]])),
-  s([[\~]], t([[\backsim]])),
-  s([[\qsrt]], t([[\sqrt]])),
-  s([[\uns]], t([[\underset]])),
+  s({ trig = [[ee]], condition = is_math_mode }, t([[\epsilon]])),
+  s({ trig = [[aa]], condition = is_math_mode }, t([[\alpha]])),
+  s({ trig = [[bb]], condition = is_math_mode }, t([[\beta]])),
+  s({ trig = [[gg]], condition = is_math_mode }, t([[\gamma]])),
+  s({ trig = [[ll]], condition = is_math_mode }, t([[\lambda]])),
+  s({ trig = [[ss]], condition = is_math_mode }, t([[\sigma]])),
+  s({ trig = [[\dd]], condition = is_math_mode, priority = 2000 }, t([[\dd]])),
+  s({ trig = [[\da]], condition = is_math_mode }, t([[\downarrow]])),
+  s({ trig = [[\ua]], condition = is_math_mode }, t([[\uparrow]])),
+  s({ trig = [[\~]], condition = is_math_mode }, t([[\backsim]])),
+  s({ trig = [[\qsrt]], condition = is_math_mode }, t([[\sqrt]])),
+  s({ trig = [[\uns]], condition = is_math_mode }, t([[\underset]])),
   s(
-    { trig = [[([bvp]?)matrix]], regTrig = true },
+    { trig = [[([bvp]?)matrix]], condition = is_math_mode, regTrig = true },
     fmta(
       [[\begin{<>matrix}
   <>
@@ -182,24 +216,24 @@ luasnip.add_snippets("tex", {
       }
     )
   ),
-  s([[<|]], t([[\triangleleft]])),
-  s([[<=|]], t([[\trianglelefteq]])),
-  s([[~=]], t([[\simeq]])),
-  s([[PP]], t([[\mathcal{P}]])),
-  s([[uuU]], t([[\bigsqcup]])),
-  s([[uU]], t([[\sqcup]])),
-  s([[AA]], t([[\mathfrak{A}]])),
-  s([[Dd]], t([[\Delta]])),
-  s([[Dd]], t([[\Delta]])),
-  s([[nN]], t([[\mathcal{N}]])),
-  s([[Ll]], t([[\Lambda]])),
-  s([[<>]], t([[\lessgtr]])),
-  s([[\to->]], t([[\rightrightarrows]])),
-  s([[GG]], t([[\Gamma]])),
-  s([[FF]], t([[\mathbb{F}]])),
-  s([[|-]], t([[\vdash]])),
-  s([[ww]], t([[\omega]])),
-  s([[dp]], t([[\partial]])),
-  s([[\int\int]], t([[\iint]])),
-  s([[Ff]], t([[\mathcal{F}]])),
+  s({ trig = [[<|]], condition = is_math_mode }, t([[\triangleleft]])),
+  s({ trig = [[<=|]], condition = is_math_mode }, t([[\trianglelefteq]])),
+  s({ trig = [[~=]], condition = is_math_mode }, t([[\simeq]])),
+  s({ trig = [[PP]], condition = is_math_mode }, t([[\mathcal{P}]])),
+  s({ trig = [[uuU]], condition = is_math_mode }, t([[\bigsqcup]])),
+  s({ trig = [[uU]], condition = is_math_mode }, t([[\sqcup]])),
+  s({ trig = [[AA]], condition = is_math_mode }, t([[\mathfrak{A}]])),
+  s({ trig = [[Dd]], condition = is_math_mode }, t([[\Delta]])),
+  s({ trig = [[Dd]], condition = is_math_mode }, t([[\Delta]])),
+  s({ trig = [[nN]], condition = is_math_mode }, t([[\mathcal{N}]])),
+  s({ trig = [[Ll]], condition = is_math_mode }, t([[\Lambda]])),
+  s({ trig = [[<>]], condition = is_math_mode }, t([[\lessgtr]])),
+  s({ trig = [[\to->]], condition = is_math_mode }, t([[\rightrightarrows]])),
+  s({ trig = [[GG]], condition = is_math_mode }, t([[\Gamma]])),
+  s({ trig = [[FF]], condition = is_math_mode }, t([[\mathbb{F}]])),
+  s({ trig = [[|-]], condition = is_math_mode }, t([[\vdash]])),
+  s({ trig = [[ww]], condition = is_math_mode }, t([[\omega]])),
+  s({ trig = [[dp]], condition = is_math_mode }, t([[\partial]])),
+  s({ trig = [[\int\int]], condition = is_math_mode }, t([[\iint]])),
+  s({ trig = [[Ff]], condition = is_math_mode }, t([[\mathcal{F}]])),
 }, { type = "autosnippets", key = "all_auto" })
