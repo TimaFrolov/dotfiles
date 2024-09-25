@@ -9,7 +9,7 @@ end
 return {
   ['<C-y>'] = cmp.mapping.confirm({
     behavior = cmp.ConfirmBehavior.Replace,
-    select = false,
+    select = true,
   }),
   ['<C-n>'] = cmp.mapping(function()
     if cmp.visible() then
