@@ -2,6 +2,8 @@ set shell zsh
 set shellopts '-eu' # -e = exit on errors, -u = error on unset variables
 set ifs "\n" # internal file separator
 
+set period 1
+
 set drawbox
 set hidden true
 set ignorecase true
