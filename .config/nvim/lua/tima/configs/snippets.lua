@@ -77,12 +77,19 @@ luasnip.add_snippets("tex", {
       }
     )
   ),
+  s([[m]], fmta([[$<>$<>]], {i(1), i(0)})),
+})
+
+luasnip.add_snippets("tex", {
+  s({ trig = [[biglor]], show_condition = is_math_mode }, fmta([[\bigvee_{<>}<>]], {i(1), i(0)})),
+  s({ trig = [[bigand]], show_condition = is_math_mode }, fmta([[\bigwedge_{<>}<>]], {i(1), i(0)})),
+  s({ trig = [[\{]], show_condition = is_math_mode }, fmta([[\{<>\}<>]], {i(1), i(0)})),
 })
 
 luasnip.add_snippets("tex", {
   s({ trig = [[dd]], condition = is_math_mode }, { t([[\delta]]), }),
   s(
-    [[//]],
+    { trig = [[//]], condition = is_math_mode },
     fmta(
       [[\frac{<>}{<>}<>]],
       {
@@ -93,7 +100,7 @@ luasnip.add_snippets("tex", {
     )
   ),
   s(
-    { trig = [[(%w[%w_\^]+)/]], condition = is_math_mode, regTrig = true },
+    { trig = [[(\?%w[%w_]*)/]], condition = is_math_mode, regTrig = true },
     fmta(
       [[\frac{<>}{<>}<>]],
       {
@@ -174,6 +181,7 @@ luasnip.add_snippets("tex", {
     )
   ),
   s({ trig = [[ooo]], condition = is_math_mode }, t([[\infty]])),
+  s({ trig = [[_ooo]], condition = is_math_mode }, t([[_\infty]])),
   s(
     { trig = [[lim ]], condition = is_math_mode },
     fmta([[\lim_{<> \to <>}<>]], { i(1), i(2), i(0) })
@@ -236,4 +244,7 @@ luasnip.add_snippets("tex", {
   s({ trig = [[dp]], condition = is_math_mode }, t([[\partial]])),
   s({ trig = [[\int\int]], condition = is_math_mode }, t([[\iint]])),
   s({ trig = [[Ff]], condition = is_math_mode }, t([[\mathcal{F}]])),
+  s({ trig = [[~>]], condition = is_math_mode }, t([[\leadsto]])),
+  s({ trig = [[KK]], condition = is_math_mode }, t([[\mathcal{K}]])),
+  s({ trig = [[BB]], condition = is_math_mode }, t([[\Beta]])),
 }, { type = "autosnippets", key = "all_auto" })
