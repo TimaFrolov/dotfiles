@@ -1,8 +1,13 @@
 #!/bin/bash
 
+list_all()
+{
+    swaymsg -t get_outputs | jq -r '.[] | .name'
+}
+
 list()
 {
-    swaymsg -t get_outputs | jq -r '.[] | .name' | grep 'HEADLESS'
+    list_all | grep 'HEADLESS'
 }
 
 create()
@@ -13,14 +18,24 @@ create()
 
 remove()
 {
-    swaymsg output $(list | fzf-tmux -p) unplug
+    swaymsg output "$(list | fzf-tmux -p)" unplug
 }
 
 show()
 {
-    DP=$(list | fzf-tmux -p)
-    wl-mirror $DP >/dev/null 2>&1 &
+    DP=$(list_all | fzf-tmux -p)
+    wl-mirror "$DP" >/dev/null 2>&1 &
     disown
+}
+
+move()
+{
+    if [[ -z "$1" ]]; then
+        DP="$(list_all | fzf-tmux -p)"
+    else 
+        DP="$(list_all | fzf --filter "$1" | head -n 1)"
+    fi
+    swaymsg move workspace to "$DP"
 }
 
 main()
@@ -30,9 +45,10 @@ main()
         r|remove) remove; exit 0;;
         l|list) list; exit 0;;
         s|show) show; exit 0;;
+        m|move) shift 1; move $@; exit 0;;
         exit) exit 0;;
     esac
     exit 1
 }
 
-(main $1) || main $(echo -e "create\nremove\nlist\nexit\nshow" | fzf-tmux -p)
+(main $@) || main $(echo -e "create\nremove\nlist\nexit\nshow\nmove" | fzf-tmux -p)
