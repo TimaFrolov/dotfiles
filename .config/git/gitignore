@@ -1,4 +1,5 @@
 .vscode
-.cache
+.cache/
 .nvimrc
 .nvim.lua
+compile_commands.json
