@@ -1,5 +1,6 @@
 local lsp = require 'lsp-zero'
 local cmp = require 'cmp'
+local util = require 'lspconfig.util'
 
 lsp.preset({
   float_border = 'rounded',
@@ -41,6 +42,10 @@ lspconfig.ocamllsp.setup({})
 lspconfig.asm_lsp.setup({})
 lspconfig.gopls.setup({})
 lspconfig.coq_lsp.setup({})
+lspconfig.metals.setup({
+  filetypes = { 'scala', 'sbt' },
+  root_dir = util.root_pattern('build.sbt', 'build.sc', 'build.gradle', 'pom.xml', 'build.mill'),
+})
 
 lsp.on_attach(function(_, bufnr)
   lsp.default_keymaps({
