@@ -31,7 +31,7 @@ return {
   { mode = 'n', "<leader>fr", vim.lsp.buf.rename,                                desc = "[R]ename lsp symbol" },
   { mode = 'n', "<leader>fa", vim.lsp.buf.code_action,                           desc = "Show code [A]ctions" },
   { mode = 'v', "<leader>fa", vim.lsp.buf.code_action,                           desc = "Show code [A]ctions" },
-  { mode = 'n', "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                   desc = "[S]witch source/header",   silent = true, ft = "cpp" },
+  { mode = 'n', "<leader>fs", ":ClangdSwitchSourceHeader<cr>",                   desc = "[S]witch source/header",   silent = true, ft = {"cpp", "c"} },
   { mode = 'n', "<leader>fc", vim.lsp.codelens.refresh,                          desc = "Refresh LSP [C]odelens" },
   { mode = 'n', 'gr',         function() telescope().lsp_references() end,       desc = "[G]o to [R]eferences" },
   { mode = 'n', 'gd',         function() telescope().lsp_definitions() end,      desc = "[G]o to [D]efinitions" },
