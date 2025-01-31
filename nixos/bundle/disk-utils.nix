@@ -1,0 +1,9 @@
+{ config, lib, pkgs, ... }:
+{
+  programs.steam.enable = true;
+  environment.systemPackages = with pkgs; [
+    udisks
+    parted
+    ncdu
+  ];
+}

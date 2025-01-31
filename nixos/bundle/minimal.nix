@@ -4,6 +4,7 @@
   boot.loader.systemd-boot = {
     enable = true;
     editor = false;
+    configurationLimit = 5;
   };
 
   services.speechd.enable = false;
@@ -22,7 +23,6 @@
     tmux
     nix-tree
     file
-    ncdu
   ];
 
   system.copySystemConfiguration = true;
