@@ -21,7 +21,7 @@
         "format": "{name} {icon}",
         "format-icons": {
             "focused": "",
-            "default": ""
+            "default": ""
         }
     },
     "sway/scratchpad": {
