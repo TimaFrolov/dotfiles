@@ -1,9 +1,7 @@
 { config, lib, pkgs, ... }:
 {
-  services.udisks2.enable = true;
+  imports = [ ../package/neovim.nix ];
   environment.systemPackages = with pkgs; [
-    udisks
-    parted
-    ncdu
+    lazygit
   ];
 }

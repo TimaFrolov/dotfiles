@@ -26,4 +26,5 @@
   ];
 
   system.copySystemConfiguration = true;
+  services.logind.powerKey = "suspend";
 }

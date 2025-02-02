@@ -33,5 +33,6 @@ in {
     luajitPackages.luarocks
     luajitPackages.jsregexp
     gh
+    lua-language-server
   ];
 }

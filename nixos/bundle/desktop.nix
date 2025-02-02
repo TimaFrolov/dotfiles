@@ -19,6 +19,8 @@
   services.libinput.enable = true;
 
   nixpkgs.config.allowUnfree = true;
+  programs.light.enable = true;
+  hardware.bluetooth.enable = true;
   environment.systemPackages = with pkgs; [
     alacritty
     (brave.overrideAttrs (old: {
@@ -32,8 +34,22 @@
     wofi
     kanshi
     dunst
+    xdg-user-dirs
+    adwaita-icon-theme
+    sway-contrib.grimshot
+    pavucontrol
+    gnome-calendar
+    bluez
+    gnome-disk-utility
+    wl-clipboard
+    feh
+    blueman
+    zathura
   ];
 
+  environment.variables.GTK_THEME = "Adwaita:dark";
+  environment.variables.GTK_ICON_THEME = "Adwaita";
+  qt.style = "adwaita-dark";
   fonts.packages = let unstable = import <nixos-unstable> {}; in with pkgs; [
     unstable.nerd-fonts.jetbrains-mono
   ];

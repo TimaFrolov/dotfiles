@@ -20,4 +20,16 @@
     btop
     python3
   ];
+
+  environment.sessionVariables = {
+    PATH = [
+      "$HOME/.local/bin"
+      "$HOME/bin"
+      "$HOME/.local/bin/scripts"
+      "$PATH"
+      "$HOME/.cargo/bin"
+      "$HOME/go/bin"
+      "$HOME/.local/share/coursier/bin"
+    ];
+  };
 }
