@@ -223,7 +223,7 @@ mode "open" {
     bindcode $a exec $menu drun; mode "default"
     bindcode $c exec $menu run; mode "default"
 
-    bindcode $t exec telegram; mode "default"
+    bindcode $t exec telegram-desktop; mode "default"
     bindcode $b exec brave-browser; mode "default"
     bindcode $f exec firefox; mode "default"
     bindcode $z exec zathura; mode "default"
