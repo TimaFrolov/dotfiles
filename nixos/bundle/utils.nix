@@ -3,5 +3,6 @@
   environment.systemPackages = with pkgs; [
     lf
     pciutils
+    jq
   ];
 }
