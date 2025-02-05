@@ -11,7 +11,7 @@ window#waybar {
   border: 0px;
 }
 
-#workspaces button {
+#workspaces button, #scratchpad {
   padding: 0 0.4em;
 }
 
