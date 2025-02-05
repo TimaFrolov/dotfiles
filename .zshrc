@@ -56,6 +56,7 @@ alias 'gh?'='gh copilot suggest -t gh'
 alias g='git'
 alias wshowkeys='command wshowkeys -F jebrains-mono -a bottom'
 alias lg='lazygit'
+alias nix-shell='nix-shell --command zsh'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
