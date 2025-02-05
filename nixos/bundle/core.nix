@@ -19,6 +19,7 @@
     earlyoom
     btop
     python3
+    nix-index
   ];
 
   environment.sessionVariables = {
