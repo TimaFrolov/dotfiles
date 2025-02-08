@@ -4,5 +4,7 @@
     lf
     pciutils
     jq
+    parallel
+    lm_sensors
   ];
 }
