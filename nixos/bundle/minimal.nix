@@ -14,7 +14,7 @@
 
   users.users.tima = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ];
+    extraGroups = [ "wheel" "networkmanager" "video" ];
   };
 
   environment.systemPackages = with pkgs; [
