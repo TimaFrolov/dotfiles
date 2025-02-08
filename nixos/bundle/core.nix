@@ -15,6 +15,8 @@
     memoryPercent = 100;
   };
 
+  services.tlp.enable = true;
+
   environment.systemPackages = with pkgs; [
     earlyoom
     btop
