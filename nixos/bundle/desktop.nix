@@ -45,6 +45,7 @@
     feh
     blueman
     zathura
+    meld
   ];
 
   environment.variables.GTK_THEME = "Adwaita:dark";

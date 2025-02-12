@@ -34,5 +34,7 @@ in {
     luajitPackages.jsregexp
     gh
     lua-language-server
+    tree-sitter
+    nodejs_23
   ];
 }

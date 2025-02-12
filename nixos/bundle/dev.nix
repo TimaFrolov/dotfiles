@@ -9,6 +9,7 @@
   environment.systemPackages = with pkgs; [
     lazygit
     distrobox
+    git-lfs
   ];
 
   programs.direnv = {
