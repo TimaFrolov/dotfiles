@@ -17,6 +17,7 @@
       ../bundle/dev-embedded.nix
       ../bundle/dev-python.nix
       ../package/vscode.nix
+      ../bundle/virtualisation.nix
       ../bundle/games.nix
     ];
 
