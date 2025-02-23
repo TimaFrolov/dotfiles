@@ -7,5 +7,6 @@
     arp-scan
     nethogs
     openssl
+    dig
   ];
 }
