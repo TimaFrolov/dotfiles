@@ -23,6 +23,9 @@
   system.stateVersion = "24.11";
 
   services.ivpn.enable = true;
+  environment.systemPackages = with pkgs; [
+    v2ray
+  ];
 
   services.tlp.settings =
   let energy_perf = "balance_power"; in
@@ -35,4 +38,3 @@
     DEVICES_TO_ENABLE_ON_STARTUP = "bluetooth wifi";
   };
 }
-
