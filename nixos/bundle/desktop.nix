@@ -9,7 +9,10 @@
 
   programs.sway.enable = true;
 
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    drivers = with pkgs; [ hplip ];
+  };
 
   services.pipewire = {
     enable = true;
