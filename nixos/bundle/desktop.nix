@@ -49,6 +49,7 @@
     blueman
     zathura
     meld
+    libreoffice
   ];
 
   environment.variables.GTK_THEME = "Adwaita:dark";
