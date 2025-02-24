@@ -6,5 +6,6 @@
     jq
     parallel
     lm_sensors
+    graphviz
   ];
 }

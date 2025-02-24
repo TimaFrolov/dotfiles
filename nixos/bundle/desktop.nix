@@ -52,6 +52,13 @@
     libreoffice
   ];
 
+  xdg.mime.defaultApplications = {
+    "application/pdf" = "org.pwmt.zathura.desktop";
+    "image/svg+xml" = "feh.desktop";
+    "image/png" = "feh.desktop";
+    "image/jpeg" = "feh.desktop";
+  };
+
   environment.variables.GTK_THEME = "Adwaita:dark";
   environment.variables.GTK_ICON_THEME = "Adwaita";
   qt.style = "adwaita-dark";
