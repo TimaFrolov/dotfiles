@@ -14,6 +14,12 @@
     drivers = with pkgs; [ hplip ];
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    openFirewall = true;
+  };
+
   services.pipewire = {
     enable = true;
     pulse.enable = true;
