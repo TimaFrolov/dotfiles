@@ -18,11 +18,14 @@
   services.tlp.enable = true;
 
   environment.systemPackages = with pkgs; [
-    earlyoom
     btop
     python3
     nix-index
   ];
+
+  services.earlyoom = {
+    enable = true;
+  };
 
   environment.sessionVariables = {
     PATH = [

@@ -56,6 +56,7 @@
     zathura
     meld
     libreoffice
+    krita
   ];
 
   xdg.mime.defaultApplications = {
