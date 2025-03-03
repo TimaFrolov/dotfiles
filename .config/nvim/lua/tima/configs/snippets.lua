@@ -247,4 +247,5 @@ luasnip.add_snippets("tex", {
   s({ trig = [[~>]], condition = is_math_mode }, t([[\leadsto]])),
   s({ trig = [[KK]], condition = is_math_mode }, t([[\mathcal{K}]])),
   s({ trig = [[BB]], condition = is_math_mode }, t([[\Beta]])),
+  s({ trig = [[\vdash>]], condition = is_math_mode }, t([[\mapsto]])),
 }, { type = "autosnippets", key = "all_auto" })
