@@ -8,5 +8,6 @@
     nethogs
     openssl
     dig
+    tcpdump
   ];
 }

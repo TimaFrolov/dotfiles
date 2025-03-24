@@ -7,5 +7,8 @@
     parallel
     lm_sensors
     graphviz
+    usbutils
+    android-tools
+    pdftk
   ];
 }

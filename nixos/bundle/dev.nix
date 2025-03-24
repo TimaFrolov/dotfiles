@@ -10,6 +10,8 @@
     lazygit
     distrobox
     git-lfs
+    vbindiff
+    pwntools
   ];
 
   programs.direnv = {
