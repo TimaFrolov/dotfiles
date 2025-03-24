@@ -19,6 +19,7 @@
       ../package/vscode.nix
       ../bundle/virtualisation.nix
       ../bundle/games.nix
+      ../bundle/crypto-currency.nix
     ];
 
   system.stateVersion = "24.11";
