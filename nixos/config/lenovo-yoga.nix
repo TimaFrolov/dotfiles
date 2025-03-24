@@ -29,14 +29,11 @@
     v2ray
   ];
 
-  services.tlp.settings =
-  let energy_perf = "balance_power"; in
-  let platform_profile = "balanced"; in
-  {
-    CPU_ENERGY_PERF_POLICY_ON_AC = energy_perf;
-    CPU_ENERGY_PERF_POLICY_ON_BAT = energy_perf;
-    PLATFORM_PROFILE_ON_AC = platform_profile;
-    PLATFORM_PROFILE_ON_BAT = platform_profile;
+  services.tlp.settings = {
+    CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
+    CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
+    PLATFORM_PROFILE_ON_AC = "balanced";
+    PLATFORM_PROFILE_ON_BAT = "power";
     DEVICES_TO_ENABLE_ON_STARTUP = "bluetooth wifi";
   };
 }
