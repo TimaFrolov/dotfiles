@@ -11,6 +11,7 @@
   systemd.oomd.enable = false;
 
   networking.networkmanager.enable = true;
+  networking.nftables.enable = true;
 
   users.users.tima = {
     isNormalUser = true;
