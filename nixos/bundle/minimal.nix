@@ -12,6 +12,7 @@
 
   networking.networkmanager.enable = true;
   networking.nftables.enable = true;
+  services.resolved.enable = true;
 
   users.users.tima = {
     isNormalUser = true;
