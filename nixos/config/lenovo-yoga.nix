@@ -20,6 +20,7 @@
       ../bundle/virtualisation.nix
       ../bundle/games.nix
       ../bundle/crypto-currency.nix
+      ../package/opencl.nix
     ];
 
   system.stateVersion = "24.11";
