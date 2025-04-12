@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+pick()
+{
+    if [[ -z "$1" ]]; then
+        echo "$(list_all | fzf-tmux -p)"
+    else
+        echo "$(list_all | fzf --filter "$1" | head -n 1)"
+    fi
+}
+
 list_all()
 {
     swaymsg -t get_outputs | jq -r '.[] | .name'
@@ -23,29 +32,27 @@ remove()
 
 show()
 {
-    DP=$(list_all | fzf-tmux -p)
+    DP="$(pick $@)"
     wl-mirror "$DP" >/dev/null 2>&1 &
     disown
 }
 
 move()
 {
-    if [[ -z "$1" ]]; then
-        DP="$(list_all | fzf-tmux -p)"
-    else 
-        DP="$(list_all | fzf --filter "$1" | head -n 1)"
-    fi
+    DP="$(pick $@)"
     swaymsg move workspace to "$DP"
 }
 
 main()
 {
-    case $1 in
+    CMD=$1
+    shift 1
+    case $CMD in
         c|create) create; exit 0;;
         r|remove) remove; exit 0;;
         l|list) list; exit 0;;
-        s|show) show; exit 0;;
-        m|move) shift 1; move $@; exit 0;;
+        s|show) show $@; exit 0;;
+        m|move) move $@; exit 0;;
         exit) exit 0;;
     esac
     exit 1
