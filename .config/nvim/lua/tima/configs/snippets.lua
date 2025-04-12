@@ -248,4 +248,16 @@ luasnip.add_snippets("tex", {
   s({ trig = [[KK]], condition = is_math_mode }, t([[\mathcal{K}]])),
   s({ trig = [[BB]], condition = is_math_mode }, t([[\Beta]])),
   s({ trig = [[\vdash>]], condition = is_math_mode }, t([[\mapsto]])),
+  s(
+    { trig = [[(%a)vec]], condition = is_math_mode, regTrig = true },
+    fmta(
+      [[\vec{<>}<>]],
+      {
+        f(function(_, snip) return snip.captures[1] end),
+        i(0)
+      }
+    )
+  ),
+  s({ trig = [[-/]], condition = is_math_mode }, t([[\rightharpoondown]])),
+  s({ trig = [[>-]], condition = is_math_mode }, t([[\succ]])),
 }, { type = "autosnippets", key = "all_auto" })
