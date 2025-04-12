@@ -9,5 +9,6 @@
     openssl
     dig
     tcpdump
+    ethtool
   ];
 }

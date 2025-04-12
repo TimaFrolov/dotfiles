@@ -43,6 +43,7 @@
     wofi
     kanshi
     dunst
+    wl-mirror
     xdg-user-dirs
     adwaita-icon-theme
     sway-contrib.grimshot

@@ -23,6 +23,7 @@
     tmux
     nix-tree
     file
+    man-pages
   ];
 
   system.copySystemConfiguration = true;

@@ -10,5 +10,6 @@
     usbutils
     android-tools
     pdftk
+    rlwrap
   ];
 }
