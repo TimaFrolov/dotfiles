@@ -11,5 +11,7 @@
     android-tools
     pdftk
     rlwrap
+    ffmpeg-full
+    imagemagick
   ];
 }

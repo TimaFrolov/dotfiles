@@ -12,6 +12,7 @@
     git-lfs
     vbindiff
     pwntools
+    tokei
   ];
 
   programs.direnv = {
