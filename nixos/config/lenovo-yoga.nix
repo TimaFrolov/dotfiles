@@ -16,6 +16,7 @@
       ../bundle/dev-rust.nix
       ../bundle/dev-embedded.nix
       ../bundle/dev-python.nix
+      ../bundle/dev-go.nix
       ../package/vscode.nix
       ../bundle/virtualisation.nix
       ../bundle/games.nix
