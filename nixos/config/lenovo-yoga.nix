@@ -22,14 +22,10 @@
       ../bundle/games.nix
       ../bundle/crypto-currency.nix
       ../package/opencl.nix
+      ../package/ivpn.nix
     ];
 
   system.stateVersion = "24.11";
-
-  services.ivpn.enable = true;
-  environment.systemPackages = with pkgs; [
-    v2ray
-  ];
 
   services.tlp.settings = {
     CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
