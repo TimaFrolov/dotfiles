@@ -48,7 +48,7 @@ input type:keyboard {
     xkb_layout us,ru
     repeat_delay 200
     repeat_rate 40
-    xkb_options grp:caps_toggle
+    xkb_options grp:caps_toggle,compose:ralt
 }
 
 input type:touchpad {
