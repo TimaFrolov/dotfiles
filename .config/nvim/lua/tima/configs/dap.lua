@@ -4,7 +4,7 @@ dap.adapters.codelldb = {
   port = '13000',
   executable = {
     command = 'codelldb',
-    args = { "--port", "13000" },
+    args = { '--port', '13000' },
   },
 }
 
@@ -21,6 +21,8 @@ dap.adapters.coreclr = {
     args = { '--interpreter=vscode', '--server=13001' }
   }
 }
+
+-- TODO: rewrite the whole thing in favor of local project configurations
 
 ---@type fun(prompt: string|nil, initPath: string|nil): string
 local function getExecutable(prompt, initPath)
@@ -59,9 +61,9 @@ end
 
 dap.configurations.cpp = {
   {
-    name = "(lldb) Launch",
-    type = "codelldb",
-    request = "launch",
+    name = '(lldb) Launch',
+    type = 'codelldb',
+    request = 'launch',
     stopAtEntry = false,
     program = getExecutable,
     args = getArgs,
@@ -73,9 +75,9 @@ dap.configurations.rust = dap.configurations.cpp
 
 dap.configurations.cs = {
   {
-    name = "(netcoredbg) Launch",
-    type = "coreclr",
-    request = "launch",
+    name = '(netcoredbg) Launch',
+    type = 'coreclr',
+    request = 'launch',
     stopAtEntry = false,
     program = getExecutable,
     args = getArgs,

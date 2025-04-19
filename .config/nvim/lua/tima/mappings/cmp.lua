@@ -1,5 +1,5 @@
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
+local cmp = require('cmp')
+local luasnip = require('luasnip')
 
 local has_words_before = function()
   local col = vim.fn.col('.') - 1
@@ -19,12 +19,14 @@ return {
     elseif has_words_before() then
       cmp.complete()
     end
-  end, { "i", "s" }),
+  end, { 'i', 's' }),
   ['<C-p>'] = cmp.mapping(function()
     if cmp.visible() then
       cmp.select_prev_item()
     elseif luasnip.jumpable(-1) then
       luasnip.jump(-1)
     end
-  end, { "i", "s" }),
+  end, { 'i', 's' }),
+  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+  ['<C-f>'] = cmp.mapping.scroll_docs(4),
 }

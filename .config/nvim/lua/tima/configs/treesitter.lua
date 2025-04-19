@@ -1,13 +1,14 @@
-local mappings = require 'tima.mappings.treesitter'
+local mappings = require('tima.mappings.treesitter')
 
-require 'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query" },
+require('nvim-treesitter.configs').setup({
+  ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
+  ignore_install = { },
   sync_install = true,
   auto_install = true,
 
   highlight = {
     enable = true,
-    disable = { "latex" },
+    disable = { 'latex' },
     additional_vim_regex_highlighting = false,
   },
 
@@ -36,4 +37,4 @@ require 'nvim-treesitter.configs'.setup {
       goto_previous_end = mappings.textobjects.move.previous_end,
     }
   },
-}
+})

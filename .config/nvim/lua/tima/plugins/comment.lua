@@ -1,5 +1,5 @@
 return {
   'numToStr/Comment.nvim',
-  keys = { { "<leader>c", mode = { 'n', 'v' } } },
-  config = function() require 'tima.configs.comment' end,
+  event = { 'BufReadPre', 'BufNewFile' },
+  config = function() require('tima.configs.comment') end,
 }

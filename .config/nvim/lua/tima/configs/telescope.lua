@@ -1,4 +1,4 @@
-local telescope = require 'telescope'
+local telescope = require('telescope')
 telescope.setup(
   {
     extensions = {
@@ -6,10 +6,10 @@ telescope.setup(
         fuzzy = true,
         override_generic_sorter = true,
         override_file_sorter = true,
-        case_mode = "smart_case",
+        case_mode = 'smart_case',
       },
       ['ui-select'] = {
-        require('telescope.themes').get_cursor {}
+        require('telescope.themes').get_cursor({})
       },
       file_browser = {
         hijack_netrw = true,
@@ -23,5 +23,3 @@ telescope.setup(
 telescope.load_extension('fzf')
 telescope.load_extension('ui-select')
 telescope.load_extension('file_browser')
-
-require 'tima.mappings.telescope'

@@ -1,15 +1,9 @@
--- Set options
-require("tima.options")
+require('tima.options')
+require('tima.lazy')
 
--- Run plugins
-require("tima.lazy")
+require('catppuccin').setup()
+vim.cmd.colorscheme('catppuccin-mocha')
 
--- Set theme
-require("catppuccin").setup()
-vim.cmd.colorscheme "catppuccin"
+require('tima.mappings')
 
--- Set mappings
-require("tima.mappings")
-
--- Enable local options
 vim.o.exrc = true

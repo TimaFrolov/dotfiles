@@ -1,6 +1,4 @@
-local neo_zoom = require('neo-zoom')
-
-neo_zoom.setup {
+require('neo-zoom').setup({
   popup = { enabled = false },
   winopts = {
     offset = {
@@ -9,4 +7,4 @@ neo_zoom.setup {
     },
     border = 'none',
   },
-}
+})

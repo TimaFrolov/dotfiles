@@ -1,20 +1,26 @@
-local comment = require 'Comment'
-local ft = require 'Comment.ft'
+local comment = require('Comment')
+local ft = require('Comment.ft')
 
-comment.setup {
+vim.keymap.del('n', 'gcc')
+vim.keymap.del('n', 'gc')
+vim.keymap.del('v', 'gc')
+
+comment.setup({
+  padding = true,
+  sticky = true,
   ignore = '^$',
   toggler = {
-    line = '<leader>cl',
-    block = '<leader>cb',
+    line = 'gcc',
+    block = 'gbc',
   },
   opleader = {
-    line = '<leader>cl',
-    block = '<leader>cb',
+    line = 'gc',
+    block = 'gb',
   },
   mappings = {
     basic = true,
     extra = false,
   },
-}
+})
 
 ft.set('asm', {'//%s', '/*%s*/'})

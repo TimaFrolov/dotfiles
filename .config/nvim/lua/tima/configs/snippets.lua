@@ -3,9 +3,8 @@ local s = luasnip.snippet
 local t = luasnip.text_node
 local i = luasnip.insert_node
 local f = luasnip.function_node
-local rep = require("luasnip.extras").rep
-local fmt = require("luasnip.extras.fmt").fmt
-local fmta = require("luasnip.extras.fmt").fmta
+local rep = require('luasnip.extras').rep
+local fmta = require('luasnip.extras.fmt').fmta
 
 luasnip.config.setup({
   enable_autosnippets = true,
@@ -26,7 +25,7 @@ local text_nodes = {
 local function is_math_mode(_, _, _)
   local pos = vim.api.nvim_win_get_cursor(0)
   local row, col = pos[1] - 1, pos[2]
-  local node = vim.treesitter.get_parser(0, "latex")
+  local node = vim.treesitter.get_parser(0, 'latex')
       :parse({ row, col, row, col })[1]
       :root()
       :named_descendant_for_range(row, col, row, col)
@@ -43,9 +42,9 @@ local function is_math_mode(_, _, _)
   return false
 end
 
-luasnip.add_snippets("lua", {
-  s("snip",
-    fmta([[s("<>",
+luasnip.add_snippets('lua', {
+  s('snip',
+    fmta([[s('<>',
     fmta(<>,
       {
         <>
@@ -63,7 +62,7 @@ luasnip.add_snippets("lua", {
   ),
 })
 
-luasnip.add_snippets("tex", {
+luasnip.add_snippets('tex', {
   s(
     [[beg]],
     fmta(
@@ -80,13 +79,13 @@ luasnip.add_snippets("tex", {
   s([[m]], fmta([[$<>$<>]], {i(1), i(0)})),
 })
 
-luasnip.add_snippets("tex", {
+luasnip.add_snippets('tex', {
   s({ trig = [[biglor]], show_condition = is_math_mode }, fmta([[\bigvee_{<>}<>]], {i(1), i(0)})),
   s({ trig = [[bigand]], show_condition = is_math_mode }, fmta([[\bigwedge_{<>}<>]], {i(1), i(0)})),
   s({ trig = [[\{]], show_condition = is_math_mode }, fmta([[\{<>\}<>]], {i(1), i(0)})),
 })
 
-luasnip.add_snippets("tex", {
+luasnip.add_snippets('tex', {
   s({ trig = [[dd]], condition = is_math_mode }, { t([[\delta]]), }),
   s(
     { trig = [[//]], condition = is_math_mode },
@@ -263,4 +262,4 @@ luasnip.add_snippets("tex", {
   s({ trig = [[\succ=]], condition = is_math_mode }, t([[\succeq]])),
   s({ trig = [[-<]], condition = is_math_mode }, t([[\prec]])),
   s({ trig = [[\prec=]], condition = is_math_mode }, t([[\preceq]])),
-}, { type = "autosnippets", key = "all_auto" })
+}, { type = 'autosnippets', key = 'all_auto' })

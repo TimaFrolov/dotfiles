@@ -1,5 +1,5 @@
-require("colorizer").setup {
-  filetypes = { "*" },
+require('colorizer').setup({
+  filetypes = { '*' },
   user_default_options = {
     RGB = false,
     RRGGBB = true,
@@ -10,15 +10,17 @@ require("colorizer").setup {
     hsl_fn = false,
     css = false,
     css_fn = false,
-    mode = "virtualtext",
+    mode = 'virtualtext',
     tailwind = false,
-    sass = { enable = false, parsers = { "css" }, },
-    virtualtext = "■",
+    sass = { enable = false, parsers = { 'css' }, },
+    virtualtext = '■',
+    virtualtext_inline = true,
+    virtualtext_mode = 'foreground',
     always_update = true
   },
   buftypes = {
-    "*",
-    "!prompt",
-    "!popup",
+    '*',
+    '!prompt',
+    '!popup',
   }
-}
+})

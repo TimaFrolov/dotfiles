@@ -10,9 +10,6 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
-vim.opt.swapfile = false
-vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
 vim.opt.hlsearch = true
@@ -21,16 +18,14 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = 'yes'
 vim.opt.sidescrolloff = 16
 
-vim.opt.updatetime = 50
+vim.opt.colorcolumn = '100'
 
-vim.opt.colorcolumn = "100"
+vim.g.mapleader = ' '
 
-vim.g.mapleader = " "
-
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = 'unnamedplus'
 
 vim.opt.showmode = false
 vim.opt.conceallevel = 2
@@ -54,4 +49,4 @@ vim.opt.listchars = {
 vim.opt.spelllang = 'en,ru'
 vim.opt.spell = true
 
-vim.opt.path:append("**")
+vim.opt.path:append('**')
