@@ -19,7 +19,7 @@ vim.keymap.set('n', '<leader>tx', ':tabclose<cr>', { desc = '[T]ab close(X)', si
 
 vim.keymap.set('n', '<leader>tm', ':term<cr>', { desc = 'Open [T]er[M]inal', silent = true })
 
-vim.keymap.set('n', '<Esc>', ':nohlsearch<cr>')
+vim.keymap.set('n', '<Esc>', ':nohlsearch<cr>', { silent = true })
 
 vim.keymap.set('t', '<C-p>', '<C-\\><C-n>', { desc = 'Exit terminal insert mode' })
 vim.keymap.set('t', '<C-w>', '<C-\\><C-n><C-w>', { desc = 'Exit terminal insert mode, then <C-w>' })
