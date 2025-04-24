@@ -23,6 +23,8 @@
       ../bundle/crypto-currency.nix
       ../package/opencl.nix
       ../package/ivpn.nix
+      ../bundle/dev-asm.nix
+      ../bundle/thunderbolt-utils.nix
     ];
 
   system.stateVersion = "24.11";

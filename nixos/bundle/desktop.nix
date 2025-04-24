@@ -58,6 +58,7 @@
     meld
     libreoffice
     krita
+    discord
   ];
 
   xdg.mime.defaultApplications = {

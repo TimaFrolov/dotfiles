@@ -1,11 +1,15 @@
 { config, lib, pkgs, ... }:
 {
+  imports =
+    [
+      ../package/nethogs.nix
+    ];
+
   environment.systemPackages = with pkgs; [
     inetutils
     nmap
     traceroute
     arp-scan
-    nethogs
     openssl
     dig
     tcpdump
