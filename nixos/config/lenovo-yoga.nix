@@ -25,6 +25,7 @@
       ../package/ivpn.nix
       ../bundle/dev-asm.nix
       ../bundle/thunderbolt-utils.nix
+      ../bundle/profiling.nix
     ];
 
   system.stateVersion = "24.11";
