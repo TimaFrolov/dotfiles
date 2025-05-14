@@ -23,10 +23,10 @@ local function open_float()
   vim.diagnostic.open_float({ border = 'rounded' })
 end
 
-local function diagnostic_jump(opts)
-  vim.diagnostic.jump(opts)
-  vim.schedule(function() open_float() end)
-end
+-- local function diagnostic_jump(opts)
+--   vim.diagnostic.jump(opts)
+--   vim.schedule(function() open_float() end)
+-- end
 
 return {
   { mode = 'n', '<leader>fR', ':LspRestart<cr>',                                                    desc = '[R]estart LSP client',     silent = true },
@@ -43,8 +43,8 @@ return {
   { mode = 'n', 'go',         function() telescope().lsp_type_definitions() end,                    desc = '[GO] to type definitions' },
   { mode = 'n', 'gi',         function() telescope().lsp_implementations() end,                     desc = '[G]o to [I]mplementations' },
   { mode = 'n', 'gl',         function() open_float() end,                                          desc = 'Open diagnostics' },
-  { mode = 'n', ']d',         function() diagnostic_jump({ count = 1 }) end,                        desc = 'Open diagnostics' },
-  { mode = 'n', '[d',         function() diagnostic_jump({ count = -1 }) end,                       desc = 'Open diagnostics' },
-  { mode = 'n', ']D',         function() diagnostic_jump({ count = math.huge, wrap = false }) end,  desc = 'Open diagnostics' },
-  { mode = 'n', '[D',         function() diagnostic_jump({ count = -math.huge, wrap = false }) end, desc = 'Open diagnostics' },
+  -- { mode = 'n', ']d',         function() diagnostic_jump({ count = 1 }) end,                        desc = 'Open diagnostics' },
+  -- { mode = 'n', '[d',         function() diagnostic_jump({ count = -1 }) end,                       desc = 'Open diagnostics' },
+  -- { mode = 'n', ']D',         function() diagnostic_jump({ count = math.huge, wrap = false }) end,  desc = 'Open diagnostics' },
+  -- { mode = 'n', '[D',         function() diagnostic_jump({ count = -math.huge, wrap = false }) end, desc = 'Open diagnostics' },
 }
