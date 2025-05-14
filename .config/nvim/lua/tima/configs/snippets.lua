@@ -262,4 +262,5 @@ luasnip.add_snippets('tex', {
   s({ trig = [[\succ=]], condition = is_math_mode }, t([[\succeq]])),
   s({ trig = [[-<]], condition = is_math_mode }, t([[\prec]])),
   s({ trig = [[\prec=]], condition = is_math_mode }, t([[\preceq]])),
+  s({ trig = [[/_\]], condition = is_math_mode }, t([[\triangle]])),
 }, { type = 'autosnippets', key = 'all_auto' })
