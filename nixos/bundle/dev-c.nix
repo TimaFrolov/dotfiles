@@ -5,7 +5,7 @@
     gnumake
     cmake
     autoconf
-    llvmPackages_19.clang-tools
-    llvmPackages_19.clangUseLLVM
+    clang-tools
+    clang
   ];
 }

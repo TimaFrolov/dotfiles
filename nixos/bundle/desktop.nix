@@ -62,6 +62,7 @@
     libreoffice
     krita
     discord
+    vlc
   ];
 
   xdg.mime.defaultApplications = {

@@ -5,5 +5,6 @@
     heroic
     gamescope
     mangohud
+    gfn-electron
   ];
 }

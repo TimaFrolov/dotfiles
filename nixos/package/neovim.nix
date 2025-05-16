@@ -18,6 +18,6 @@ in {
     gh
     lua-language-server
     tree-sitter
-    nodejs_23
+    nodejs
   ];
 }
