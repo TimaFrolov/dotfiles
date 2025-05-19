@@ -34,7 +34,8 @@ window#waybar {
 #language,
 #tray,
 #custom-keyboard, 
-#custom-notifications {
+#custom-notifications,
+#custom-audio_idle_inhibitor {
   margin-right: 1em;
 }
 

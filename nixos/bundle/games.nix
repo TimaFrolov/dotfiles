@@ -6,5 +6,6 @@
     gamescope
     mangohud
     gfn-electron
+    wljoywake
   ];
 }

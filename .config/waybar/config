@@ -5,6 +5,7 @@
     "modules-right": [
         "tray", 
         "sway/language", 
+        "custom/audio_idle_inhibitor",
         "idle_inhibitor",
         "custom/notifications", 
         "custom/keyboard", 
@@ -116,5 +117,17 @@
         "interval": 1,
         "on-click": "dunstctl set-paused toggle;",
     },
+	"custom/audio_idle_inhibitor": {
+		"format": "{icon}",
+		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+		"exec-if": "which sway-audio-idle-inhibit",
+		"return-type": "json",
+		"format-icons": {
+			"output": "",
+			"input": "",
+			"output-input": "  ",
+			"none": ""
+		}
+	},
 }
 
