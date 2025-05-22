@@ -28,6 +28,10 @@
       ../bundle/profiling.nix
     ];
 
+  environment.systemPackages = with pkgs; [
+    chatterino2
+  ];
+
   system.stateVersion = "24.11";
 
   services.tlp.settings = {

@@ -7,5 +7,6 @@
     mangohud
     gfn-electron
     wljoywake
+    protontricks
   ];
 }
