@@ -62,6 +62,8 @@ input type:touchpad {
 
 input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
 
+workspace 0 output eDP-1
+
 exec_always {
   pkill kanshi
   kanshi &
