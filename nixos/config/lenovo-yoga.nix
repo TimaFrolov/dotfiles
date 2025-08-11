@@ -26,6 +26,7 @@
       ../bundle/dev-asm.nix
       ../bundle/thunderbolt-utils.nix
       ../bundle/profiling.nix
+      ../package/keychron.nix
     ];
 
   environment.systemPackages = with pkgs; [
