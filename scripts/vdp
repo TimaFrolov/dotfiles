@@ -22,7 +22,13 @@ list()
 create()
 {
     swaymsg create_output
-    list
+    echo "@=$@" >&2
+    if [[ ! -z "$1" ]] then
+        swaymsg -t get_outputs >&2
+        swaymsg output "$(list | tail -n 1)" mode "$1"
+        swaymsg -t get_outputs >&2
+    fi
+    list | tail -n 1
 }
 
 remove()
@@ -48,7 +54,7 @@ main()
     CMD=$1
     shift 1
     case $CMD in
-        c|create) create; exit 0;;
+        c|create) create $@; exit 0;;
         r|remove) remove; exit 0;;
         l|list) list; exit 0;;
         s|show) show $@; exit 0;;
