@@ -44,4 +44,8 @@
     PLATFORM_PROFILE_ON_BAT = "power";
     DEVICES_TO_ENABLE_ON_STARTUP = "bluetooth wifi";
   };
+
+  boot.initrd.luks.devices."crypted" = {
+    bypassWorkqueues = true;
+  };
 }
