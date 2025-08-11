@@ -13,5 +13,7 @@
     rlwrap
     ffmpeg-full
     imagemagick
+    ghostscript
+    sysfsutils
   ];
 }

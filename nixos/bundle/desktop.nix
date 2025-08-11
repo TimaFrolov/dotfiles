@@ -57,10 +57,14 @@
     krita
     discord
     vlc
+    libsForQt5.kamoso
+    wayvnc
+    helvum
   ];
   imports =
     [
     ../package/sway-audio-idle-inhibit.nix
+    ../package/wshowkeys.nix
     ];
 
   xdg.mime.defaultApplications = {

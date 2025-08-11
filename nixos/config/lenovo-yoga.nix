@@ -29,7 +29,9 @@
     ];
 
   environment.systemPackages = with pkgs; [
-    chatterino2
+    halloy
+    wvkbd
+    obs-studio
   ];
 
   system.stateVersion = "24.11";
