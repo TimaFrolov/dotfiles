@@ -3,3 +3,4 @@
 .nvimrc
 .nvim.lua
 compile_commands.json
+.direnv/
