@@ -30,6 +30,8 @@
     man-pages
   ];
 
+  documentation.dev.enable = true;
+
   system.copySystemConfiguration = true;
   services.logind.powerKey = "suspend";
 }
