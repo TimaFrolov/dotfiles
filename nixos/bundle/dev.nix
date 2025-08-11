@@ -2,6 +2,8 @@
 {
   imports = [ ../package/neovim.nix ];
 
+  security.lsm = [ "selinux" ];
+  virtualisation.containers.enable = true;
   virtualisation.podman = {
     enable = true;
   };
