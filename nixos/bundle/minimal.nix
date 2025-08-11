@@ -7,6 +7,8 @@
     configurationLimit = 5;
   };
 
+  boot.tmp.useTmpfs = true;
+
   services.speechd.enable = false;
   systemd.oomd.enable = false;
 
