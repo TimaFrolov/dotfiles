@@ -1,12 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-    theme = "maldives";
-  };
-
   programs.sway.enable = true;
 
   services.printing = {
