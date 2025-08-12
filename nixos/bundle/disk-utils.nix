@@ -6,5 +6,6 @@
     parted
     ncdu
     cryptsetup
+    btrfs-progs
   ];
 }
