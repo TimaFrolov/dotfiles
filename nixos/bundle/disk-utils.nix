@@ -5,5 +5,6 @@
     udisks
     parted
     ncdu
+    cryptsetup
   ];
 }
