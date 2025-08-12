@@ -77,7 +77,7 @@
   environment.variables.GTK_THEME = "Adwaita:dark";
   environment.variables.GTK_ICON_THEME = "Adwaita";
   qt.style = "adwaita-dark";
-  fonts.packages = let unstable = import <nixos-unstable> {}; in with pkgs; [
-    unstable.nerd-fonts.jetbrains-mono
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
   ];
 }
