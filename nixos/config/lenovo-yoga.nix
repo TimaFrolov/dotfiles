@@ -27,6 +27,7 @@
       ../bundle/thunderbolt-utils.nix
       ../bundle/profiling.nix
       ../package/keychron.nix
+      ../bundle/net-extra.nix
     ];
 
   environment.systemPackages = with pkgs; [

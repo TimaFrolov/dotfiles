@@ -19,6 +19,7 @@
       ../package/opencl.nix
       ../bundle/dev-asm.nix
       ../bundle/profiling.nix
+      ../bundle/net-extra.nix
     ];
 
   system.stateVersion = "25.11";
