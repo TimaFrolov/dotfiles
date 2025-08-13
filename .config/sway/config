@@ -65,13 +65,11 @@ input "1386:21073:Wacom_HID_5251_Finger" map_to_output eDP-1
 workspace 0 output eDP-1
 
 exec_always {
-  pkill kanshi
-  kanshi &
+  bash -c 'pkill kanshi; kanshi&'
 }
 
 exec_always {
-  pkill wvkbd-mobintl
-  wvkbd-mobintl --hidden &
+  bash -c 'pkill wvkbd-mobintl; wvkbd-mobintl --hidden&'
 }
 
 # input "1386:21073:Wacom_HID_5251_Pen" { 
