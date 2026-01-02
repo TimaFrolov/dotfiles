@@ -24,9 +24,7 @@ create()
     swaymsg create_output
     echo "@=$@" >&2
     if [[ ! -z "$1" ]] then
-        swaymsg -t get_outputs >&2
         swaymsg output "$(list | tail -n 1)" mode "$1"
-        swaymsg -t get_outputs >&2
     fi
     list | tail -n 1
 }

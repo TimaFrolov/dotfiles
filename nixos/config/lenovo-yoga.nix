@@ -28,20 +28,26 @@
       ../bundle/profiling.nix
       ../package/keychron.nix
       ../bundle/net-extra.nix
+      ../package/curseforge.nix
     ];
 
   environment.systemPackages = with pkgs; [
     halloy
     wvkbd
     obs-studio
+    v4l-utils
+    xournalpp
   ];
+
+  boot.kernelModules = [ "v4l2loopback" ];
+  boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
 
   system.stateVersion = "24.11";
 
   services.tlp.settings = {
     CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";
     CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
-    PLATFORM_PROFILE_ON_AC = "balanced";
+    PLATFORM_PROFILE_ON_AC = "power";
     PLATFORM_PROFILE_ON_BAT = "power";
     DEVICES_TO_ENABLE_ON_STARTUP = "bluetooth wifi";
   };
@@ -49,4 +55,10 @@
   boot.initrd.luks.devices."crypted" = {
     bypassWorkqueues = true;
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    libsForQt5.qt5.qtsvg
+    libsForQt5.qt5.qtbase
+  ];
 }

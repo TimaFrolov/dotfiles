@@ -57,13 +57,13 @@
     krita
     discord
     vlc
-    libsForQt5.kamoso
+    kdePackages.kamoso
     wayvnc
     helvum
+    sway-audio-idle-inhibit
   ];
   imports =
     [
-    ../package/sway-audio-idle-inhibit.nix
     ../package/wshowkeys.nix
     ];
 

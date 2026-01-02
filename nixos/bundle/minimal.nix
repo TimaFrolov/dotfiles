@@ -28,10 +28,11 @@
     nix-tree
     file
     man-pages
+    tree
   ];
 
   documentation.dev.enable = true;
 
   system.copySystemConfiguration = true;
-  services.logind.powerKey = "suspend";
+  services.logind.settings.Login.HandlePowerKey = "suspend";
 }

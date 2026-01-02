@@ -15,5 +15,6 @@
     imagemagick
     ghostscript
     sysfsutils
+    ripgrep-all
   ];
 }
