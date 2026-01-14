@@ -35,3 +35,5 @@
 	autoSquash = true
 [include]
 	path = local/.gitconfig
+[url "git@github.com:"]
+	insteadOf = https://github.com/
