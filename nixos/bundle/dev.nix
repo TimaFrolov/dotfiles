@@ -15,6 +15,7 @@
     vbindiff
     pwntools
     tokei
+    gdb
   ];
 
   programs.direnv = {

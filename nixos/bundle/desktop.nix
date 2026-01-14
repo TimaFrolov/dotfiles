@@ -55,7 +55,6 @@
     meld
     libreoffice
     krita
-    discord
     vlc
     kdePackages.kamoso
     wayvnc

@@ -20,6 +20,8 @@
       ../bundle/dev-asm.nix
       ../bundle/profiling.nix
       ../bundle/net-extra.nix
+      ../package/keychron.nix
+      ../bundle/dev-rust.nix
     ];
 
   system.stateVersion = "25.11";
@@ -35,4 +37,8 @@
   boot.initrd.luks.devices."crypted" = {
     bypassWorkqueues = true;
   };
+
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+  ];
 }

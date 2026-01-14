@@ -16,5 +16,6 @@
     ghostscript
     sysfsutils
     ripgrep-all
+    p7zip
   ];
 }

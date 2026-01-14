@@ -32,6 +32,7 @@
     ];
 
   environment.systemPackages = with pkgs; [
+    discord
     halloy
     wvkbd
     obs-studio
