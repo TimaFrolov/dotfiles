@@ -18,6 +18,7 @@ conform.setup({
     handlebars = { 'prettierd' },
     cmake = { 'cmake_format' },
     cs = { 'csharpier' },
+    python = { 'black' },
   },
   formatters = {
     csharpier = {

@@ -1,8 +1,8 @@
 local mappings = require('tima.mappings.treesitter')
 
-require('nvim-treesitter.configs').setup({
+require('nvim-treesitter').setup({
   ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
-  ignore_install = { },
+  ignore_install = {},
   sync_install = true,
   auto_install = true,
 
@@ -16,25 +16,21 @@ require('nvim-treesitter.configs').setup({
     enable = true,
     keymaps = mappings.incremental_selection
   },
-
-  textobjects = {
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = mappings.textobjects.select,
-    },
-    swap = {
-      enable = true,
-      swap_next = mappings.textobjects.swap_next,
-      swap_previous = mappings.textobjects.swap_previous,
-    },
-    move = {
-      enable = true,
-      set_jumps = true,
-      goto_next_start = mappings.textobjects.move.next_start,
-      goto_next_end = mappings.textobjects.move.next_end,
-      goto_previous_start = mappings.textobjects.move.previous_start,
-      goto_previous_end = mappings.textobjects.move.previous_end,
-    }
-  },
 })
+
+require('nvim-treesitter-textobjects').setup({
+  select = {
+    enable = true,
+    lookahead = true,
+  },
+  swap = {
+    enable = true,
+  },
+  move = {
+    enable = true,
+    set_jumps = true,
+  }
+})
+
+vim.api.nvim_create_autocmd("FileType",
+  { callback = function() if vim.treesitter.language.add(vim.o.ft) then vim.treesitter.start() end end, })
