@@ -16,6 +16,7 @@
     pwntools
     tokei
     gdb
+    prettierd
   ];
 
   programs.direnv = {

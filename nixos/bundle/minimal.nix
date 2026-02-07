@@ -9,7 +9,7 @@
 
   boot.tmp.useTmpfs = true;
 
-  services.speechd.enable = false;
+  services.speechd.enable = lib.mkForce false;
   systemd.oomd.enable = false;
 
   networking.networkmanager.enable = true;
