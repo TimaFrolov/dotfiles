@@ -61,6 +61,7 @@
     wayvnc
     helvum
     sway-audio-idle-inhibit
+    obsidian
   ];
   imports =
     [
