@@ -1,5 +1,5 @@
-vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv", { desc = 'Move line down', silent = true })
-vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv", { desc = 'Move line up', silent = true })
+vim.keymap.set('v', '<C-J>', ":m '>+1<CR>gv=gv", { desc = 'Move line down', silent = true })
+vim.keymap.set('v', '<C-K>', ":m '<-2<CR>gv=gv", { desc = 'Move line up', silent = true })
 
 vim.keymap.set('n', 'J', 'mzJ`z', { desc = 'help J' })
 vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'help CTRL-d' })
