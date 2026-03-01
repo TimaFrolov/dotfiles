@@ -4,7 +4,7 @@
   programs.nix-ld.libraries = with pkgs; [
     fuse
     gtk3
-    xorg.libX11
+    libX11
     pango
     cups
     libxkbcommon
@@ -17,12 +17,12 @@
     dbus
     expat
     at-spi2-atk
-    xorg.libXext
-    xorg.libXrandr
-    xorg.libXcomposite
-    xorg.libXdamage
-    xorg.libXfixes
-    xorg.libxcb
+    libXext
+    libXrandr
+    libXcomposite
+    libXdamage
+    libXfixes
+    libxcb
     libgbm
     libxxf86vm
     libxcursor
