@@ -26,7 +26,6 @@
   services.libinput.enable = true;
 
   nixpkgs.config.allowUnfree = true;
-  programs.light.enable = true;
   hardware.bluetooth.enable = true;
   environment.systemPackages = with pkgs; [
     alacritty
@@ -62,6 +61,7 @@
     helvum
     sway-audio-idle-inhibit
     obsidian
+    brightnessctl
   ];
   imports =
     [
