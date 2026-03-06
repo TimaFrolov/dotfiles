@@ -4,6 +4,7 @@
     lf
     pciutils
     jq
+    yq
     parallel
     lm_sensors
     graphviz
@@ -17,5 +18,6 @@
     sysfsutils
     ripgrep-all
     p7zip
+    evtest
   ];
 }
