@@ -7,5 +7,6 @@
     autoconf
     clang-tools
     clang
+    ninja
   ];
 }
