@@ -58,7 +58,7 @@
     vlc
     kdePackages.kamoso
     wayvnc
-    helvum
+    crosspipe
     sway-audio-idle-inhibit
     obsidian
     brightnessctl
