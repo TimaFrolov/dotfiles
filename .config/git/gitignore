@@ -4,3 +4,4 @@
 .nvim.lua
 compile_commands.json
 .direnv/
+.envrc
