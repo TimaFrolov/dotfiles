@@ -17,7 +17,7 @@
       ../bundle/dev-python.nix
       ../package/vscode.nix
       ../package/opencl.nix
-      ../package/ivpn.nix
+      ../package/ivpn/ivpn.nix
       ../bundle/dev-asm.nix
       ../bundle/profiling.nix
       ../bundle/net-extra.nix

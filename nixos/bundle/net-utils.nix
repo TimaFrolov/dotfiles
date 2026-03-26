@@ -14,5 +14,6 @@
     dig
     tcpdump
     ethtool
+    conntrack-tools
   ];
 }
