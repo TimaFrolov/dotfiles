@@ -228,6 +228,7 @@ mode "open" {
     bindcode $z exec zathura; mode "default"
     bindcode $k exec command kill -s RTMIN $(pgrep wvkbd-mobintl); mode "default"
     bindcode $d exec discord; mode "default"
+    bindcode $o exec obsidian; mode "default"
 
     # Return to default mode
     bindsym Return mode "default"
