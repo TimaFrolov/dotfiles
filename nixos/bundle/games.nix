@@ -8,5 +8,6 @@
     mangohud
     wljoywake
     protontricks
+    r2modman
   ];
 }
