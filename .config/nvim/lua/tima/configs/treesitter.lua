@@ -1,5 +1,3 @@
-local mappings = require('tima.mappings.treesitter')
-
 require('nvim-treesitter').setup({
   ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
   ignore_install = {},
@@ -10,11 +8,6 @@ require('nvim-treesitter').setup({
     enable = true,
     disable = { 'latex' },
     additional_vim_regex_highlighting = false,
-  },
-
-  incremental_selection = {
-    enable = true,
-    keymaps = mappings.incremental_selection
   },
 })
 

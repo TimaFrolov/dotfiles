@@ -70,7 +70,6 @@ return {
     { 'af',          function() return to('select').select_textobject('@function.outer', 'textobjects') end,    mode = { 'x', 'o', } },
     { 'il',          function() return to('select').select_textobject('@loop.inner', 'textobjects') end,        mode = { 'x', 'o', } },
     { 'al',          function() return to('select').select_textobject('@loop.outer', 'textobjects') end,        mode = { 'x', 'o', } },
-    { 'in',          function() return to('select').select_textobject('@number.inner', 'textobjects') end,      mode = { 'x', 'o', } },
     { 'ia',          function() return to('select').select_textobject('@parameter.inner', 'textobjects') end,   mode = { 'x', 'o', } },
     { 'aa',          function() return to('select').select_textobject('@parameter.outer', 'textobjects') end,   mode = { 'x', 'o', } },
     { 'ie',          function() return to('select').select_textobject('@regex.inner', 'textobjects') end,       mode = { 'x', 'o', } },
@@ -96,11 +95,5 @@ return {
     { '<leader>mpe', function() return to('swap').swap_previous('@regex.inner') end,                            mode = 'n' },
     { '<leader>mpr', function() return to('swap').swap_previous('@return.inner') end,                           mode = 'n' },
     { '<leader>mps', function() return to('swap').swap_previous('@statement.outer') end,                        mode = 'n' },
-  },
-  incremental_selection = {
-    init_selection = '<leader>vk',
-    node_incremental = '<leader>vk',
-    scope_incremental = false,
-    node_decremental = '<leader>vj',
   },
 }
