@@ -5,7 +5,6 @@
       /etc/nixos/hardware-configuration.nix
       ../bundle/core.nix
       ../bundle/desktop.nix
-      ../bundle/intel-video.nix
       ../bundle/disk-utils.nix
       ../bundle/utils.nix
       ../bundle/net-utils.nix
