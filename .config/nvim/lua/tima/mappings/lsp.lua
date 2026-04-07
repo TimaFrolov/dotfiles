@@ -3,7 +3,7 @@ local function telescope()
 end
 
 local swap_inlay_hints = (function()
-  local hints = false
+  local hints = true
 
   local autocmd = function()
     vim.lsp.inlay_hint.enable(hints, { bufnr = nil })
