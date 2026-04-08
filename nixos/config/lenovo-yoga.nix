@@ -55,6 +55,7 @@
 
   boot.initrd.luks.devices."crypted" = {
     bypassWorkqueues = true;
+    allowDiscards = true;
   };
 
   programs.nix-ld.enable = true;
