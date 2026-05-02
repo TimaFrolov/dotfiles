@@ -9,5 +9,6 @@
     wljoywake
     protontricks
     r2modman
+    gdlauncher-carbon
   ];
 }
