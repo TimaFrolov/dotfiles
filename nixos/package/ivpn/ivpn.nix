@@ -59,5 +59,19 @@ in
 
     services.ivpn.enable = true;
     systemd.services.ivpn-service.path = lib.mkBefore [ pkgs.ivpn-iptables-wrapper ];
+
+    environment.etc."ivpn.nft".text = lib.replaceStrings [ "IVPN_MARK" ] [ cfg.ivpnMark ] (builtins.readFile ./ivpn.nft);
+
+    systemd.services.ivpn-nft = {
+      description = "Load IVPN nftables rules";
+      wantedBy = [ "multi-user.target" ];
+      wants = [ "network-online.target" "nftables.service" ];
+      after = [ "network-online.target" "nftables.service" ];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStart = ''${pkgs.nftables}/bin/nft -f /etc/ivpn.nft'';
+        RemainAfterExit = "yes";
+      };
+    };
   };
 }
