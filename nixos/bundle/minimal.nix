@@ -29,6 +29,7 @@
     file
     man-pages
     tree
+    killall
   ];
 
   documentation.dev.enable = true;
