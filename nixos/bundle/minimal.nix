@@ -29,7 +29,7 @@
     file
     man-pages
     tree
-    killall
+    psmisc
   ];
 
   documentation.dev.enable = true;
