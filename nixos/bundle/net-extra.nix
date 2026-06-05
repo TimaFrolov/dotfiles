@@ -1,4 +1,7 @@
 { config, lib, pkgs, ... }:
 {
-  networking.networkmanager.plugins = with pkgs; [ networkmanager-openvpn ];
+  networking.networkmanager.plugins = with pkgs; [
+    networkmanager-openvpn
+    networkmanager-openconnect
+  ];
 }
