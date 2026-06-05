@@ -1,6 +1,5 @@
 { config, lib, pkgs, ... }:
 {
-  imports = [ ../local.nix ];
   boot.loader.systemd-boot = {
     enable = true;
     editor = false;
@@ -34,6 +33,7 @@
 
   documentation.dev.enable = true;
 
-  system.copySystemConfiguration = true;
   services.logind.settings.Login.HandlePowerKey = "suspend";
+
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 }
