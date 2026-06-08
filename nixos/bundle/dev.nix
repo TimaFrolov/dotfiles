@@ -17,6 +17,7 @@
     tokei
     gdb
     prettierd
+    nixd
   ];
 
   programs.direnv = {

@@ -25,5 +25,6 @@ vim.lsp.config('metals', {
   root_markers = { 'build.sbt', 'build.sc', 'build.gradle', 'pom.xml', 'build.mill' },
 })
 vim.lsp.enable('metals')
+vim.lsp.enable('nixd')
 
 vim.diagnostic.config({ virtual_lines = true })
