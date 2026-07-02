@@ -25,7 +25,7 @@
       ../../bundle/dev-rust.nix
     ];
 
-  networking.hostName = "kvadra";
+  networking.hostName = "NB-9472";
 
   system.stateVersion = "25.11";
 
