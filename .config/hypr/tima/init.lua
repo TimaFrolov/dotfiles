@@ -53,6 +53,16 @@ hl.config({
   },
 })
 
+hl.config({
+  plugin = {
+    hy3 = {
+      tabs = {
+        blur = false,
+      },
+    },
+  },
+})
+
 hl.device({
   name = "1386:21073:Wacom_HID_5251_Finger",
   output = "eDP-1",
