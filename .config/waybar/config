@@ -1,10 +1,10 @@
 {
     "position": "bottom",
-    "modules-left": ["sway/workspaces", "sway/scratchpad", "sway/mode"],
+    "modules-left": ["hyprland/workspaces", "hyprland/submap"],
     "modules-center": ["clock"],
     "modules-right": [
         "tray", 
-        "sway/language", 
+        "hyprland/language", 
         "custom/audio_idle_inhibitor",
         "idle_inhibitor",
         "custom/notifications", 
@@ -17,25 +17,20 @@
         "backlight", 
         "battery"
     ],
-    "sway/workspaces": {
+    "hyprland/workspaces": {
         "disable-scroll": true,
         "format": "{name} {icon}",
         "format-icons": {
-            "focused": "",
-            "default": ""
+            "active": "",
+            "default": "",
+            "empty": "",
+            "visible": ""
         }
     },
-    "sway/scratchpad": {
-        "format": "{icon} {count}",
-        "show-empty": true,
-        "format-icons": "",
-        "on-click": "swaymsg scratchpad show",
-        "on-click-right": "swaymsg move window to scratchpad",
-        "tooltip": true,
-        "tooltip-format": "{app}: {title}"
-    },
-    "sway/mode": {
+    "hyprland/submap": {
         "format": " {}",
+        "default-submap": "default",
+        "tooltip": false
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -117,17 +112,21 @@
         "interval": 1,
         "on-click": "dunstctl set-paused toggle;",
     },
-	"custom/audio_idle_inhibitor": {
-		"format": "{icon}",
-		"exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
-		"exec-if": "which sway-audio-idle-inhibit",
-		"return-type": "json",
-		"format-icons": {
-			"output": "",
-			"input": "",
-			"output-input": "  ",
-			"none": ""
-		}
-	},
+    "custom/audio_idle_inhibitor": {
+        "format": "{icon}",
+        "exec": "sway-audio-idle-inhibit --dry-print-both-waybar",
+        "exec-if": "which sway-audio-idle-inhibit",
+        "return-type": "json",
+        "format-icons": {
+            "output": "",
+            "input": "",
+            "output-input": "  ",
+            "none": ""
+        }
+    },
+    "hyprland/language": {
+        "format-en": "en",
+        "format-ru": "ru",
+    }
 }
 

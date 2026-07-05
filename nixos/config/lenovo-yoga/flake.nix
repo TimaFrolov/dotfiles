@@ -17,7 +17,8 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.users.tima = ./home.nix;
+          home-manager.users.tima = (import ./home.nix) { username = "tima"; };
+          home-manager.users.fima = (import ./home.nix) { username = "fima"; };
         }
       ];
     };
