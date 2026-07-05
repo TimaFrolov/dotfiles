@@ -57,8 +57,8 @@
 
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
-    libsForQt5.qt5.qtsvg
-    libsForQt5.qt5.qtbase
+    qt5.qtsvg
+    qt5.qtbase
   ];
 
   hardware.graphics.extraPackages = with pkgs; [ nvidia-vaapi-driver ];
