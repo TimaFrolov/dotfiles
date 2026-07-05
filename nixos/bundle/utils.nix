@@ -19,5 +19,6 @@
     ripgrep-all
     p7zip
     evtest
+    iprange
   ];
 }
