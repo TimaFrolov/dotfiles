@@ -23,8 +23,6 @@
         "format-icons": {
             "active": "",
             "default": "",
-            "empty": "",
-            "visible": ""
         }
     },
     "hyprland/submap": {
