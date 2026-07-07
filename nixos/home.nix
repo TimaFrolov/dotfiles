@@ -1,11 +1,12 @@
+{ username }:
 { config, pkgs, ... }:
 
 {
   imports = [
   ];
 
-  home.username = "tima";
-  home.homeDirectory = "/home/tima";
+  home.username = username;
+  home.homeDirectory = "/home/${username}";
 
   home.stateVersion = "26.05";
 
@@ -18,7 +19,7 @@
   };
 
   home.file.".config/hypr/tima" = {
-    source = ../../../.config/hypr/tima;
+    source = ../.config/hypr/tima;
     recursive = true;
   };
 }
