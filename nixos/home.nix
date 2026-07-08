@@ -3,6 +3,7 @@
 
 {
   imports = [
+    package/catppuccin.nix
   ];
 
   home.username = username;

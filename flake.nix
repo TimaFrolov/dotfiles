@@ -5,17 +5,28 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
-    let home-manager-modules = { users }: [ 
+  outputs = inputs@{ nixpkgs, home-manager, catppuccin, ... }:
+    let home-modules = { username }: [
+      ((import ./nixos/home.nix) { inherit username; })
+      catppuccin.homeModules.catppuccin
+    ]; in
+    let common-modules = { users }: [ 
       home-manager.nixosModules.home-manager
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
         home-manager.extraSpecialArgs = { inherit inputs; };
-        home-manager.users = nixpkgs.lib.genAttrs users (user: (import ./nixos/home.nix) { username = user; });
+        home-manager.users = nixpkgs.lib.genAttrs users (username: { 
+          imports = home-modules { inherit username; };
+        });
       } 
+      catppuccin.nixosModules.catppuccin
     ];
     in {
       nixosConfigurations = {
@@ -23,28 +34,28 @@
           system = "x86_64-linux";
           modules = 
             [ ./nixos/config/lenovo-yoga/configuration.nix ] 
-            ++ home-manager-modules { users = [ "tima" "fima" ]; };
+            ++ common-modules { users = [ "tima" "fima" ]; };
         };
 
         "desktop" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = 
             [ ./nixos/config/desktop/configuration.nix ] 
-            ++ home-manager-modules { users = [ "tima" ]; };
+            ++ common-modules { users = [ "tima" ]; };
         };
 
         "NB-9472" = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = 
             [ ./nixos/config/kvadra/configuration.nix ] 
-            ++ home-manager-modules { users = [ "tima" ]; };
+            ++ common-modules { users = [ "tima" ]; };
         };
       };
 
       homeConfigurations.tima = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacy.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
-        modules = [ (import ./nixos/home.nix) { username = "tima"; } ];
+        modules = home-modules { username = "tima"; };
       };
     };
 }

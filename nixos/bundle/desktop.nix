@@ -66,6 +66,7 @@
   imports =
     [
     ../package/wshowkeys.nix
+    ../package/catppuccin.nix
     ];
 
   xdg.mime.defaultApplications = {
@@ -81,4 +82,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts.jetbrains-mono
   ];
+
+  catppuccin.tty.enable = false;
 }
