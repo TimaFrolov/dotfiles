@@ -65,4 +65,18 @@
   hardware.nvidia-container-toolkit.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
+
+  services.openssh = {
+    enable = true;
+    listenAddresses = [
+      {
+        addr = "192.168.1.5";
+        port = 22;
+      }
+    ];
+  };
+
+  systemd.services.sshd.unitConfig.StartLimitIntervalSec = 0;
+
+  networking.firewall.allowedTCPPorts = [ 22 ];
 }
