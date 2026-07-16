@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 let
   cfg = config.services.ivpnCustom;
-  ivpnNftTable = pkgs.writeText "ivpn.nft" (lib.replaceStrings [ "IVPN_MARK" ] [ cfg.ivpnMark ] (builtins.readFile ./ivpn.nft));
 in
 {
   imports = [
@@ -49,6 +48,19 @@ in
       type = with lib.types; listOf str;
       default = [ "wgivpn" "tun0" ];
     };
+
+    asns = lib.mkOption {
+      type = with lib.types; listOf str;
+      default = [
+        "AS-CLOUDFLARE"
+        "AS-TELEGRAM"
+        "AS44907"       # Telegram
+        "AS211157"      # Telegram
+        "AS19527"       # Google Cloud
+        "AS-GCORE"
+        "AS16276"       # OVH
+      ];
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -62,13 +74,18 @@ in
     systemd.services.ivpn-service.path = lib.mkBefore [ pkgs.ivpn-iptables-wrapper ];
 
     systemd.services.ivpn-nft = {
-      description = "Load IVPN nftables rules";
+      description = "Query IRR and load IVPN nftables rules";
       wantedBy = [ "multi-user.target" ];
       wants = [ "network-online.target" "nftables.service" ];
       after = [ "network-online.target" "nftables.service" ];
+      path = with pkgs; [ bgpq4 nftables iprange bash ];
+      environment = {
+        ASN_LIST = lib.concatStringsSep "," cfg.asns;
+        IVPN_MARK = cfg.ivpnMark;
+      };
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = ''${pkgs.nftables}/bin/nft -f ${ivpnNftTable}'';
+        ExecStart = [ "${./ivpn-nft.sh}" ];
         RemainAfterExit = "yes";
       };
     };
