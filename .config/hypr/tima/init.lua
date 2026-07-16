@@ -43,7 +43,7 @@ hl.config({
     kb_options = "grp:caps_toggle,compose:ralt",
     repeat_delay = 200,
     repeat_rate = 40,
-    follow_mouse = 0,
+    follow_mouse = 2,
 
     touchpad = {
       disable_while_typing = true,
