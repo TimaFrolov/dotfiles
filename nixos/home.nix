@@ -4,6 +4,7 @@
 {
   imports = [
     package/catppuccin.nix
+    home/package/opencode.nix
   ];
 
   home.username = username;
