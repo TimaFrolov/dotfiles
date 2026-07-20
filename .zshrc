@@ -32,6 +32,15 @@ wmcd() {
     cd "$(command workspace-manager "$@")"
 }
 
+lgcd() {
+    export LAZYGIT_NEW_DIR_FILE="$HOME/.lazygit/newdir"
+    lazygit "$@"
+    if [ -f "$LAZYGIT_NEW_DIR_FILE" ]; then
+        cd "$(cat "$LAZYGIT_NEW_DIR_FILE")"
+        rm -f "$LAZYGIT_NEW_DIR_FILE"
+    fi
+}
+
 alias fzf='fzf-tmux -p'
 alias ll='ls -alhF --color'
 alias ls='ls -aCF --color'
@@ -54,7 +63,7 @@ alias 'git?'='gh copilot suggest -t git'
 alias 'gh?'='gh copilot suggest -t gh'
 alias g='git'
 alias wshowkeys='command wshowkeys -F jebrains-mono -a bottom'
-alias lg='lazygit'
+alias lg='lgcd'
 alias nix-shell='nix-shell --command zsh'
 
 autoload -Uz vcs_info
