@@ -25,7 +25,12 @@
           "git ls-files*" = "allow";
           "git blame*" = "allow";
           "git reflog*" = "allow";
-          "git config --*" = "allow";
+          "git config list --*" = "allow";
+          "git config get --*" = "allow";
+          "git branch --show-current" = "allow";
+          "git pr diff *" = "allow";
+          "git pr view *" = "allow";
+          "gh pr list *" = "allow";
           "nix *" = "allow";
           "uv *" = "allow";
           "find *" = "allow";
