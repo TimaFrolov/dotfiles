@@ -91,6 +91,15 @@
         command_list = "ctrl+p";
         editor_open = "<leader>e";
 
+        display_thinking = "<leader>t";
+        tool_details = "<leader>o";
+        theme_list = "none";
+
+        session_parent = "up,k";
+        session_child_first = "<leader>down,<leader>j";
+        session_child_cycle = "right,l";
+        session_child_cycle_reverse = "left,h";
+
         session_interrupt = "escape";
         app_exit = "ctrl+c,<leader>q";
       };
