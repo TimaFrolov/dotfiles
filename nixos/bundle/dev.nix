@@ -18,6 +18,7 @@
     gdb
     prettierd
     nixd
+    bubblewrap
   ];
 
   programs.direnv = {

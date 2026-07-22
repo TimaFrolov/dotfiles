@@ -1,12 +1,38 @@
-{ ... }:
+{ config, pkgs, ... }:
 
+let
+  homeDir = config.home.homeDirectory;
+
+  opencode-sandbox = pkgs.writeShellApplication {
+    name = "opencode";
+    text = ''
+      exec ${pkgs.bubblewrap}/bin/bwrap \
+        --ro-bind "${homeDir}/.config/opencode" "${homeDir}/.config/opencode" \
+        --ro-bind "${homeDir}/.config/git" "${homeDir}/.config/git" \
+        --ro-bind /nix /nix \
+        --ro-bind /etc /etc \
+        --ro-bind /run/current-system/sw /run/current-system/sw \
+        --bind "${homeDir}/.local/share/opencode" "${homeDir}/.local/share/opencode" \
+        --bind "${homeDir}/.cache/opencode" "${homeDir}/.cache/opencode" \
+        --bind "$PWD" "$PWD" \
+        --dev /dev \
+        --proc /proc \
+        --die-with-parent \
+        -- \
+        ${pkgs.opencode}/bin/opencode "$@"
+    '';
+
+    meta = pkgs.opencode.meta;
+  };
+in
 {
   programs.opencode = {
     enable = true;
 
+    package = opencode-sandbox;
+
     settings = {
       model = "opencode/big-pickle";
-      shell = "/bin/zsh";
 
       share = "manual";
       autoupdate = false;
@@ -28,6 +54,7 @@
           "git config list --*" = "allow";
           "git config get --*" = "allow";
           "git branch --show-current" = "allow";
+          "git add *" = "allow";
           "git pr diff *" = "allow";
           "git pr view *" = "allow";
           "gh pr list *" = "allow";
@@ -48,6 +75,7 @@
           "cat *" = "allow";
           "sort *" = "allow";
           "head *" = "allow";
+          "tail *" = "allow";
           "wc *" = "allow";
           "awk *" = "allow";
           "cut *" = "allow";
