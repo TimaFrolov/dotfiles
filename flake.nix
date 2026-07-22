@@ -53,7 +53,7 @@
       };
 
       homeConfigurations.tima = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacy.x86_64-linux;
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
         extraSpecialArgs = { inherit inputs; };
         modules = home-modules { username = "tima"; };
       };
