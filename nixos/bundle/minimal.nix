@@ -15,6 +15,7 @@
   networking.nftables.enable = true;
   services.resolved.enable = true;
 
+  nix.settings.trusted-users = [ "tima" ];
   users.users.tima = {
     isNormalUser = true;
     extraGroups = [ "wheel" "networkmanager" "video" ];
