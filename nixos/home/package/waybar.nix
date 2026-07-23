@@ -90,7 +90,7 @@ in
           critical = 15;
         };
         format = "{capacity}% {icon}";
-        format-icons = [ "" "" "" "" "" ];
+        format-icons = [ "" "" "" "" "" ];
         interval = 1;
       };
 
