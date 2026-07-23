@@ -31,6 +31,8 @@
       ../../package/curseforge.nix
     ];
 
+  tima.laptop = true;
+
   environment.systemPackages = with pkgs; [
     discord
     halloy

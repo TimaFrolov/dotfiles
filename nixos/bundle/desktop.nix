@@ -36,7 +36,6 @@
     }))
     telegram-desktop
     google-chrome
-    waybar
     wofi
     kanshi
     dunst

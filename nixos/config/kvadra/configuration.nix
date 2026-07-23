@@ -25,6 +25,8 @@
       ../../bundle/dev-rust.nix
     ];
 
+  tima.laptop = true;
+
   networking.hostName = "NB-9472";
 
   system.stateVersion = "25.11";
