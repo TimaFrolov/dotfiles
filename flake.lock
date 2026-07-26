@@ -20,6 +20,29 @@
         "type": "github"
       }
     },
+    "en_RU": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1785069248,
+        "narHash": "sha256-Z0w6WFtjuP6UEsM/DzUJWitm6e0KFGztgcmM2mvnsX4=",
+        "owner": "timafrolov",
+        "repo": "en_ru",
+        "rev": "c2ca2c4512baebd9c93f2bb949c80673c4cd19c1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "timafrolov",
+        "repo": "en_ru",
+        "type": "github"
+      }
+    },
     "flake-compat": {
       "flake": false,
       "locked": {
@@ -75,6 +98,7 @@
     "root": {
       "inputs": {
         "catppuccin": "catppuccin",
+        "en_RU": "en_RU",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
         "waybar": "waybar"

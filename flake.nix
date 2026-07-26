@@ -13,9 +13,14 @@
       url = "github:alexays/waybar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    en_RU = {
+      url = "github:timafrolov/en_ru";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, catppuccin, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, catppuccin, en_RU, ... }:
     let
     nixpkgs-modules = [
       { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
@@ -24,6 +29,7 @@
     home-modules = { username }: [
       ((import ./nixos/home.nix) { inherit username; })
       catppuccin.homeModules.catppuccin
+      en_RU.homeModules.default
     ];
     common-modules = { users }: nixpkgs-modules ++ [
       home-manager.nixosModules.home-manager
@@ -36,6 +42,7 @@
         });
       }
       catppuccin.nixosModules.catppuccin
+      en_RU.nixosModules.default
     ];
     in {
       nixosConfigurations = {
