@@ -87,6 +87,8 @@ in
         Type = "oneshot";
         ExecStart = [ "${./ivpn-nft.sh}" ];
         RemainAfterExit = "yes";
+        Restart = "on-failure";
+        RestartSec = 60;
       };
     };
   };
