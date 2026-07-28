@@ -12,4 +12,16 @@ jail-nix.lib.extend {
     bind-nix-store-runtime-closure
     fake-passwd
   ];
+  additionalCombinators = combinators: with combinators; {
+    network = { hostname }: compose [
+      (set-hostname hostname)
+      network
+      (try-fwd-env "all_proxy")
+      (try-fwd-env "ftp_proxy")
+      (try-fwd-env "http_proxy")
+      (try-fwd-env "https_proxy")
+      (try-fwd-env "no_proxy")
+      (try-fwd-env "rsync_proxy")
+    ];
+  };
 }

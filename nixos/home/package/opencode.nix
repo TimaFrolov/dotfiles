@@ -1,7 +1,7 @@
 { config, pkgs, inputs, osConfig, jail, ... }:
 let
   opencode-sandbox = jail pkgs "opencode" pkgs.opencode (combinators: with combinators; [
-    network
+    (network { hostname = osConfig.networking.hostName; })
     no-new-session
     (fwd-env "EDITOR")
 
