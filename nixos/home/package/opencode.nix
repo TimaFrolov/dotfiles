@@ -1,12 +1,8 @@
-{ config, pkgs, inputs, osConfig, ... }:
-
+{ config, pkgs, inputs, osConfig, jail, ... }:
 let
-  jail = inputs.jail-nix.lib.init pkgs;
-
-  opencode-sandbox = jail "opencode" pkgs.opencode (with jail.combinators; [
+  opencode-sandbox = jail pkgs "opencode" pkgs.opencode (combinators: with combinators; [
     network
     no-new-session
-    (fwd-env "COLORTERM")
     (fwd-env "EDITOR")
 
     (readonly (noescape "~/.config/opencode"))

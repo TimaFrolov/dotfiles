@@ -21,8 +21,8 @@
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, catppuccin, en_RU, ... }:
-    let
+  outputs = inputs@{ nixpkgs, home-manager, catppuccin, en_RU, jail-nix, ... }:
+    let jail = import ./nixos/lib/jail.nix jail-nix;
     nixpkgs-modules = [
       { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
       ./nixos/package/options.nix
@@ -37,7 +37,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs; };
+        home-manager.extraSpecialArgs = { inherit inputs jail; };
         home-manager.users = nixpkgs.lib.genAttrs users (username: {
           imports = home-modules { inherit username; };
         });
