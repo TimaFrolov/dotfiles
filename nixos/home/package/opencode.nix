@@ -73,6 +73,7 @@ in
           "tail *" = "allow";
           "wc *" = "allow";
           "awk *" = "allow";
+          "jq *" = "allow";
           "cut *" = "allow";
           "home-manager *" = "allow";
           "*" = "ask";
@@ -147,7 +148,7 @@ in
       over system-wide package management.
 
       Avoid using `find` in `/nix/store` - it's extremely large and operations will be very slow.
-      Use `nix` commands to get information about relevant paths.
+      Use `nix` commands to get information about relevant paths. (e.g. nix flake metadata --json)
     '';
   };
 }
