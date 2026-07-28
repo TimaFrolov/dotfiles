@@ -59,6 +59,7 @@ in
         "AS19527"       # Google Cloud
         "AS-GCORE"
         "AS16276"       # OVH
+        "AS-HETZNER"
       ];
     };
   };
