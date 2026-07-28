@@ -1,29 +1,28 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, osConfig, ... }:
 
 let
-  homeDir = config.home.homeDirectory;
+  jail = inputs.jail-nix.lib.init pkgs;
 
-  opencode-sandbox = pkgs.writeShellApplication {
-    name = "opencode";
-    text = ''
-      exec ${pkgs.bubblewrap}/bin/bwrap \
-        --ro-bind "${homeDir}/.config/opencode" "${homeDir}/.config/opencode" \
-        --ro-bind "${homeDir}/.config/git" "${homeDir}/.config/git" \
-        --ro-bind /nix /nix \
-        --ro-bind /etc /etc \
-        --ro-bind /run/current-system/sw /run/current-system/sw \
-        --bind "${homeDir}/.local/share/opencode" "${homeDir}/.local/share/opencode" \
-        --bind "${homeDir}/.cache/opencode" "${homeDir}/.cache/opencode" \
-        --bind "$PWD" "$PWD" \
-        --dev /dev \
-        --proc /proc \
-        --die-with-parent \
-        -- \
-        ${pkgs.opencode}/bin/opencode "$@"
-    '';
+  opencode-sandbox = jail "opencode" pkgs.opencode (with jail.combinators; [
+    network
+    no-new-session
+    (fwd-env "COLORTERM")
+    (fwd-env "EDITOR")
 
-    meta = pkgs.opencode.meta;
-  };
+    (readonly (noescape "~/.config/opencode"))
+    (readonly (noescape "~/.config/git"))
+
+    (readwrite (noescape "~/.local/share/opencode"))
+    (readwrite (noescape "~/.local/state/opencode"))
+    (readwrite (noescape "~/.cache/opencode"))
+
+    mount-cwd
+
+    (readonly "/nix")
+    (readonly "/etc/nix/nix.conf")
+    (readonly "/run/current-system/sw/")
+    (add-path "/run/current-system/sw/bin/")
+  ]);
 in
 {
   programs.opencode = {
@@ -150,6 +149,9 @@ in
       For Python projects, prefer `uv` over pip/poetry/conda.
       When using `uv`, prefer virtual environments (uv venv / uv run)
       over system-wide package management.
+
+      Avoid using `find` in `/nix/store` - it's extremely large and operations will be very slow.
+      Use `nix` commands to get information about relevant paths.
     '';
   };
 }
