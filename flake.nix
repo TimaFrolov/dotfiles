@@ -21,6 +21,15 @@
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
   };
 
+  nixConfig = {
+    substituters = [
+      "https://cache.nixos-cuda.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+    ];
+  };
+
   outputs = inputs@{ nixpkgs, home-manager, catppuccin, en_RU, jail-nix, ... }:
     let jail = import ./nixos/lib/jail.nix jail-nix;
     nixpkgs-modules = [
@@ -29,7 +38,7 @@
     ];
     home-modules = { username }: [
       ((import ./nixos/home.nix) { inherit username; })
-      catppuccin.homeModules.catppuccin
+      catppuccin.homeModules.catppuccin { catppuccin.cache.enable = true; }
       en_RU.homeModules.default
     ];
     common-modules = { users }: nixpkgs-modules ++ [
@@ -42,7 +51,7 @@
           imports = home-modules { inherit username; };
         });
       }
-      catppuccin.nixosModules.catppuccin
+      catppuccin.nixosModules.catppuccin { catppuccin.cache.enable = true; }
       en_RU.nixosModules.default
     ];
     in {
