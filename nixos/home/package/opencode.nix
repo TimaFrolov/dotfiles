@@ -154,6 +154,9 @@ in
 
       Avoid using `find` in `/nix/store` - it's extremely large and operations will be very slow.
       Use `nix` commands to get information about relevant paths. (e.g. nix flake metadata --json)
+
+      To get the local store path of a flake input, use:
+      `nix eval --expr "(builtins.getFlake (toString ./.))" --apply 'flake: flake.inputs.<input-name>.outPath' --raw --impure`
     '';
   };
 }
