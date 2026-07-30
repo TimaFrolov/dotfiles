@@ -6,7 +6,7 @@ let
     (fwd-env "EDITOR")
 
     (readonly (noescape "~/.config/opencode"))
-    (readonly (noescape "~/.config/git"))
+    # (readonly (noescape "~/.config/git"))
 
     (readwrite (noescape "~/.local/share/opencode"))
     (readwrite (noescape "~/.local/state/opencode"))
