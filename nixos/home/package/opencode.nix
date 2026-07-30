@@ -12,6 +12,7 @@ let
     (readwrite (noescape "~/.local/state/opencode"))
     (readwrite (noescape "~/.cache/opencode"))
 
+    (readonly-paths-from-var "ROBIND_DIRS" ":")
     mount-cwd
 
     (readonly "/nix")

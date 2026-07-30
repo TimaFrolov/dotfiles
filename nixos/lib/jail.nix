@@ -23,5 +23,22 @@ jail-nix.lib.extend {
       (try-fwd-env "no_proxy")
       (try-fwd-env "rsync_proxy")
     ];
+    readonly-paths-from-var = var: separator:
+      let runtime-var = "RUNTIME_READONLY_${var}"; in
+      assert pkgs.lib.isValidPosixName var;
+      include-once "readonly-paths-from-var-${var}" (compose [
+        (add-runtime ''
+         ${runtime-var}=()
+         IFS=${pkgs.lib.escapeShellArg separator} read -ra DIRS <<< "''${${var}-}"
+         for DIR in "''${DIRS[@]}"; do
+           if [ -e "$DIR" ]; then
+             P="$(realpath "$DIR")"
+             ${runtime-var}+=(--ro-bind "$P" "$P")
+           fi
+         done
+         '')
+        (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
+      ])
+    ;
   };
 }
