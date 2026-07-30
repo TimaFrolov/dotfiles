@@ -40,7 +40,7 @@
     ];
     home-modules = { username }: [
       ((import ./nixos/home.nix) { inherit username; })
-      catppuccin.homeModules.catppuccin
+      catppuccin.homeModules.catppuccin { catppuccin.cache.enable = true; }
       en_RU.homeModules.default
     ];
     common-modules = { users }: nixpkgs-modules ++ [
@@ -53,7 +53,7 @@
           imports = home-modules { inherit username; };
         });
       }
-      catppuccin.nixosModules.catppuccin
+      catppuccin.nixosModules.catppuccin { catppuccin.cache.enable = true; }
       en_RU.nixosModules.default
     ];
     in {
