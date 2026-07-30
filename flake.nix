@@ -24,9 +24,11 @@
   nixConfig = {
     substituters = [
       "https://cache.nixos-cuda.org"
+      "https://catppuccin.cachix.org"
     ];
     trusted-public-keys = [
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+      "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
     ];
   };
 
@@ -38,7 +40,7 @@
     ];
     home-modules = { username }: [
       ((import ./nixos/home.nix) { inherit username; })
-      catppuccin.homeModules.catppuccin { catppuccin.cache.enable = true; }
+      catppuccin.homeModules.catppuccin
       en_RU.homeModules.default
     ];
     common-modules = { users }: nixpkgs-modules ++ [
@@ -51,7 +53,7 @@
           imports = home-modules { inherit username; };
         });
       }
-      catppuccin.nixosModules.catppuccin { catppuccin.cache.enable = true; }
+      catppuccin.nixosModules.catppuccin
       en_RU.nixosModules.default
     ];
     in {
