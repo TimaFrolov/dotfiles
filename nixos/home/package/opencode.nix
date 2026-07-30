@@ -92,7 +92,7 @@ in
       keybinds = {
         leader = "ctrl+x";
 
-        input_submit = "ctrl+s,<leader>return";
+        input_submit = "ctrl+s,ctrl+return,<leader>return";
         input_newline = "return";
         input_move_left = "ctrl+b";
         input_move_right = "ctrl+f";
@@ -101,6 +101,8 @@ in
 
         messages_page_up = "ctrl+u";
         messages_page_down = "ctrl+d";
+        messages_line_up = "ctrl+k";
+        messages_line_down = "ctrl+j";
 
         "dialog.select.prev" = "k";
         "dialog.select.next" = "j";
