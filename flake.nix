@@ -22,11 +22,11 @@
   };
 
   nixConfig = {
-    substituters = [
+    extra-substituters = [
       "https://cache.nixos-cuda.org"
       "https://catppuccin.cachix.org"
     ];
-    trusted-public-keys = [
+    extra-trusted-public-keys = [
       "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
       "catppuccin.cachix.org-1:noG/4HkbhJb+lUAdKrph6LaozJvAeEEZj4N732IysmU="
     ];
