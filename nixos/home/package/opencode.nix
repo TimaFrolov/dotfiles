@@ -39,7 +39,7 @@ in
         edit = "allow";
         read = "allow";
         bash = {
-          "git status" = "allow";
+          "git status *" = "allow";
           "git log*" = "allow";
           "git diff*" = "allow";
           "git show*" = "allow";
@@ -49,9 +49,11 @@ in
           "git config list --*" = "allow";
           "git config get --*" = "allow";
           "git branch --show-current" = "allow";
+          "git branch -a" = "allow";
           "git add *" = "allow";
           "git pr diff *" = "allow";
           "git pr view *" = "allow";
+          "git remote -v" = "allow";
           "gh pr list *" = "allow";
           "nix *" = "allow";
           "uv *" = "allow";
