@@ -37,7 +37,7 @@
       {
         home-manager.useGlobalPkgs = true;
         home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit inputs jail; };
+        home-manager.extraSpecialArgs = { inherit jail; };
         home-manager.users = nixpkgs.lib.genAttrs users (username: {
           imports = home-modules { inherit username; };
         });

@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, osConfig, jail, ... }:
+{ config, pkgs, osConfig, jail, ... }:
 let
   opencode-sandbox = jail pkgs "opencode" pkgs.opencode (combinators: with combinators; [
     (network { hostname = osConfig.networking.hostName; })
