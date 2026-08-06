@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,9 +20,13 @@
       inputs.home-manager.follows = "home-manager";
     };
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+    nixpkgs-patch-ivpn-v3-15-13 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/542306.diff";
+      flake = false;
+    };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, catppuccin, en_RU, jail-nix, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-patcher, home-manager, catppuccin, en_RU, jail-nix, ... }:
     let jail = import ./nixos/lib/jail.nix jail-nix;
     nixpkgs-modules = [
       { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
@@ -47,22 +52,25 @@
     ];
     in {
       nixosConfigurations = {
-        "yoga" = nixpkgs.lib.nixosSystem {
+        "yoga" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = inputs;
           modules =
             [ ./nixos/config/lenovo-yoga/configuration.nix ]
             ++ common-modules { users = [ "tima" "fima" ]; };
         };
 
-        "desktop" = nixpkgs.lib.nixosSystem {
+        "desktop" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = inputs;
           modules =
             [ ./nixos/config/desktop/configuration.nix ]
             ++ common-modules { users = [ "tima" ]; };
         };
 
-        "NB-9472" = nixpkgs.lib.nixosSystem {
+        "NB-9472" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
+          specialArgs = inputs;
           modules =
             [ ./nixos/config/kvadra/configuration.nix ]
             ++ common-modules { users = [ "tima" ]; };

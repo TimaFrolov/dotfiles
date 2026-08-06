@@ -65,14 +65,10 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    nixpkgs.overlays = [
-      (final: prev: {
-        ivpn-iptables-wrapper = prev.callPackage ./ivpn-iptables-wrapper.nix { };
-      })
-    ];
-
     services.ivpn.enable = true;
-    systemd.services.ivpn-service.path = lib.mkBefore [ pkgs.ivpn-iptables-wrapper ];
+    systemd.services.ivpn-service.path = lib.mkBefore [
+      (pkgs.callPackage ./ivpn-iptables-wrapper.nix { })
+    ];
 
     systemd.services.ivpn-nft = {
       description = "Query IRR and load IVPN nftables rules";
