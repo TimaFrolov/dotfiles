@@ -1,6 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    systems.url = "github:nix-systems/default-linux";
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -26,8 +27,12 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-patcher, home-manager, catppuccin, en_RU, jail-nix, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-patcher, systems, home-manager, catppuccin, en_RU, jail-nix, ... }:
     let jail = import ./nixos/lib/jail.nix jail-nix;
+    eachSystem = fn:
+      nixpkgs.lib.genAttrs
+      (import systems)
+      (system: fn system nixpkgs.legacyPackages.${system});
     nixpkgs-modules = [
       { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
       ./nixos/package/options.nix
@@ -76,5 +81,7 @@
             ++ common-modules { users = [ "tima" ]; };
         };
       };
+
+      formatter = eachSystem (system: pkgs: pkgs.nixfmt-tree);
     };
 }
