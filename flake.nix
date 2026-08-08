@@ -98,5 +98,26 @@
       };
 
       formatter = eachSystem (system: pkgs: pkgs.nixfmt-tree);
+
+      checks = eachSystem (
+        system: pkgs: {
+          nixf-diagnose =
+            pkgs.runCommand "nixf-diagnose-check" { nativeBuildInputs = [ pkgs.nixf-diagnose ]; }
+              ''
+                set -euo pipefail
+                for file in $(find "${./.}" -name '*.nix'); do
+                  nixf-diagnose "$file"
+                done
+                touch "$out"
+              '';
+          nixfmt = pkgs.runCommand "nixfmt-check" { nativeBuildInputs = [ pkgs.nixfmt-tree ]; } ''
+            set -euo pipefail
+            cp -r "${./.}" work
+            chmod -R u+w work
+            treefmt --ci --tree-root "$PWD/work"
+            touch "$out"
+          '';
+        }
+      );
     };
 }
