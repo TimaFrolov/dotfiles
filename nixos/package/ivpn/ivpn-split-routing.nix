@@ -32,9 +32,9 @@ lib.mkIf cfg.enable {
       ExecStart = ivpnSplitRoutingSync;
       Environment = [
         "IVPN_MARK=${cfg.ivpnMark}"
-        "IVPN_TABLE=${builtins.toString cfg.ivpnTable}"
-        "MAIN_RULE_PRIORITY=${builtins.toString cfg.mainRulePriority}"
-        "IVPN_RULE_PRIORITY=${builtins.toString cfg.ivpnRulePriority}"
+        "IVPN_TABLE=${toString cfg.ivpnTable}"
+        "MAIN_RULE_PRIORITY=${toString cfg.mainRulePriority}"
+        "IVPN_RULE_PRIORITY=${toString cfg.ivpnRulePriority}"
         "IVPN_IFACE=${cfg.ivpnIface}"
         "IVPN_IFACES=${lib.concatStringsSep "," cfg.ivpnIfaces}"
       ];

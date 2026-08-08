@@ -5,7 +5,7 @@
 }:
 let
   cfg = config.services.ivpnCustom;
-  proxyPort = builtins.toString cfg.proxyPort;
+  proxyPort = toString cfg.proxyPort;
   squidProxy = "http://127.0.0.1:${proxyPort}";
   squidConfigText =
     builtins.replaceStrings [ "@IVPN_MARK@" "@PROXY_PORT@" ] [ cfg.ivpnMark proxyPort ]
