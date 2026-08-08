@@ -1,44 +1,49 @@
-jail-nix:
-pkgs:
+jail-nix: pkgs:
 jail-nix.lib.extend {
   inherit pkgs;
-  basePermissions = combinators: with combinators; [
-    base
-    (ro-bind "${pkgs.coreutils}/bin/env" "/usr/bin/env")
-    (add-path "/usr/bin")
-    (fwd-env "COLORTERM")
-    (fwd-env "LOCALE_ARCHIVE")
-    (readonly (noescape ''"$LOCALE_ARCHIVE"''))
-    bind-nix-store-runtime-closure
-    fake-passwd
-  ];
-  additionalCombinators = combinators: with combinators; {
-    network = { hostname }: compose [
-      (set-hostname hostname)
-      network
-      (try-fwd-env "all_proxy")
-      (try-fwd-env "ftp_proxy")
-      (try-fwd-env "http_proxy")
-      (try-fwd-env "https_proxy")
-      (try-fwd-env "no_proxy")
-      (try-fwd-env "rsync_proxy")
+  basePermissions =
+    combinators: with combinators; [
+      base
+      (ro-bind "${pkgs.coreutils}/bin/env" "/usr/bin/env")
+      (add-path "/usr/bin")
+      (fwd-env "COLORTERM")
+      (fwd-env "LOCALE_ARCHIVE")
+      (readonly (noescape ''"$LOCALE_ARCHIVE"''))
+      bind-nix-store-runtime-closure
+      fake-passwd
     ];
-    readonly-paths-from-var = var: separator:
-      let runtime-var = "RUNTIME_READONLY_${var}"; in
-      assert pkgs.lib.isValidPosixName var;
-      include-once "readonly-paths-from-var-${var}" (compose [
-        (add-runtime ''
-         ${runtime-var}=()
-         IFS=${pkgs.lib.escapeShellArg separator} read -ra DIRS <<< "''${${var}-}"
-         for DIR in "''${DIRS[@]}"; do
-           if [ -e "$DIR" ]; then
-             P="$(realpath "$DIR")"
-             ${runtime-var}+=(--ro-bind "$P" "$P")
-           fi
-         done
-         '')
-        (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
-      ])
-    ;
-  };
+  additionalCombinators =
+    combinators: with combinators; {
+      network =
+        { hostname }:
+        compose [
+          (set-hostname hostname)
+          network
+          (try-fwd-env "all_proxy")
+          (try-fwd-env "ftp_proxy")
+          (try-fwd-env "http_proxy")
+          (try-fwd-env "https_proxy")
+          (try-fwd-env "no_proxy")
+          (try-fwd-env "rsync_proxy")
+        ];
+      readonly-paths-from-var =
+        var: separator:
+        let
+          runtime-var = "RUNTIME_READONLY_${var}";
+        in
+        assert pkgs.lib.isValidPosixName var;
+        include-once "readonly-paths-from-var-${var}" (compose [
+          (add-runtime ''
+            ${runtime-var}=()
+            IFS=${pkgs.lib.escapeShellArg separator} read -ra DIRS <<< "''${${var}-}"
+            for DIR in "''${DIRS[@]}"; do
+              if [ -e "$DIR" ]; then
+                P="$(realpath "$DIR")"
+                ${runtime-var}+=(--ro-bind "$P" "$P")
+              fi
+            done
+          '')
+          (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
+        ]);
+    };
 }

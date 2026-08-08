@@ -1,25 +1,33 @@
-{ config, pkgs, osConfig, jail, ... }:
+{
+  config,
+  pkgs,
+  osConfig,
+  jail,
+  ...
+}:
 let
-  opencode-sandbox = jail pkgs "opencode" pkgs.opencode (combinators: with combinators; [
-    (network { hostname = osConfig.networking.hostName; })
-    no-new-session
-    (fwd-env "EDITOR")
+  opencode-sandbox = jail pkgs "opencode" pkgs.opencode (
+    combinators: with combinators; [
+      (network { hostname = osConfig.networking.hostName; })
+      no-new-session
+      (fwd-env "EDITOR")
 
-    (readonly (noescape "~/.config/opencode"))
-    # (readonly (noescape "~/.config/git"))
+      (readonly (noescape "~/.config/opencode"))
+      # (readonly (noescape "~/.config/git"))
 
-    (readwrite (noescape "~/.local/share/opencode"))
-    (readwrite (noescape "~/.local/state/opencode"))
-    (readwrite (noescape "~/.cache/opencode"))
+      (readwrite (noescape "~/.local/share/opencode"))
+      (readwrite (noescape "~/.local/state/opencode"))
+      (readwrite (noescape "~/.cache/opencode"))
 
-    (readonly-paths-from-var "ROBIND_DIRS" ":")
-    mount-cwd
+      (readonly-paths-from-var "ROBIND_DIRS" ":")
+      mount-cwd
 
-    (readonly "/nix")
-    (readonly "/etc/nix/nix.conf")
-    (readonly "/run/current-system/sw/")
-    (add-path "/run/current-system/sw/bin/")
-  ]);
+      (readonly "/nix")
+      (readonly "/etc/nix/nix.conf")
+      (readonly "/run/current-system/sw/")
+      (add-path "/run/current-system/sw/bin/")
+    ]
+  );
 in
 {
   programs.opencode = {

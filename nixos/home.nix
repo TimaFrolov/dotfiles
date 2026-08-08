@@ -1,6 +1,9 @@
 { username }:
-{ config, pkgs, ... }:
-
+{
+  config,
+  pkgs,
+  ...
+}:
 {
   imports = [
     package/catppuccin.nix

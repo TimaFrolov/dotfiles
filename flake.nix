@@ -27,58 +27,73 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, nixpkgs-patcher, systems, home-manager, catppuccin, en_RU, jail-nix, ... }:
-    let jail = import ./nixos/lib/jail.nix jail-nix;
-    eachSystem = fn:
-      nixpkgs.lib.genAttrs
-      (import systems)
-      (system: fn system nixpkgs.legacyPackages.${system});
-    nixpkgs-modules = [
-      { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
-      ./nixos/package/options.nix
-    ];
-    home-modules = { username }: [
-      ((import ./nixos/home.nix) { inherit username; })
-      catppuccin.homeModules.catppuccin
-      en_RU.homeModules.default
-    ];
-    common-modules = { users }: nixpkgs-modules ++ [
-      home-manager.nixosModules.home-manager
-      {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit jail; };
-        home-manager.users = nixpkgs.lib.genAttrs users (username: {
-          imports = home-modules { inherit username; };
-        });
-      }
-      catppuccin.nixosModules.catppuccin
-      en_RU.nixosModules.default
-    ];
-    in {
+  outputs =
+    inputs@{
+      nixpkgs,
+      nixpkgs-patcher,
+      systems,
+      home-manager,
+      catppuccin,
+      en_RU,
+      jail-nix,
+      ...
+    }:
+    let
+      jail = import ./nixos/lib/jail.nix jail-nix;
+      eachSystem =
+        fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
+      nixpkgs-modules = [
+        { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
+        ./nixos/package/options.nix
+      ];
+      home-modules = { username }: [
+        ((import ./nixos/home.nix) { inherit username; })
+        catppuccin.homeModules.catppuccin
+        en_RU.homeModules.default
+      ];
+      common-modules =
+        { users }:
+        nixpkgs-modules
+        ++ [
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit jail; };
+            home-manager.users = nixpkgs.lib.genAttrs users (username: {
+              imports = home-modules { inherit username; };
+            });
+          }
+          catppuccin.nixosModules.catppuccin
+          en_RU.nixosModules.default
+        ];
+    in
+    {
       nixosConfigurations = {
         "yoga" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules =
-            [ ./nixos/config/lenovo-yoga/configuration.nix ]
-            ++ common-modules { users = [ "tima" "fima" ]; };
+          modules = [
+            ./nixos/config/lenovo-yoga/configuration.nix
+          ]
+          ++ common-modules {
+            users = [
+              "tima"
+              "fima"
+            ];
+          };
         };
 
         "desktop" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules =
-            [ ./nixos/config/desktop/configuration.nix ]
-            ++ common-modules { users = [ "tima" ]; };
+          modules = [ ./nixos/config/desktop/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
         };
 
         "NB-9472" = nixpkgs-patcher.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = inputs;
-          modules =
-            [ ./nixos/config/kvadra/configuration.nix ]
-            ++ common-modules { users = [ "tima" ]; };
+          modules = [ ./nixos/config/kvadra/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
         };
       };
 

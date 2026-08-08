@@ -1,29 +1,33 @@
-{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../bundle/core.nix
-      ../../bundle/desktop.nix
-      ../../bundle/intel-video.nix
-      ../../bundle/disk-utils.nix
-      ../../bundle/utils.nix
-      ../../bundle/net-utils.nix
-      ../../bundle/dev.nix
-      ../../bundle/dev-latex.nix
-      ../../bundle/dev-ocaml.nix
-      ../../bundle/dev-c.nix
-      ../../bundle/dev-embedded.nix
-      ../../bundle/dev-python.nix
-      ../../package/vscode.nix
-      ../../package/opencl.nix
-      ../../package/ivpn/ivpn.nix
-      ../../bundle/dev-asm.nix
-      ../../bundle/profiling.nix
-      ../../bundle/net-extra.nix
-      ../../package/keychron.nix
-      ../../bundle/dev-rust.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../bundle/core.nix
+    ../../bundle/desktop.nix
+    ../../bundle/intel-video.nix
+    ../../bundle/disk-utils.nix
+    ../../bundle/utils.nix
+    ../../bundle/net-utils.nix
+    ../../bundle/dev.nix
+    ../../bundle/dev-latex.nix
+    ../../bundle/dev-ocaml.nix
+    ../../bundle/dev-c.nix
+    ../../bundle/dev-embedded.nix
+    ../../bundle/dev-python.nix
+    ../../package/vscode.nix
+    ../../package/opencl.nix
+    ../../package/ivpn/ivpn.nix
+    ../../bundle/dev-asm.nix
+    ../../bundle/profiling.nix
+    ../../bundle/net-extra.nix
+    ../../package/keychron.nix
+    ../../bundle/dev-rust.nix
+  ];
 
   tima.laptop = true;
 

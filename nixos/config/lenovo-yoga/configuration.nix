@@ -1,35 +1,39 @@
-{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      ./hardware-configuration.nix
-      ../../bundle/core.nix
-      ../../bundle/desktop.nix
-      ../../bundle/intel-video.nix
-      ../../bundle/disk-utils.nix
-      ../../bundle/utils.nix
-      ../../bundle/net-utils.nix
-      ../../bundle/dev.nix
-      ../../bundle/dev-latex.nix
-      ../../bundle/dev-ocaml.nix
-      ../../bundle/dev-c.nix
-      ../../bundle/dev-rust.nix
-      ../../bundle/dev-embedded.nix
-      ../../bundle/dev-python.nix
-      ../../bundle/dev-go.nix
-      ../../package/vscode.nix
-      ../../bundle/virtualisation.nix
-      ../../bundle/games.nix
-      ../../bundle/crypto-currency.nix
-      ../../package/opencl.nix
-      ../../package/ivpn/ivpn.nix
-      ../../bundle/dev-asm.nix
-      ../../bundle/thunderbolt-utils.nix
-      ../../bundle/profiling.nix
-      ../../package/keychron.nix
-      ../../bundle/net-extra.nix
-      ../../package/curseforge.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ./hardware-configuration.nix
+    ../../bundle/core.nix
+    ../../bundle/desktop.nix
+    ../../bundle/intel-video.nix
+    ../../bundle/disk-utils.nix
+    ../../bundle/utils.nix
+    ../../bundle/net-utils.nix
+    ../../bundle/dev.nix
+    ../../bundle/dev-latex.nix
+    ../../bundle/dev-ocaml.nix
+    ../../bundle/dev-c.nix
+    ../../bundle/dev-rust.nix
+    ../../bundle/dev-embedded.nix
+    ../../bundle/dev-python.nix
+    ../../bundle/dev-go.nix
+    ../../package/vscode.nix
+    ../../bundle/virtualisation.nix
+    ../../bundle/games.nix
+    ../../bundle/crypto-currency.nix
+    ../../package/opencl.nix
+    ../../package/ivpn/ivpn.nix
+    ../../bundle/dev-asm.nix
+    ../../bundle/thunderbolt-utils.nix
+    ../../bundle/profiling.nix
+    ../../package/keychron.nix
+    ../../bundle/net-extra.nix
+    ../../package/curseforge.nix
+  ];
 
   tima.laptop = true;
 
@@ -74,7 +78,10 @@
 
   users.users.fima = {
     isNormalUser = true;
-    extraGroups = [ "networkmanager" "video" ];
+    extraGroups = [
+      "networkmanager"
+      "video"
+    ];
     shell = pkgs.zsh;
   };
 }

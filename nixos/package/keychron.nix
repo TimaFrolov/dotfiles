@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   services.udev.extraRules = ''
     SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3434", MODE:="0660", GROUP="input", TAG+="uaccess"

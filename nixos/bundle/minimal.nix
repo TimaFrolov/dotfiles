@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   boot.loader.systemd-boot = {
     enable = true;
@@ -18,7 +23,11 @@
   nix.settings.trusted-users = [ "tima" ];
   users.users.tima = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" "video" ];
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "video"
+    ];
   };
 
   environment.systemPackages = with pkgs; [
@@ -36,5 +45,8 @@
 
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 }

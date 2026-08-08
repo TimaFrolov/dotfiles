@@ -1,4 +1,9 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 let
   cfg = config.services.ivpnCustom;
 in
@@ -46,7 +51,10 @@ in
 
     ivpnIfaces = lib.mkOption {
       type = with lib.types; listOf str;
-      default = [ "wgivpn" "tun0" ];
+      default = [
+        "wgivpn"
+        "tun0"
+      ];
     };
 
     asns = lib.mkOption {
@@ -54,11 +62,11 @@ in
       default = [
         "AS-CLOUDFLARE"
         "AS-TELEGRAM"
-        "AS44907"       # Telegram
-        "AS211157"      # Telegram
-        "AS19527"       # Google Cloud
+        "AS44907" # Telegram
+        "AS211157" # Telegram
+        "AS19527" # Google Cloud
         "AS-GCORE"
-        "AS16276"       # OVH
+        "AS16276" # OVH
         "AS-HETZNER"
       ];
     };
@@ -73,9 +81,20 @@ in
     systemd.services.ivpn-nft = {
       description = "Query IRR and load IVPN nftables rules";
       wantedBy = [ "multi-user.target" ];
-      wants = [ "network-online.target" "nftables.service" ];
-      after = [ "network-online.target" "nftables.service" ];
-      path = with pkgs; [ bgpq4 nftables iprange bash ];
+      wants = [
+        "network-online.target"
+        "nftables.service"
+      ];
+      after = [
+        "network-online.target"
+        "nftables.service"
+      ];
+      path = with pkgs; [
+        bgpq4
+        nftables
+        iprange
+        bash
+      ];
       environment = {
         ASN_LIST = lib.concatStringsSep "," cfg.asns;
         IVPN_MARK = cfg.ivpnMark;

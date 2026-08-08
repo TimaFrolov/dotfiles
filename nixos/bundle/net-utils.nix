@@ -1,9 +1,13 @@
-{ config, lib, pkgs, ... }:
 {
-  imports =
-    [
-      ../package/nethogs.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}:
+{
+  imports = [
+    ../package/nethogs.nix
+  ];
 
   environment.systemPackages = with pkgs; [
     inetutils

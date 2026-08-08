@@ -1,4 +1,8 @@
-{ config, lib, ... }:
+{
+  config,
+  lib,
+  ...
+}:
 {
   options.tima = {
     laptop = lib.mkEnableOption "laptop mode";

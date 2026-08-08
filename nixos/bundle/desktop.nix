@@ -1,5 +1,9 @@
-{ config, lib, pkgs, ... }:
-
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 {
   programs.sway.enable = true;
   programs.hyprland.enable = true;
@@ -62,11 +66,10 @@
     obsidian
     brightnessctl
   ];
-  imports =
-    [
+  imports = [
     ../package/wshowkeys.nix
     ../package/catppuccin.nix
-    ];
+  ];
 
   xdg.mime.defaultApplications = {
     "application/pdf" = "org.pwmt.zathura.desktop";
