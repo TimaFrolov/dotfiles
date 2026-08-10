@@ -98,6 +98,7 @@ in
       environment = {
         ASN_LIST = lib.concatStringsSep "," cfg.asns;
         IVPN_MARK = cfg.ivpnMark;
+        CHECKED_MARK = "0x01";
       };
       serviceConfig = {
         Type = "oneshot";

@@ -3,6 +3,14 @@ set -euo pipefail
 
 ASN_LIST="${ASN_LIST:?ASN_LIST is required}"
 MARK="${IVPN_MARK:?IVPN_MARK is required}"
+CHECKED="${CHECKED_MARK:?CHECKED_MARK is required}"
+
+RESTORE_MASK=$(printf '0x%02x' $((0xff ^ CHECKED)))
+
+if (( (MARK & CHECKED) != 0 )); then
+  echo "IVPN_MARK ($MARK) collides with CHECKED_MARK bit $CHECKED" >&2
+  exit 1
+fi
 
 IFS=',' read -r -a ASNS <<< "$ASN_LIST"
 
@@ -29,7 +37,10 @@ SET_ELEMENTS="$(bgpq4 -4 -F "%n/%l\n" "${ASNS[@]}" | \
   echo ""
   echo "  chain output {"
   echo "    type route hook output priority mangle; policy accept;"
-  echo "    ip daddr @ivpn4 meta mark set $MARK"
+  echo "    ct mark & $CHECKED != 0 meta mark set ct mark & $RESTORE_MASK accept"
+  echo "    meta mark $MARK ct mark set $MARK | $CHECKED accept"
+  echo "    ip daddr @ivpn4 meta mark set $MARK ct mark set $MARK | $CHECKED accept"
+  echo "    ct mark set $CHECKED"
   echo "  }"
   echo ""
   echo "  chain postrouting {"
