@@ -38,6 +38,7 @@
     man-pages
     tree
     psmisc
+    nvd
   ];
 
   documentation.dev.enable = true;
