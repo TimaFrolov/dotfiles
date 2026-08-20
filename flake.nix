@@ -21,10 +21,6 @@
       inputs.home-manager.follows = "home-manager";
     };
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
-    nixpkgs-patch-ivpn-v3-15-13 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/542306.diff";
-      flake = false;
-    };
   };
 
   outputs =
