@@ -25,6 +25,7 @@
 
   outputs =
     inputs@{
+      self,
       nixpkgs,
       nixpkgs-patcher,
       systems,
@@ -106,7 +107,7 @@
                 done
                 touch "$out"
               '';
-          nixfmt = pkgs.runCommand "nixfmt-check" { nativeBuildInputs = [ pkgs.nixfmt-tree ]; } ''
+          nixfmt = pkgs.runCommand "nixfmt-check" { nativeBuildInputs = [ self.formatter.${system} ]; } ''
             set -euo pipefail
             cp -r "${./.}" work
             chmod -R u+w work
