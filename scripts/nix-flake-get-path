@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+nix eval --expr "(builtins.getFlake (toString ./.))" --apply "flake: flake.inputs.$1.outPath" --raw --impure
