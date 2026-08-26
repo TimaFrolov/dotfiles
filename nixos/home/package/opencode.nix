@@ -13,10 +13,14 @@ let
 
       (readonly (noescape "~/.config/opencode"))
       # (readonly (noescape "~/.config/git"))
+      (persist "opencode" (noescape "~/.config/gh"))
+      (persist "opencode" (noescape "~/.config/git"))
 
       (readwrite (noescape "~/.local/share/opencode"))
       (readwrite (noescape "~/.local/state/opencode"))
       (readwrite (noescape "~/.cache/opencode"))
+      (readwrite (noescape "~/.local/share/uv"))
+      (readwrite (noescape "~/.cache/uv"))
 
       (readonly-paths-from-var "ROBIND_DIRS" ":")
       mount-cwd
@@ -63,6 +67,11 @@ in
           "git pr view *" = "allow";
           "git remote -v" = "allow";
           "gh pr list *" = "allow";
+          "gh run view *" = "allow";
+          "gh run list *" = "allow";
+          "gh run watch *" = "allow";
+          "gh api *" = "allow";
+          "gh auth status" = "allow";
           "nix *" = "allow";
           "uv *" = "allow";
           "find *" = "allow";
@@ -85,6 +94,8 @@ in
           "awk *" = "allow";
           "jq *" = "allow";
           "cut *" = "allow";
+          "sleep *" = "allow";
+          "read *" = "allow";
           "home-manager *" = "allow";
           "*" = "ask";
         };

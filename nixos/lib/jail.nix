@@ -1,4 +1,7 @@
 jail-nix: pkgs:
+let
+  helpers = import "${jail-nix}/lib/helpers.nix" pkgs;
+in
 jail-nix.lib.extend {
   inherit pkgs;
   basePermissions =
@@ -36,14 +39,22 @@ jail-nix.lib.extend {
           (add-runtime ''
             ${runtime-var}=()
             IFS=${pkgs.lib.escapeShellArg separator} read -ra DIRS <<< "''${${var}-}"
-            for DIR in "''${DIRS[@]}"; do
-              if [ -e "$DIR" ]; then
-                P="$(realpath "$DIR")"
+            if ((''${#DIRS[@]})); then
+              while IFS= read -r -d ''' P; do
                 ${runtime-var}+=(--ro-bind "$P" "$P")
-              fi
-            done
+              done < <(realpath -ezq -- "''${DIRS[@]}")
+            fi
           '')
           (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
         ]);
+      persist =
+        name: path:
+        let
+          realPath = helpers.dataDirSubPath "persistent/${name}/${escape path}";
+        in
+        compose [
+          (add-runtime "mkdir -p ${realPath}")
+          (rw-bind (noescape realPath) path)
+        ];
     };
 }
