@@ -1,5 +1,6 @@
 {
   pkgs,
+  config,
   ...
 }:
 {
@@ -18,7 +19,7 @@
     memoryPercent = 100;
   };
 
-  services.tlp.enable = true;
+  services.tlp.enable = config.tima.laptop;
 
   environment.systemPackages = with pkgs; [
     btop
