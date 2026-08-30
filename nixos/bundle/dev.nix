@@ -22,6 +22,7 @@
     prettierd
     nixd
     bubblewrap
+    nixfmt
   ];
 
   programs.direnv = {
