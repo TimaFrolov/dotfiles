@@ -7,3 +7,5 @@
 [submodule ".zsh/catppuccin"]
 	path = .zsh/catppuccin
 	url = https://github.com/catppuccin/zsh-syntax-highlighting.git
+[submodule "secrets"]
+	path = secrets

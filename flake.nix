@@ -21,6 +21,18 @@
       inputs.home-manager.follows = "home-manager";
     };
     jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.darwin.follows = "";
+      inputs.home-manager.follows = "home-manager";
+      inputs.systems.follows = "systems";
+    };
+    self.submodules = true;
+    secrets = {
+      url = ./secrets;
+      flake = false;
+    };
   };
 
   outputs =

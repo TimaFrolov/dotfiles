@@ -1,5 +1,32 @@
 {
   "nodes": {
+    "agenix": {
+      "inputs": {
+        "darwin": [],
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "systems": [
+          "systems"
+        ]
+      },
+      "locked": {
+        "lastModified": 1770165109,
+        "narHash": "sha256-9VnK6Oqai65puVJ4WYtCTvlJeXxMzAp/69HhQuTdl/I=",
+        "owner": "ryantm",
+        "repo": "agenix",
+        "rev": "b027ee29d959fda4b60b57566d64c98a202e0feb",
+        "type": "github"
+      },
+      "original": {
+        "owner": "ryantm",
+        "repo": "agenix",
+        "type": "github"
+      }
+    },
     "catppuccin": {
       "inputs": {
         "nixpkgs": [
@@ -127,15 +154,29 @@
     },
     "root": {
       "inputs": {
+        "agenix": "agenix",
         "catppuccin": "catppuccin",
         "en_RU": "en_RU",
         "home-manager": "home-manager",
         "jail-nix": "jail-nix",
         "nixpkgs": "nixpkgs",
         "nixpkgs-patcher": "nixpkgs-patcher",
+        "secrets": "secrets",
         "systems": "systems",
         "waybar": "waybar"
       }
+    },
+    "secrets": {
+      "flake": false,
+      "locked": {
+        "path": "secrets",
+        "type": "path"
+      },
+      "original": {
+        "path": "secrets",
+        "type": "path"
+      },
+      "parent": []
     },
     "systems": {
       "locked": {

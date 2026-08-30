@@ -2,6 +2,8 @@
 {
   lib,
   osConfig,
+  pkgs,
+  inputs,
   ...
 }:
 {
@@ -21,4 +23,8 @@
     enable = true;
     flake = "/home/${username}/dotfiles";
   };
+
+  home.packages = [
+    inputs.agenix.packages.${pkgs.system}.default
+  ];
 }
