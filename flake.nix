@@ -30,7 +30,6 @@
       nixpkgs-patcher,
       systems,
       home-manager,
-      catppuccin,
       en_RU,
       jail-nix,
       ...
@@ -45,7 +44,6 @@
       ];
       home-modules = { username }: [
         ((import ./nixos/home.nix) { inherit username; })
-        catppuccin.homeModules.catppuccin
         en_RU.homeModules.default
       ];
       common-modules =
@@ -56,20 +54,26 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit jail; };
+            home-manager.extraSpecialArgs = { inherit jail inputs; };
             home-manager.users = nixpkgs.lib.genAttrs users (username: {
               imports = home-modules { inherit username; };
             });
           }
-          catppuccin.nixosModules.catppuccin
           en_RU.nixosModules.default
         ];
+      nixosSystem =
+        attrs:
+        nixpkgs-patcher.lib.nixosSystem (
+          {
+            specialArgs = { inherit inputs; };
+            nixpkgsPatcher.inputs = inputs;
+          }
+          // attrs
+        );
     in
     {
       nixosConfigurations = {
-        "yoga" = nixpkgs-patcher.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = inputs;
+        "yoga" = nixosSystem {
           modules = [
             ./nixos/config/lenovo-yoga/configuration.nix
           ]
@@ -81,15 +85,11 @@
           };
         };
 
-        "desktop" = nixpkgs-patcher.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = inputs;
+        "desktop" = nixosSystem {
           modules = [ ./nixos/config/desktop/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
         };
 
-        "NB-9472" = nixpkgs-patcher.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = inputs;
+        "NB-9472" = nixosSystem {
           modules = [ ./nixos/config/kvadra/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
         };
       };

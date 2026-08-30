@@ -1,8 +1,15 @@
 {
   pkgs,
+  inputs,
   ...
 }:
 {
+  imports = [
+    ../package/wshowkeys.nix
+    ../package/catppuccin.nix
+    inputs.catppuccin.nixosModules.catppuccin
+  ];
+
   programs.sway.enable = true;
   programs.hyprland.enable = true;
 
@@ -63,10 +70,6 @@
     sway-audio-idle-inhibit
     obsidian
     brightnessctl
-  ];
-  imports = [
-    ../package/wshowkeys.nix
-    ../package/catppuccin.nix
   ];
 
   xdg.mime.defaultApplications = {

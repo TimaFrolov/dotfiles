@@ -1,13 +1,14 @@
 { username }:
 {
+  lib,
+  osConfig,
   ...
 }:
 {
   imports = [
-    package/catppuccin.nix
     home/package/opencode.nix
-    home/bundle/desktop.nix
-  ];
+  ]
+  ++ lib.optional osConfig.hardware.graphics.enable home/bundle/desktop.nix;
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
