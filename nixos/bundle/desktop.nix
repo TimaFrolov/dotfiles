@@ -10,7 +10,6 @@
     inputs.catppuccin.nixosModules.catppuccin
   ];
 
-  programs.sway.enable = true;
   programs.hyprland.enable = true;
 
   services.printing = {
