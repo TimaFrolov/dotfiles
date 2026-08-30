@@ -44,11 +44,10 @@
         port = 22;
       }
     ];
+    openFirewall = true;
   };
 
   systemd.services.sshd.unitConfig.StartLimitIntervalSec = 0;
-
-  networking.firewall.allowedTCPPorts = [ 22 ];
 
   # services.tlp.settings = {
   #   CPU_ENERGY_PERF_POLICY_ON_AC = "balance_power";

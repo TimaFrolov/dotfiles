@@ -73,15 +73,9 @@
 
   services.openssh = {
     enable = true;
-    listenAddresses = [
-      {
-        addr = "192.168.1.5";
-        port = 22;
-      }
-    ];
+    openFirewall = true;
   };
 
   systemd.services.sshd.unitConfig.StartLimitIntervalSec = 0;
 
-  networking.firewall.allowedTCPPorts = [ 22 ];
 }
