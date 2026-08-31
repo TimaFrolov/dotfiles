@@ -85,5 +85,7 @@
     nerd-fonts.jetbrains-mono
   ];
 
+  users.users.tima.extraGroups = [ "video" ];
+
   catppuccin.tty.enable = false;
 }
