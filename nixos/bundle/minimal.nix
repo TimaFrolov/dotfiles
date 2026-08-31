@@ -42,6 +42,7 @@
   ];
 
   documentation.dev.enable = true;
+  documentation.man.cache.enable = true;
 
   services.logind.settings.Login.HandlePowerKey = "suspend";
 
