@@ -5,7 +5,7 @@ NixOS dotfiles managed via a single Nix flake with home-manager.
 ## Key commands
 
 - `nix flake check ~/dotfiles` — validate all configurations (no sudo needed)
-- `nixos-rebuild --flake ~/dotfiles --sudo switch` — apply changes to the running system
+- `nh os switch` — apply changes to the running system
 - New files must be `git add`'d before Nix can access them (flake evaluates only tracked files)
 
 ## Structure
