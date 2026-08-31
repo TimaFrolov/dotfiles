@@ -71,7 +71,7 @@ in
           "gh run list *" = "allow";
           "gh run watch *" = "allow";
           "gh api *" = "allow";
-          "gh auth status" = "allow";
+          "gh auth status *" = "allow";
           "nix *" = "allow";
           "uv *" = "allow";
           "find *" = "allow";
@@ -94,8 +94,10 @@ in
           "awk *" = "allow";
           "jq *" = "allow";
           "cut *" = "allow";
+          "base64 *" = "allow";
           "sleep *" = "allow";
           "read *" = "allow";
+          "test *" = "allow";
           "home-manager *" = "allow";
           "*" = "ask";
         };
