@@ -8,6 +8,13 @@ telescope.setup(
       live_grep = {
         additional_args = { '--hidden', '--glob=!.git' },
       },
+      buffers = {
+        mappings = {
+          n = {
+            ['<C-x>'] = require('telescope.actions').delete_buffer,
+          },
+        },
+      },
     },
     extensions = {
       fzf = {
