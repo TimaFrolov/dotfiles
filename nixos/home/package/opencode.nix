@@ -97,8 +97,10 @@ in
           "base64 *" = "allow";
           "sed *" = "allow";
           "sleep *" = "allow";
+          "date *" = "allow";
           "read *" = "allow";
           "test *" = "allow";
+          "break *" = "allow";
           "home-manager *" = "allow";
           "*" = "ask";
         };
