@@ -95,6 +95,7 @@ in
           "jq *" = "allow";
           "cut *" = "allow";
           "base64 *" = "allow";
+          "sed *" = "allow";
           "sleep *" = "allow";
           "read *" = "allow";
           "test *" = "allow";
