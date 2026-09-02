@@ -101,6 +101,7 @@ in
           "read *" = "allow";
           "test *" = "allow";
           "break *" = "allow";
+          "mktemp *" = "allow";
           "home-manager *" = "allow";
           "*" = "ask";
         };
