@@ -19,8 +19,8 @@ let
       (readwrite (noescape "~/.local/share/opencode"))
       (readwrite (noescape "~/.local/state/opencode"))
       (readwrite (noescape "~/.cache/opencode"))
-      (readwrite (noescape "~/.local/share/uv"))
-      (readwrite (noescape "~/.cache/uv"))
+      (create-readwrite (noescape "~/.local/share/uv"))
+      (create-readwrite (noescape "~/.cache/uv"))
 
       (readonly-paths-from-var "ROBIND_DIRS" ":")
       mount-cwd

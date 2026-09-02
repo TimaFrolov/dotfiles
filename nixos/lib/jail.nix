@@ -56,5 +56,11 @@ jail-nix.lib.extend {
           (add-runtime "mkdir -p ${realPath}")
           (rw-bind (noescape realPath) path)
         ];
+      create-readwrite =
+        path:
+        compose [
+          (add-runtime "mkdir -p ${escape path}")
+          (readwrite path)
+        ];
     };
 }
