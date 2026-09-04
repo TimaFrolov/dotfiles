@@ -26,7 +26,8 @@ let
       mount-cwd
 
       (readonly "/nix")
-      (readonly "/etc/nix/nix.conf")
+      (readonly "/etc/nix")
+      (readonly "/etc/static/nix")
       (readonly "/run/current-system/sw/")
       (add-path "/run/current-system/sw/bin/")
     ]
