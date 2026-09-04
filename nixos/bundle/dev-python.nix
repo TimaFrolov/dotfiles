@@ -16,4 +16,6 @@
     ))
     uv
   ];
+
+  programs.nix-ld.enable = true;
 }
