@@ -97,6 +97,7 @@ in
           "cut *" = "allow";
           "base64 *" = "allow";
           "sed *" = "allow";
+          "tr *" = "allow";
           "sleep *" = "allow";
           "date *" = "allow";
           "read *" = "allow";
