@@ -61,4 +61,6 @@
     bypassWorkqueues = true;
     allowDiscards = true;
   };
+
+  services.logind.settings.Login.HandleLidSwitch = "lock";
 }
