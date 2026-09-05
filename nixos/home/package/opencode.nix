@@ -1,12 +1,15 @@
 {
   pkgs,
+  lib,
   osConfig,
   jail,
   ...
 }:
 let
   opencode-sandbox = jail pkgs "opencode" pkgs.opencode (
-    combinators: with combinators; [
+    combinators:
+    with combinators;
+    [
       (network { hostname = osConfig.networking.hostName; })
       no-new-session
       (fwd-env "EDITOR")
@@ -31,6 +34,7 @@ let
       (readonly "/run/current-system/sw/")
       (add-path "/run/current-system/sw/bin/")
     ]
+    ++ lib.optional osConfig.programs.nix-ld.enable (readonly "/lib64")
   );
 in
 {
