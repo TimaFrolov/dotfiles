@@ -1,7 +1,7 @@
 return {
   {
     'nvim-treesitter/nvim-treesitter',
-    keys = require('tima.mappings.treesitter').lazy,
+    keys = require('tima.mappings.treesitter'),
     event = { 'BufReadPre', 'BufNewFile' },
     build = ':TSUpdate',
     config = function() require('tima.configs.treesitter') end,

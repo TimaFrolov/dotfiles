@@ -7,6 +7,11 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
+    };
     catppuccin = {
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,6 +49,7 @@
       home-manager,
       en_RU,
       jail-nix,
+      nixvim,
       ...
     }:
     let
@@ -57,6 +63,8 @@
       home-modules = { username }: [
         ((import ./nixos/home.nix) { inherit username; })
         en_RU.homeModules.default
+        nixvim.homeModules.default
+        { programs.nixvim.nixpkgs.source = nixpkgs; }
       ];
       common-modules =
         { users }:
