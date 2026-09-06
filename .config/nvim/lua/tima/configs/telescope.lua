@@ -3,10 +3,10 @@ telescope.setup(
   {
     pickers = {
       find_files = {
-        find_command = { "rg", "--files", "--color", "never", "--hidden", "--glob=!.git" },
+        find_command = { "rg", "--files", "--color", "never", "--hidden", "--glob=!.git", "--follow" },
       },
       live_grep = {
-        additional_args = { '--hidden', '--glob=!.git' },
+        additional_args = { '--hidden', '--glob=!.git', '--follow' },
       },
       buffers = {
         mappings = {
@@ -30,6 +30,7 @@ telescope.setup(
         hijack_netrw = true,
         hidden = { file_browser = true, folder_browser = true },
         respect_gitignore = false,
+        follow_symlinks = true,
       }
     }
   }
