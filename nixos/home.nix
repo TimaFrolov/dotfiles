@@ -9,6 +9,7 @@
 {
   imports = [
     home/package/opencode.nix
+    home/package/tmux.nix
   ]
   ++ lib.optional osConfig.hardware.graphics.enable home/bundle/desktop.nix;
 
