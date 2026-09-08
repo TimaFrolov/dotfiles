@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+pick()
+{
+    if [[ -z "$1" ]]; then
+        echo "$(list_all | fzf-tmux -p)"
+    else
+        echo "$(list_all | fzf --filter "$1" | head -n 1)"
+    fi
+}
+
+list_all()
+{
+    hyprctl monitors -j | jq -r '.[] | .name'
+}
+
+move()
+{
+    hyprctl dispatch "hl.dsp.workspace.move({monitor='$(pick $@)'})"
+}
+
+move $@
