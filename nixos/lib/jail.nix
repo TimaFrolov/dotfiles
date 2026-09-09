@@ -62,5 +62,17 @@ jail-nix.lib.extend {
           (add-runtime "mkdir -p ${escape path}")
           (readwrite path)
         ];
+      runtime-args = include-once "runtime-args" (compose [
+        (add-runtime ''
+          for arg in "$@"; do
+            if [[ "$arg" = "--" ]]; then
+              shift
+              break
+            fi
+            RUNTIME_ARGS+=("$arg")
+            shift
+          done
+        '')
+      ]);
     };
 }

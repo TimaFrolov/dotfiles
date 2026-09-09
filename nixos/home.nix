@@ -11,6 +11,7 @@
     home/package/opencode.nix
     home/package/tmux.nix
     home/nvim
+    home/package/jail.nix
   ]
   ++ lib.optional osConfig.hardware.graphics.enable home/bundle/desktop.nix;
 

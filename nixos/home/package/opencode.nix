@@ -32,7 +32,7 @@ let
       (readonly "/etc/nix")
       (readonly "/etc/static/nix")
       (readonly "/run/current-system/sw/")
-      (add-path "/run/current-system/sw/bin/")
+      (add-path "/run/current-system/sw/bin")
     ]
     ++ lib.optional osConfig.programs.nix-ld.enable (readonly "/lib64")
   );
