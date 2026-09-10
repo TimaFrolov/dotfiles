@@ -8,6 +8,7 @@ local fmta = require('luasnip.extras.fmt').fmta
 
 luasnip.config.setup({
   enable_autosnippets = true,
+  ft_func = require('luasnip.extras.filetype_functions').from_cursor_pos,
 })
 
 local math_nodes = {
@@ -25,7 +26,9 @@ local text_nodes = {
 local function is_math_mode(_, _, _)
   local pos = vim.api.nvim_win_get_cursor(0)
   local row, col = pos[1] - 1, pos[2]
-  local node = vim.treesitter.get_parser(0, 'latex')
+  local node =
+      vim.treesitter.get_node({ ignore_injections = false })
+      or vim.treesitter.get_parser(0)
       :parse({ row, col, row, col })[1]
       :root()
       :named_descendant_for_range(row, col, row, col)
@@ -76,13 +79,13 @@ luasnip.add_snippets('tex', {
       }
     )
   ),
-  s([[m]], fmta([[$<>$<>]], {i(1), i(0)})),
+  s([[m]], fmta([[$<>$<>]], { i(1), i(0) })),
 })
 
 luasnip.add_snippets('tex', {
-  s({ trig = [[biglor]], show_condition = is_math_mode }, fmta([[\bigvee_{<>}<>]], {i(1), i(0)})),
-  s({ trig = [[bigand]], show_condition = is_math_mode }, fmta([[\bigwedge_{<>}<>]], {i(1), i(0)})),
-  s({ trig = [[\{]], show_condition = is_math_mode }, fmta([[\{<>\}<>]], {i(1), i(0)})),
+  s({ trig = [[biglor]], show_condition = is_math_mode }, fmta([[\bigvee_{<>}<>]], { i(1), i(0) })),
+  s({ trig = [[bigand]], show_condition = is_math_mode }, fmta([[\bigwedge_{<>}<>]], { i(1), i(0) })),
+  s({ trig = [[\{]], show_condition = is_math_mode }, fmta([[\{<>\}<>]], { i(1), i(0) })),
 })
 
 luasnip.add_snippets('tex', {
