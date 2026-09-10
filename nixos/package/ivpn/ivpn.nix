@@ -68,6 +68,7 @@ in
         "AS-GCORE"
         "AS16276" # OVH
         "AS-HETZNER"
+        "AS-AMAZON"
       ];
     };
   };
