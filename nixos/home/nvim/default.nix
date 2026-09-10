@@ -37,7 +37,7 @@
     recursive = true;
   };
   home.file.".config/nvim/after" = {
-    source = ../../../.config/nvim/lua;
+    source = ../../../.config/nvim/after;
     recursive = true;
   };
 }
