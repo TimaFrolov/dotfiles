@@ -17,7 +17,7 @@
       settings.defaults.lazy = true;
       plugins =
         let
-          vimPlugins = import ./pkgs.nix { inherit pkgs lib; };
+          vimPlugins = import ./pkgs.nix pkgs;
           plugins = (builtins.attrNames (builtins.readDir ./plugins));
           processPlugin = plugin: plugin // lib.optionalAttrs (plugin ? keys) { keys.__raw = plugin.keys; };
           processPlugins =

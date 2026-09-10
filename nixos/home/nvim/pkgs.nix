@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+pkgs:
 pkgs.vimPlugins
 // {
   neozoom-lua = pkgs.vimUtils.buildVimPlugin {
