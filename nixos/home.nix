@@ -22,6 +22,8 @@
 
   programs.home-manager.enable = true;
 
+  programs.man.generateCaches = true;
+
   programs.nh = {
     enable = true;
     flake = "/home/${username}/dotfiles";
