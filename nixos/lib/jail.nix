@@ -64,12 +64,12 @@ jail-nix.lib.extend {
         ];
       runtime-args = include-once "runtime-args" (add-runtime ''
         for arg in "$@"; do
-        if [[ "$arg" = "--" ]]; then
-        shift
-        break
-        fi
-        RUNTIME_ARGS+=("$arg")
-        shift
+          if [[ "$arg" = "--" ]]; then
+            shift
+            break
+          fi
+          RUNTIME_ARGS+=("$arg")
+          shift
         done
       '');
     };
