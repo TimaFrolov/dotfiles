@@ -53,7 +53,7 @@
       ...
     }:
     let
-      jail = import ./nixos/lib/jail.nix jail-nix;
+      jail = import ./nixos/lib/jail jail-nix;
       eachSystem =
         fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
       nixpkgs-modules = [

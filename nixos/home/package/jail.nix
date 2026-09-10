@@ -12,6 +12,7 @@
       combinators:
       with combinators;
       [
+        (network { hostname = osConfig.networking.hostName; })
         no-new-session
         (fwd-env "EDITOR")
         (readonly (noescape "~/.config/nvim"))
