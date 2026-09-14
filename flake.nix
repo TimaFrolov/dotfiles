@@ -57,7 +57,12 @@
       eachSystem =
         fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
       nixpkgs-modules = [
-        { nixpkgs.overlays = [ inputs.waybar.overlays.default ]; }
+        {
+          nixpkgs.overlays = [
+            inputs.waybar.overlays.default
+            inputs.agenix.overlays.default
+          ];
+        }
         ./nixos/package/options.nix
       ];
       home-modules = { username }: [

@@ -3,7 +3,6 @@
   lib,
   osConfig,
   pkgs,
-  inputs,
   ...
 }:
 {
@@ -29,7 +28,7 @@
     flake = "/home/${username}/dotfiles";
   };
 
-  home.packages = [
-    inputs.agenix.packages.${pkgs.system}.default
+  home.packages = with pkgs; [
+    agenix
   ];
 }
