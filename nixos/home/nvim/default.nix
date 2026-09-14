@@ -18,7 +18,6 @@
       plugins =
         let
           vimPlugins = import ./pkgs.nix pkgs;
-          plugins = (builtins.attrNames (builtins.readDir ./plugins));
           processPlugin = plugin: plugin // lib.optionalAttrs (plugin ? keys) { keys.__raw = plugin.keys; };
           processPlugins =
             plugins:
@@ -29,7 +28,9 @@
             else
               throw;
         in
-        builtins.concatMap (plugin: processPlugins (import ./plugins/${plugin} vimPlugins)) plugins;
+        builtins.readDir ./plugins
+        |> builtins.attrNames
+        |> builtins.concatMap (plugin: processPlugins (import ./plugins/${plugin} vimPlugins));
     };
   };
   home.file.".config/nvim/lua" = {
