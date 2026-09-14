@@ -33,7 +33,6 @@
 
   services.libinput.enable = true;
 
-  nixpkgs.config.allowUnfree = true;
   hardware.bluetooth.enable = true;
   environment.systemPackages = with pkgs; [
     alacritty
@@ -69,6 +68,10 @@
     sway-audio-idle-inhibit
     obsidian
     brightnessctl
+  ];
+  tima.unfree = [
+    "google-chrome"
+    "obsidian"
   ];
 
   xdg.mime.defaultApplications = {

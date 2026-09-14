@@ -15,4 +15,8 @@
     r2modman
     prismlauncher
   ];
+  tima.unfree = [
+    "steam"
+    "steam-unwrapped"
+  ];
 }

@@ -70,6 +70,12 @@
   hardware.nvidia-container-toolkit.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
+  tima.unfree = [
+    "discord"
+    "discord-unwrapped"
+    "nvidia-x11"
+    "nvidia-settings"
+  ];
 
   services.openssh = {
     enable = true;

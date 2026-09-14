@@ -18,5 +18,14 @@
         description = "Show battery module in waybar";
       };
     };
+
+    unfree = lib.mkOption {
+      type = lib.types.listOf lib.types.str;
+      default = [ ];
+      description = "Allowed unfree packages";
+    };
   };
+
+  config.nixpkgs.config.allowUnfreePredicate =
+    pkg: builtins.elem (lib.getName pkg) config.tima.unfree;
 }

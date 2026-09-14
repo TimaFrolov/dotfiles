@@ -43,6 +43,10 @@
     v4l-utils
     xournalpp
   ];
+  tima.unfree = [
+    "discord"
+    "discord-unwrapped"
+  ];
 
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = [ pkgs.linuxPackages.v4l2loopback ];
