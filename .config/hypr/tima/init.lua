@@ -86,7 +86,7 @@ hl.on("hyprland.start", function()
   hl.exec_cmd("waybar &")
   hl.exec_cmd("wljoywake")
   -- TODO: audio idle inhibitor, idle lock
-  -- hl.exec_cmd("sway-audio-idle-inhibit")
+  hl.exec_cmd("sway-audio-idle-inhibit")
   -- hl.exec_cmd("swayidle -w timeout 600 '" .. lock .. "' timeout 600 'swaymsg \"output * power off\"' resume 'swaymsg \"output * power on\"' before-sleep '" .. lock .. "'")
 end)
 
@@ -134,11 +134,11 @@ hl.bind(mainMod .. " + W", hy3.change_group("tab"))
 hl.bind(mainMod .. " + E", hy3.change_group("opposite"))
 hl.bind(mainMod .. " + F", hl.dsp.window.fullscreen({ mode = "fullscreen", action = "toggle" }))
 hl.bind(mainMod .. " + SHIFT + F", hl.dsp.window.fullscreen({ mode = "maximized", action = "toggle" }))
-hl.bind(mainMod .. " + CTRL + F", function ()
+hl.bind(mainMod .. " + CTRL + F", function()
   local win = hl.get_active_window()
   if not win then return end
   local client = win.fullscreen_client == 0 and 2 or 0 --[[ 0 = none, 2 = fullscreen ]]
-  hl.dispatch(hl.dsp.window.fullscreen_state( { internal = win.fullscreen , client = client }))
+  hl.dispatch(hl.dsp.window.fullscreen_state({ internal = win.fullscreen, client = client }))
 end)
 hl.bind(mainMod .. " + D", hy3.toggle_focus_layer())
 hl.bind(mainMod .. " + SHIFT + D", hl.dsp.window.float({ action = "toggle" }))
