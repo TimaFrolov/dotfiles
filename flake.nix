@@ -55,9 +55,10 @@
       ...
     }:
     let
+      inherit (nixpkgs) lib;
+      nixpkgs-patched = system: nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
       jail = import ./nixos/lib/jail jail-nix;
-      eachSystem =
-        fn: nixpkgs.lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
+      eachSystem = fn: lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
       nixpkgs-modules = [
         {
           nixpkgs.overlays = [
@@ -71,7 +72,9 @@
         ((import ./nixos/home.nix) { inherit username; })
         en_RU.homeModules.default
         nixvim.homeModules.default
-        { programs.nixvim.nixpkgs.source = nixpkgs; }
+        ({ pkgs, ... }: {
+          programs.nixvim.nixpkgs.source = nixpkgs-patched pkgs.stdenv.hostPlatform.system;
+        })
       ];
       common-modules =
         { users }:
@@ -82,7 +85,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.extraSpecialArgs = { inherit jail inputs; };
-            home-manager.users = nixpkgs.lib.genAttrs users (username: {
+            home-manager.users = lib.genAttrs users (username: {
               imports = home-modules { inherit username; };
             });
           }
@@ -121,10 +124,26 @@
         };
       };
 
+      homeConfigurations = {
+        tima =
+          let
+            system = "x86_64-linux";
+          in
+          home-manager.lib.homeManagerConfiguration {
+            pkgs = import (nixpkgs-patched system) { inherit system; };
+            extraSpecialArgs = {
+              inherit jail inputs;
+              osConfig = { };
+            };
+            modules = nixpkgs-modules ++ home-modules { username = "tima"; };
+          };
+      };
+
       formatter = eachSystem (system: pkgs: pkgs.nixfmt-tree);
 
       checks = eachSystem (
-        system: pkgs: {
+        system: pkgs:
+        {
           nixf-diagnose =
             pkgs.runCommand "nixf-diagnose-check" { nativeBuildInputs = [ pkgs.nixf-diagnose ]; }
               ''
@@ -142,6 +161,9 @@
             touch "$out"
           '';
         }
+        // lib.mapAttrs' (
+          name: home: lib.nameValuePair "home-${name}" home.activationPackage
+        ) self.homeConfigurations
       );
     };
 }

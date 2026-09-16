@@ -1,5 +1,6 @@
 { username }:
 {
+  inputs,
   lib,
   osConfig,
   pkgs,
@@ -11,8 +12,10 @@
     home/package/tmux.nix
     home/nvim
     home/package/jail.nix
+    package/catppuccin.nix
+    inputs.catppuccin.homeModules.catppuccin
   ]
-  ++ lib.optional osConfig.hardware.graphics.enable home/bundle/desktop.nix;
+  ++ lib.optional (osConfig.hardware.graphics.enable or false) home/bundle/desktop.nix;
 
   home.username = username;
   home.homeDirectory = "/home/${username}";

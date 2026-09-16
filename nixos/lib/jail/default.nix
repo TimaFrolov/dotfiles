@@ -18,12 +18,6 @@ let
       ];
     additionalCombinators =
       combinators: with combinators; {
-        network =
-          { hostname }:
-          compose [
-            (set-hostname hostname)
-            network
-          ];
         readonly-paths-from-var =
           var: separator:
           let

@@ -8,11 +8,12 @@
 }:
 {
   home.packages = [
-    (jail pkgs "jail" osConfig.users.users.${config.home.username}.shell (
+    (jail pkgs "jail" (osConfig.users.users.${config.home.username}.shell or pkgs.zsh) (
       combinators:
       with combinators;
-      [
-        (network { hostname = osConfig.networking.hostName; })
+      lib.optional (osConfig.networking or { } ? hostName) (set-hostname osConfig.networking.hostName)
+      ++ [
+        network
         no-new-session
         (fwd-env "EDITOR")
         (readonly (noescape "~/.config/nvim"))
@@ -34,7 +35,7 @@
         (fwd-env "PATH")
         runtime-args
       ]
-      ++ lib.optional osConfig.programs.nix-ld.enable (readonly "/lib64")
+      ++ lib.optional (osConfig.programs.nix-ld.enable or false) (readonly "/lib64")
     ))
 
   ];
