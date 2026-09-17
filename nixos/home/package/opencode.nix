@@ -16,6 +16,7 @@ let
       (fwd-env "EDITOR")
 
       (readonly (noescape "~/.config/opencode"))
+      (readonly (noescape "~/.local/share/nix/trusted-settings.json"))
       # (readonly (noescape "~/.config/git"))
       (persist "opencode" (noescape "~/.config/gh"))
       (persist "opencode" (noescape "~/.config/git"))

@@ -16,6 +16,7 @@
         network
         no-new-session
         (fwd-env "EDITOR")
+        (readonly (noescape "~/.local/share/nix/trusted-settings.json"))
         (readonly (noescape "~/.config/nvim"))
         (readwrite (noescape "~/.local/share/nvim"))
         (readonly (noescape "~/.zsh"))
