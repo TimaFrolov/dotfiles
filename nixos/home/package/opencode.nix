@@ -63,6 +63,7 @@ in
           "git diff*" = "allow";
           "git show*" = "allow";
           "git ls-files*" = "allow";
+          "git ls-remote *" = "allow";
           "git blame*" = "allow";
           "git reflog*" = "allow";
           "git config list --*" = "allow";
@@ -80,6 +81,7 @@ in
           "gh api *" = "allow";
           "gh auth status *" = "allow";
           "nix *" = "allow";
+          "nix-instantiate *" = "allow";
           "uv *" = "allow";
           "find *" = "allow";
           "grep *" = "allow";
