@@ -186,6 +186,10 @@ in
       When using `uv`, prefer virtual environments (uv venv / uv run)
       over system-wide package management.
 
+      When user gives you private github link - use `gh api`.
+
+      If you need to get data from json object - use `jq` instead of custom python scripts.
+
       Avoid using `find` in `/nix/store` - it's extremely large and operations will be very slow.
       Use `nix` commands to get information about relevant paths. (e.g. nix flake metadata --json)
 
