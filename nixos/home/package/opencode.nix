@@ -59,6 +59,8 @@ in
         read = "allow";
         bash = {
           "git status *" = "allow";
+          "git submodule status *" = "allow";
+          "git rev-parse *" = "allow";
           "git log*" = "allow";
           "git diff*" = "allow";
           "git show*" = "allow";
