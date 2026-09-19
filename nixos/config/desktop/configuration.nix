@@ -31,6 +31,7 @@
     ../../bundle/net-extra.nix
     ../../package/curseforge.nix
     ../../package/razer.nix
+    ../../services/llama-cpp.nix
   ];
 
   environment.systemPackages = with pkgs; [

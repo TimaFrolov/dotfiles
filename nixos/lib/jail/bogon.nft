@@ -23,6 +23,7 @@ table inet filter {
   chain output {
     type filter hook output priority filter; policy accept;
     ip daddr 10.0.2.0/24 accept
+    ip daddr 192.168.1.5/32 accept # TODO: dynamically manage desktop.timafrolov.me
     ip daddr @bogon4 reject
   }
 }

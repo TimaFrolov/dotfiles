@@ -46,10 +46,16 @@ in
     package = opencode-sandbox;
 
     settings = {
-      model = "opencode/big-pickle";
+      model = "llama-desktop/qwen";
 
       share = "manual";
       autoupdate = false;
+
+      provider."llama-desktop" = {
+        npm = "@ai-sdk/openai-compatible";
+        options.baseURL = "http://desktop.timafrolov.me:8080/v1";
+        models."qwen" = { };
+      };
 
       formatter = true;
       lsp = true;
