@@ -17,5 +17,6 @@
     tcpdump
     ethtool
     conntrack-tools
+    httpie
   ];
 }
