@@ -83,6 +83,7 @@ in
           "git pr view *" = "allow";
           "git remote -v" = "allow";
           "gh pr list *" = "allow";
+          "gh pr diff *" = "allow";
           "gh run view *" = "allow";
           "gh run list *" = "allow";
           "gh run watch *" = "allow";
