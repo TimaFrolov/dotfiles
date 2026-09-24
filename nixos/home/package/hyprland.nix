@@ -32,6 +32,10 @@
           on-timeout = "pidof swaylock && hyprctl dispatch 'hl.dsp.dpms({action = \"disable\"})'";
           timeout = 30;
         }
+        {
+          on-timeout = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 1";
+          timeout = 1200;
+        }
       ];
     };
   };
