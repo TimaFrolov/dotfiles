@@ -34,11 +34,11 @@
         |> builtins.concatMap processPlugins;
     };
   };
-  home.file.".config/nvim/lua" = {
+  xdg.configFile."nvim/lua" = {
     source = ../../../.config/nvim/lua;
     recursive = true;
   };
-  home.file.".config/nvim/after" = {
+  xdg.configFile."nvim/after" = {
     source = ../../../.config/nvim/after;
     recursive = true;
   };

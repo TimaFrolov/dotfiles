@@ -44,7 +44,7 @@
     swaylock
   ];
 
-  home.file.".config/hypr/tima" = {
+  xdg.configFile."hypr/tima" = {
     source = ../../../.config/hypr/tima;
     recursive = true;
   };
