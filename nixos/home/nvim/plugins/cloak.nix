@@ -1,4 +1,5 @@
-plugins: with plugins; {
+{ plugins, ... }: with plugins;
+{
   pkg = cloak-nvim;
   keys = "require('tima.mappings.cloak')";
   event = [

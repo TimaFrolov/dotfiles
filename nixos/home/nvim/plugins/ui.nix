@@ -1,4 +1,5 @@
-plugins: with plugins; [
+{ plugins, ... }: with plugins;
+[
   {
     pkg = noice-nvim;
     keys = "require('tima.mappings.noice')";

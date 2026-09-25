@@ -1,4 +1,5 @@
-plugins: with plugins; {
+{ plugins, ... }: with plugins;
+{
   pkg = telescope-nvim;
   dependencies = [
     plenary-nvim

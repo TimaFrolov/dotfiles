@@ -17,7 +17,7 @@
       settings.defaults.lazy = true;
       plugins =
         let
-          vimPlugins = import ./pkgs.nix pkgs;
+          plugins = import ./pkgs.nix pkgs;
           processPlugin = plugin: plugin // lib.optionalAttrs (plugin ? keys) { keys.__raw = plugin.keys; };
           processPlugins =
             plugins:
@@ -30,7 +30,8 @@
         in
         builtins.readDir ./plugins
         |> builtins.attrNames
-        |> builtins.concatMap (plugin: processPlugins (import ./plugins/${plugin} vimPlugins));
+        |> map (plugin: (import ./plugins/${plugin} { inherit pkgs plugins; }))
+        |> builtins.concatMap processPlugins;
     };
   };
   home.file.".config/nvim/lua" = {

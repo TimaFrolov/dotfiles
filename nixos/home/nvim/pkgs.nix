@@ -11,4 +11,5 @@ pkgs.vimPlugins
       hash = "sha256-O5ovnf0tYbyGKC0OzE05WNRv84mVTocfh0lKk3+cSsY=";
     };
   };
+  nvim-treesitter = pkgs.vimPlugins.nvim-treesitter.withAllGrammars;
 }

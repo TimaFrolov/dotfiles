@@ -1,4 +1,5 @@
-plugins: with plugins; [
+{ plugins, ... }: with plugins;
+[
   {
     pkg = nvim-dap;
     keys = "require('tima.mappings.dap')";

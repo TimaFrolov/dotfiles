@@ -1,4 +1,5 @@
-plugins: with plugins; {
+{ plugins, ... }: with plugins;
+{
   pkg = comment-nvim;
   event = [
     "BufReadPre"

@@ -1,4 +1,5 @@
-plugins: with plugins; {
+{ plugins, ... }: with plugins;
+{
   pkg = crates-nvim;
   dependencies = [ plenary-nvim ];
   event = [ "BufRead Cargo.toml" ];
