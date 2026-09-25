@@ -22,7 +22,7 @@
   services.tlp.enable = config.tima.laptop;
 
   environment.systemPackages = with pkgs; [
-    btop
+    (btop.override { cudaSupport = config.hardware.nvidia.enabled; })
     python3
     nix-index
     bc
