@@ -32,10 +32,24 @@
           on-timeout = "pidof swaylock && hyprctl dispatch 'hl.dsp.dpms({action = \"disable\"})'";
           timeout = 30;
         }
-        {
-          on-timeout = "wpctl set-mute @DEFAULT_AUDIO_SINK@ 1";
-          timeout = 1200;
-        }
+        (
+          let
+            state-file = ''"$XDG_RUNTIME_DIR/pw-idle"'';
+          in
+          {
+            on-resume =
+              (pkgs.writeShellScript "pw-resume" ''
+                wpctl set-mute @DEFAULT_AUDIO_SINK@ $(cat ${state-file})
+                rm ${state-file}
+              '').outPath;
+            on-timeout =
+              (pkgs.writeShellScript "pw-idle" ''
+                wpctl get-vulume @DEFAULT_AUDIO_SINK@ | grep MUTED | wc -l > ${state-file}
+                wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
+              '').outPath;
+            timeout = 1200;
+          }
+        )
       ];
     };
   };
