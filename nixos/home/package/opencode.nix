@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  config,
   osConfig,
   jail,
   ...
@@ -33,8 +34,8 @@ let
       (readonly "/nix")
       (readonly "/etc/nix")
       (readonly "/etc/static/nix")
-      (readonly "/run/current-system/sw/")
-      (add-path "/run/current-system/sw/bin")
+      (add-ro-bin-path "/run/current-system/sw")
+      (add-ro-bin-path "/etc/profiles/per-user/${config.home.username}")
     ]
     ++ lib.optional (osConfig.programs.nix-ld.enable or false) (readonly "/lib64")
   );

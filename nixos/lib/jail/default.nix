@@ -61,6 +61,12 @@ let
             shift
           done
         '');
+        add-ro-bin-path =
+          path:
+          compose [
+            (readonly path)
+            (add-path "${path}/bin")
+          ];
       };
   };
 in
