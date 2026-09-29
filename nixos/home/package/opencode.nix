@@ -47,7 +47,7 @@ in
     package = opencode-sandbox;
 
     settings = {
-      model = "llama-desktop/qwen";
+      model = "nano-gpt/qwen/qwen3.8-flash";
 
       share = "manual";
       autoupdate = false;
@@ -57,6 +57,8 @@ in
         options.baseURL = "http://desktop.timafrolov.me:8080/v1";
         models."qwen" = { };
       };
+
+      provider."nano-gpt" = builtins.fromJSON (builtins.readFile ./opencode/nano-gpt.json);
 
       formatter = true;
       lsp = true;
