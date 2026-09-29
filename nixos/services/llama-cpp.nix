@@ -1,8 +1,10 @@
 {
   pkgs,
+  lib,
   ...
 }:
 {
+  systemd.services.llama-cpp.wantedBy = lib.mkForce [ ];
   services.llama-cpp = {
     enable = true;
     package = pkgs.llama-cpp.override { cudaSupport = true; };
