@@ -69,6 +69,7 @@ in
         "AS16276" # OVH
         "AS-HETZNER"
         "AS-AMAZON"
+        "AS40509" # Fly.io
       ];
     };
   };
