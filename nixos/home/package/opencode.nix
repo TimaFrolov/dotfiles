@@ -70,7 +70,7 @@ in
           "git status *" = "allow";
           "git submodule status *" = "allow";
           "git rev-parse *" = "allow";
-          "git log*" = "allow";
+          "git log *" = "allow";
           "git diff*" = "allow";
           "git show*" = "allow";
           "git ls-files*" = "allow";
@@ -81,12 +81,14 @@ in
           "git config get --*" = "allow";
           "git branch --show-current" = "allow";
           "git branch -a" = "allow";
+          "git branch -vv" = "allow";
           "git add *" = "allow";
           "git pr diff *" = "allow";
           "git pr view *" = "allow";
           "git remote -v" = "allow";
           "gh pr list *" = "allow";
           "gh pr diff *" = "allow";
+          "gh pr view *" = "allow";
           "gh run view *" = "allow";
           "gh run list *" = "allow";
           "gh run watch *" = "allow";
@@ -186,27 +188,51 @@ in
     };
 
     context = ''
-      This system is NixOS-based. Do not modify global system
-      configuration (e.g. /etc/nixos, nixos-rebuild, system packages)
-      unless the user explicitly asks you to.
+      # NixOS environment rules
 
-      When compiling or building projects that don't use Nix, use
-      `nix shell` to pull in dependencies rather than assuming a
-      traditional package manager.
+      ## System config
+      - Do not modify global system configuration (e.g. /etc/nixos,
+        nixos-rebuild, system packages) unless the user explicitly asks.
 
-      For Python projects, prefer `uv` over pip/poetry/conda.
-      When using `uv`, prefer virtual environments (uv venv / uv run)
-      over system-wide package management.
+      ## Dependencies
+      - When compiling or building projects that don't use Nix, use
+        `nix shell` to pull in dependencies rather than assuming a
+        traditional package manager.
+      - For Python projects, prefer `uv` over pip/poetry/conda.
+        When using `uv`, prefer virtual environments (uv venv / uv run)
+        over system-wide package management.
 
-      When user gives you private github link - use `gh api`.
+      ## Data sources
+      - When user gives you private github link - use `gh api`.
+      - If you need to get data from json object - use `jq` instead of
+        custom python scripts.
 
-      If you need to get data from json object - use `jq` instead of custom python scripts.
+      ## Nix store
+      - Avoid using `find` in `/nix/store` - it's extremely large and
+        operations will be very slow. Use `nix` commands to get
+        information about relevant paths. (e.g. nix flake metadata --json)
+      - To get the local store path of a flake input, use:
+        `nix eval --expr "(builtins.getFlake (toString ./.))" --apply 'flake: flake.inputs.<input-name>.outPath' --raw --impure`
 
-      Avoid using `find` in `/nix/store` - it's extremely large and operations will be very slow.
-      Use `nix` commands to get information about relevant paths. (e.g. nix flake metadata --json)
+      # Session efficiency rules (code review sessions)
 
-      To get the local store path of a flake input, use:
-      `nix eval --expr "(builtins.getFlake (toString ./.))" --apply 'flake: flake.inputs.<input-name>.outPath' --raw --impure`
+      ## Diff review
+      - For PRs >500 changed lines: get `git diff --stat` first, then delegate
+        area-scoped reviews to parallel subagents; main context reads only the
+        1-2 files where a bug is suspected.
+      - Never page through a large diff with head/sed slices.
+
+      ## Builds
+      - Always capture build output to a file:
+        `nix build ... >/dev/null 2>/tmp/nix.log || tail -20 /tmp/nix.log`
+        (fetch progress bars can dominate context).
+
+      ## Tool hygiene
+      - One query per fact; cache results in-conversation. No near-duplicate greps.
+
+      ## Persistence
+      - Write findings + reproducers to a scratch file (tmp/) as soon as confirmed;
+        enables cheap resumption after context compaction.
     '';
   };
 }
