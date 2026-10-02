@@ -74,6 +74,7 @@ in
           "git diff*" = "allow";
           "git show*" = "allow";
           "git ls-files*" = "allow";
+          "git grep *" = "allow";
           "git ls-remote *" = "allow";
           "git blame*" = "allow";
           "git reflog*" = "allow";
@@ -86,9 +87,11 @@ in
           "git pr diff *" = "allow";
           "git pr view *" = "allow";
           "git remote -v" = "allow";
+          "git fetch *" = "allow";
           "gh pr list *" = "allow";
           "gh pr diff *" = "allow";
           "gh pr view *" = "allow";
+          "gh pr checks *" = "allow";
           "gh run view *" = "allow";
           "gh run list *" = "allow";
           "gh run watch *" = "allow";
@@ -125,8 +128,10 @@ in
           "read *" = "allow";
           "test *" = "allow";
           "break *" = "allow";
+          "true" = "allow";
           "mktemp *" = "allow";
           "home-manager *" = "allow";
+          "curl *" = "allow";
           "*" = "ask";
         };
         webfetch = "allow";
