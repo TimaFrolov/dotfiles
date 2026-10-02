@@ -36,6 +36,32 @@ let
             '')
             (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
           ]);
+        mount-git-dir =
+          var-rw:
+          let
+            runtime-var = "RUNTIME_GITDIR";
+          in
+          assert var-rw == null || lib.isValidPosixName var-rw;
+          include-once "mount-git-dir" (compose [
+            (add-runtime ''
+              ${runtime-var}=()
+              if GIT_DIR=$(${lib.getExe pkgs.git} rev-parse --git-common-dir 2>/dev/null); then
+                GIT_DIR=$(realpath -e "$GIT_DIR")
+                ${
+                  if var-rw != null then
+                    ''
+                      case "''${${var-rw}-}" in
+                        1) ${runtime-var}=(--bind "$GIT_DIR" "$GIT_DIR") ;;
+                        *) ${runtime-var}=(--ro-bind "$GIT_DIR" "$GIT_DIR") ;;
+                      esac
+                    ''
+                  else
+                    ''${runtime-var}=(--ro-bind "$GIT_DIR" "$GIT_DIR")''
+                }
+              fi
+            '')
+            (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
+          ]);
         persist =
           name: path:
           let

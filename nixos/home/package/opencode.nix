@@ -29,6 +29,7 @@ let
       (create-readwrite (noescape "~/.cache/uv"))
 
       (readonly-paths-from-var "ROBIND_DIRS" ":")
+      (mount-git-dir "GITDIR_RW")
       mount-cwd
 
       (readonly "/nix")
