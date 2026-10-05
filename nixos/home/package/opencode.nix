@@ -29,8 +29,7 @@ let
       (create-readwrite (noescape "~/.cache/uv"))
 
       (readonly-paths-from-var "ROBIND_DIRS" ":")
-      (mount-git-dir "GITDIR_RW")
-      mount-cwd
+      (mount-cwd-git-dir "GITDIR_RW")
 
       (readonly "/nix")
       (readonly "/etc/nix")
@@ -67,80 +66,10 @@ in
       permission = {
         edit = "allow";
         read = "allow";
-        bash = {
-          "git status *" = "allow";
-          "git submodule status *" = "allow";
-          "git rev-parse *" = "allow";
-          "git log *" = "allow";
-          "git diff*" = "allow";
-          "git show*" = "allow";
-          "git ls-files*" = "allow";
-          "git grep *" = "allow";
-          "git ls-remote *" = "allow";
-          "git blame*" = "allow";
-          "git reflog*" = "allow";
-          "git config list --*" = "allow";
-          "git config get --*" = "allow";
-          "git branch --show-current" = "allow";
-          "git branch -a" = "allow";
-          "git branch -vv" = "allow";
-          "git add *" = "allow";
-          "git pr diff *" = "allow";
-          "git pr view *" = "allow";
-          "git remote -v" = "allow";
-          "git fetch *" = "allow";
-          "gh pr list *" = "allow";
-          "gh pr diff *" = "allow";
-          "gh pr view *" = "allow";
-          "gh pr checks *" = "allow";
-          "gh run view *" = "allow";
-          "gh run list *" = "allow";
-          "gh run watch *" = "allow";
-          "gh api *" = "allow";
-          "gh auth status *" = "allow";
-          "nix *" = "allow";
-          "nix-instantiate *" = "allow";
-          "uv *" = "allow";
-          "find *" = "allow";
-          "grep *" = "allow";
-          "rg *" = "allow";
-          "which *" = "allow";
-          "readlink *" = "allow";
-          "file *" = "allow";
-          "strings *" = "allow";
-          "type *" = "allow";
-          "echo *" = "allow";
-          "pwd" = "allow";
-          "env *" = "allow";
-          "ls *" = "allow";
-          "cat *" = "allow";
-          "sort *" = "allow";
-          "head *" = "allow";
-          "tail *" = "allow";
-          "wc *" = "allow";
-          "awk *" = "allow";
-          "jq *" = "allow";
-          "cut *" = "allow";
-          "base64 *" = "allow";
-          "sed *" = "allow";
-          "tr *" = "allow";
-          "sleep *" = "allow";
-          "date *" = "allow";
-          "read *" = "allow";
-          "test *" = "allow";
-          "break *" = "allow";
-          "true" = "allow";
-          "mktemp *" = "allow";
-          "home-manager *" = "allow";
-          "curl *" = "allow";
-          "*" = "ask";
-        };
+        bash."*" = "allow";
         webfetch = "allow";
         websearch = "allow";
-        external_directory = {
-          "/nix/store/*" = "allow";
-          "/tmp/*" = "allow";
-        };
+        external_directory = "allow";
       };
     };
 

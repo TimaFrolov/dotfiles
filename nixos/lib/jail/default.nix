@@ -36,28 +36,40 @@ let
             '')
             (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
           ]);
-        mount-git-dir =
+        mount-cwd-git-dir =
           var-rw:
           let
             runtime-var = "RUNTIME_GITDIR";
+            bind-pwd = ''${runtime-var}+=(--bind "$PWD" "$PWD")'';
+            bind-gitdir =
+              if var-rw != null then
+                ''
+                  case "''${${var-rw}-}" in
+                    1) ${runtime-var}+=(--bind "$GIT_DIR" "$GIT_DIR") ;;
+                    *) ${runtime-var}+=(--ro-bind "$GIT_DIR" "$GIT_DIR") ;;
+                  esac
+                ''
+              else
+                ''${runtime-var}+=(--ro-bind "$GIT_DIR" "$GIT_DIR")'';
           in
           assert var-rw == null || lib.isValidPosixName var-rw;
-          include-once "mount-git-dir" (compose [
+          include-once "mount-cwd-git-dir" (compose [
             (add-runtime ''
               ${runtime-var}=()
               if GIT_DIR=$(${lib.getExe pkgs.git} rev-parse --git-common-dir 2>/dev/null); then
                 GIT_DIR=$(realpath -e "$GIT_DIR")
-                ${
-                  if var-rw != null then
-                    ''
-                      case "''${${var-rw}-}" in
-                        1) ${runtime-var}=(--bind "$GIT_DIR" "$GIT_DIR") ;;
-                        *) ${runtime-var}=(--ro-bind "$GIT_DIR" "$GIT_DIR") ;;
-                      esac
-                    ''
-                  else
-                    ''${runtime-var}=(--ro-bind "$GIT_DIR" "$GIT_DIR")''
-                }
+                PWD_REAL=$(realpath -e "$PWD")
+
+                GIT_DIR_IS_SUBDIR_OF_PWD=false
+                case "$GIT_DIR" in
+                  "$PWD_REAL" | "$PWD_REAL"/*) GIT_DIR_IS_SUBDIR_OF_PWD=true ;;
+                esac
+
+                if $GIT_DIR_IS_SUBDIR_OF_PWD; then ${bind-pwd}; fi
+                ${bind-gitdir}
+                if (! $GIT_DIR_IS_SUBDIR_OF_PWD); then ${bind-pwd}; fi
+              else
+                ${bind-pwd}
               fi
             '')
             (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
