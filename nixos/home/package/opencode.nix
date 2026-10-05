@@ -30,6 +30,7 @@ let
 
       (readonly-paths-from-var "ROBIND_DIRS" ":")
       (mount-cwd-git-dir "GITDIR_RW")
+      (readonly-paths-from-var "FORTIFY_RO" ":")
 
       (readonly "/nix")
       (readonly "/etc/nix")
