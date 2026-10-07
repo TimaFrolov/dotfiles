@@ -15,7 +15,7 @@
     r2modman
     prismlauncher
   ];
-  tima.unfree = [
+  nixpkgs.config.allowUnfreePackages = [
     "steam"
     "steam-unwrapped"
   ];

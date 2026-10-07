@@ -43,7 +43,7 @@
     v4l-utils
     xournalpp
   ];
-  tima.unfree = [
+  nixpkgs.config.allowUnfreePackages = [
     "discord"
     "discord-unwrapped"
   ];

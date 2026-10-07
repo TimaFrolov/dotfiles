@@ -27,13 +27,4 @@
       repeat-penalty = 1.0;
     };
   };
-
-  tima.unfree = [
-    "cuda_cudart"
-    "cuda_cccl"
-    "libcublas"
-    "cuda_nvcc"
-    "cuda_nvrtc"
-  ];
-
 }

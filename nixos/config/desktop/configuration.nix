@@ -71,7 +71,8 @@
   hardware.nvidia-container-toolkit.enable = true;
   services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.open = true;
-  tima.unfree = [
+  nixpkgs.config.allowUnfreePredicate = pkgs._cuda.lib.allowUnfreeCudaPredicate;
+  nixpkgs.config.allowUnfreePackages = [
     "discord"
     "discord-unwrapped"
     "nvidia-x11"

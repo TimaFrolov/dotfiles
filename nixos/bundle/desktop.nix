@@ -69,7 +69,7 @@
     obsidian
     brightnessctl
   ];
-  tima.unfree = [
+  nixpkgs.config.allowUnfreePackages = [
     "google-chrome"
     "obsidian"
   ];
