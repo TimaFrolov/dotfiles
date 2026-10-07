@@ -31,7 +31,7 @@ let
               if ((''${#DIRS[@]})); then
                 while IFS= read -r -d ''' P; do
                   ${runtime-var}+=(--ro-bind "$P" "$P")
-                done < <(realpath -ezq -- "''${DIRS[@]}")
+                done < <(realpath -eszq -- "''${DIRS[@]}")
               fi
             '')
             (unsafe-add-raw-args ''"''${${runtime-var}[@]}"'')
