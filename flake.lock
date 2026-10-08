@@ -151,6 +151,18 @@
         "type": "github"
       }
     },
+    "nixpkgs-patch-hyprland-tzdir": {
+      "flake": false,
+      "locked": {
+        "narHash": "sha256-0Q9zWIBkmirk2NBHWCRitB0VGnZ3IsFV4lqK28FbbnU=",
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/571665.diff"
+      },
+      "original": {
+        "type": "file",
+        "url": "https://github.com/NixOS/nixpkgs/pull/571665.diff"
+      }
+    },
     "nixpkgs-patcher": {
       "locked": {
         "lastModified": 1789143781,
@@ -198,6 +210,7 @@
         "home-manager": "home-manager",
         "jail-nix": "jail-nix",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-patch-hyprland-tzdir": "nixpkgs-patch-hyprland-tzdir",
         "nixpkgs-patcher": "nixpkgs-patcher",
         "nixvim": "nixvim",
         "secrets": "secrets",
