@@ -193,7 +193,12 @@ end)
 hl.define_submap("open", "reset", function()
   hl.bind("a", hl.dsp.exec_cmd(menu("drun")))
   hl.bind("c", hl.dsp.exec_cmd(menu("run")))
-  hl.bind("t", hl.dsp.exec_cmd("Telegram"))
+  hl.bind("t", hl.dsp.exec_cmd("Telegram", {
+    workspace = "special:",
+    float = true,
+    move = { 450, 100 },
+    size = { 970, 830 }
+  }))
   hl.bind("b", hl.dsp.exec_cmd("brave-browser"))
   hl.bind("f", hl.dsp.exec_cmd("firefox"))
   hl.bind("z", hl.dsp.exec_cmd("zathura"))
