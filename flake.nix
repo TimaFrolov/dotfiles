@@ -14,6 +14,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/571665.diff";
       flake = false;
     };
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -22,6 +26,7 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.systems.follows = "systems";
+      inputs.flake-parts.follows = "flake-parts";
     };
     catppuccin = {
       url = "github:catppuccin/nix";
@@ -54,22 +59,24 @@
       nixpkgs,
       nixpkgs-patcher,
       systems,
+      flake-parts,
       home-manager,
       en_RU,
       jail-nix,
       nixvim,
+      waybar,
+      agenix,
       ...
     }:
     let
       inherit (nixpkgs) lib;
       nixpkgs-patched = system: nixpkgs-patcher.lib.patchNixpkgs { inherit inputs system; };
       jail = import ./nixos/lib/jail jail-nix;
-      eachSystem = fn: lib.genAttrs (import systems) (system: fn system nixpkgs.legacyPackages.${system});
       nixpkgs-modules = [
         {
           nixpkgs.overlays = [
-            inputs.waybar.overlays.default
-            inputs.agenix.overlays.default
+            waybar.overlays.default
+            agenix.overlays.default
           ];
         }
         ./nixos/package/options.nix
@@ -107,49 +114,55 @@
           // attrs
         );
     in
-    {
-      nixosConfigurations = {
-        "yoga" = nixosSystem {
-          modules = [
-            ./nixos/config/lenovo-yoga/configuration.nix
-          ]
-          ++ common-modules {
-            users = [
-              "tima"
-              "fima"
-            ];
-          };
-        };
-
-        "desktop" = nixosSystem {
-          modules = [ ./nixos/config/desktop/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
-        };
-
-        "NB-9472" = nixosSystem {
-          modules = [ ./nixos/config/kvadra/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
-        };
-      };
-
-      homeConfigurations = {
-        tima =
-          let
-            system = "x86_64-linux";
-          in
-          home-manager.lib.homeManagerConfiguration {
-            pkgs = import (nixpkgs-patched system) { inherit system; };
-            extraSpecialArgs = {
-              inherit jail inputs;
-              osConfig = { };
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import systems;
+      flake = {
+        nixosConfigurations = {
+          "yoga" = nixosSystem {
+            modules = [
+              ./nixos/config/lenovo-yoga/configuration.nix
+            ]
+            ++ common-modules {
+              users = [
+                "tima"
+                "fima"
+              ];
             };
-            modules = nixpkgs-modules ++ home-modules { username = "tima"; };
           };
+
+          "desktop" = nixosSystem {
+            modules = [ ./nixos/config/desktop/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
+          };
+
+          "NB-9472" = nixosSystem {
+            modules = [ ./nixos/config/kvadra/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
+          };
+
+          "orangepi" = nixosSystem {
+            modules = [ ./nixos/config/orangepi/configuration.nix ] ++ common-modules { users = [ "tima" ]; };
+          };
+        };
+
+        homeConfigurations = {
+          tima =
+            let
+              system = "x86_64-linux";
+            in
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = import (nixpkgs-patched system) { inherit system; };
+              extraSpecialArgs = {
+                inherit jail inputs;
+                osConfig = { };
+              };
+              modules = nixpkgs-modules ++ home-modules { username = "tima"; };
+            };
+        };
+
       };
+      perSystem = { self', pkgs, ... }: {
+        formatter = pkgs.nixfmt-tree;
 
-      formatter = eachSystem (system: pkgs: pkgs.nixfmt-tree);
-
-      checks = eachSystem (
-        system: pkgs:
-        {
+        checks = {
           nixf-diagnose =
             pkgs.runCommand "nixf-diagnose-check" { nativeBuildInputs = [ pkgs.nixf-diagnose ]; }
               ''
@@ -159,7 +172,7 @@
                 done
                 touch "$out"
               '';
-          nixfmt = pkgs.runCommand "nixfmt-check" { nativeBuildInputs = [ self.formatter.${system} ]; } ''
+          nixfmt = pkgs.runCommand "nixfmt-check" { nativeBuildInputs = [ self'.formatter ]; } ''
             set -euo pipefail
             cp -r "${./.}" work
             chmod -R u+w work
@@ -169,7 +182,7 @@
         }
         // lib.mapAttrs' (
           name: home: lib.nameValuePair "home-${name}" home.activationPackage
-        ) self.homeConfigurations
-      );
+        ) self.homeConfigurations;
+      };
     };
 }

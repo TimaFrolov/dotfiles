@@ -8,14 +8,16 @@
 }:
 {
   imports = [
-    home/package/opencode.nix
     home/package/tmux.nix
-    home/nvim
-    home/package/jail.nix
     package/catppuccin.nix
     inputs.catppuccin.homeModules.catppuccin
   ]
-  ++ lib.optional (osConfig.hardware.graphics.enable or false) home/bundle/desktop.nix;
+  ++ lib.optional (osConfig.hardware.graphics.enable or false) home/bundle/desktop.nix
+  ++ lib.optionals (osConfig.tima.dev.nvim or false) [
+    home/nvim
+    home/package/opencode.nix
+    home/package/jail.nix
+  ];
 
   home.username = username;
   home.homeDirectory = "/home/${username}";
@@ -32,6 +34,7 @@
   };
 
   home.packages = with pkgs; [
+    lazygit
     agenix
   ];
 }

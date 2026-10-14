@@ -3,6 +3,7 @@
   ...
 }:
 {
+  tima.dev.enable = true;
   imports = [ ../package/neovim.nix ];
 
   security.lsm = [ "selinux" ];
@@ -12,7 +13,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    lazygit
     distrobox
     git-lfs
     vbindiff
