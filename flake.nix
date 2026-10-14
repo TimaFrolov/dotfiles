@@ -20,6 +20,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/571665.diff";
       flake = false;
     };
+    nixpkgs-patch-nix-versions = {
+      url = "https://github.com/NixOS/nixpkgs/pull/573623.diff";
+      flake = false;
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
@@ -81,7 +85,7 @@
       nixpkgs-modules = [
         {
           nixpkgs.overlays = [
-            waybar.overlays.default
+            # waybar.overlays.default
             agenix.overlays.default
           ];
         }
