@@ -65,6 +65,7 @@ alias g='git'
 alias wshowkeys='command wshowkeys -F jebrains-mono -a bottom'
 alias lg='lgcd'
 alias nix-shell='nix-shell --command zsh'
+alias e='exec'
 
 autoload -Uz vcs_info
 precmd_vcs_info() { vcs_info }
