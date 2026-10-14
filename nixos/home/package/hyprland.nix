@@ -44,7 +44,7 @@
               '').outPath;
             on-timeout =
               (pkgs.writeShellScript "pw-idle" ''
-                wpctl get-vulume @DEFAULT_AUDIO_SINK@ | grep MUTED | wc -l > ${state-file}
+                wpctl get-volume @DEFAULT_AUDIO_SINK@ | grep MUTED | wc -l > ${state-file}
                 wpctl set-mute @DEFAULT_AUDIO_SINK@ 1
               '').outPath;
             timeout = 1200;
