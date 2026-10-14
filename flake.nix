@@ -2,8 +2,14 @@
   nixConfig.extra-experimental-features = [ "pipe-operators" ];
 
   nixConfig = {
-    extra-substituters = [ "https://cache.nixos-cuda.org" ];
-    extra-trusted-public-keys = [ "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M=" ];
+    extra-substituters = [
+      "https://cache.nixos-cuda.org"
+      "http://desktop.timafrolov.me:5000"
+    ];
+    extra-trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
+      "dekstop.timafrolov.me:9PDPi2IcJs15pae+EfPsZsLqz0kitJNhO4UOp861p7g="
+    ];
   };
 
   inputs = {

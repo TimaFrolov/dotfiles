@@ -1,4 +1,6 @@
 {
+  inputs,
+  config,
   pkgs,
   ...
 }:
@@ -32,6 +34,7 @@
     ../../package/curseforge.nix
     ../../package/razer.nix
     ../../services/llama-cpp.nix
+    inputs.agenix.nixosModules.default
   ];
 
   environment.systemPackages = with pkgs; [
@@ -83,6 +86,12 @@
     enable = true;
     openFirewall = true;
   };
-
   systemd.services.sshd.unitConfig.StartLimitIntervalSec = 0;
+
+  age.secrets.nix-serve.file = "${inputs.secrets}/nix-cache-desktop-private-key.age";
+  services.nix-serve = {
+    enable = true;
+    openFirewall = true;
+    secretKeyFile = config.age.secrets.nix-serve.path;
+  };
 }
