@@ -64,6 +64,16 @@ in
       formatter = true;
       lsp = true;
 
+      command."review-pr-update" = {
+        description = "Re-review a PR after it was updated with new commits";
+        template = ''
+          The PR got updated. Please review the changes:
+          - Verify that all previously identified problems are resolved — both those discussed in this session and those from PR reviews on GitHub (fetch them with `gh pr view` / `gh api`).
+          - Check whether the new commits introduce any new problems.
+          - Review the combined diff of the whole PR, not just the incremental changes.
+        '';
+      };
+
       permission = {
         edit = "allow";
         read = "allow";
