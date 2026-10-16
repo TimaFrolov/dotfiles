@@ -1,5 +1,8 @@
 require('colorizer').setup({
-  filetypes = { '*' },
+  filetypes = {
+    '*',
+    '!lazygit',
+  },
   user_default_options = {
     RGB = false,
     RRGGBB = true,
