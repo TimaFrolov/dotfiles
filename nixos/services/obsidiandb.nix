@@ -11,7 +11,7 @@
     port = 5984;
   };
 
-  systemd.services.couchdb.serviceConfig.EnvorinmentFile = config.age.secrets.obsidiandb.path;
+  systemd.services.couchdb.serviceConfig.EnvironmentFile = config.age.secrets.obsidiandb.path;
 
   services.nginx.virtualHosts."obsidian.timafrolov.me".locations."/".proxyPass =
     "http://localhost:${toString config.services.couchdb.port}";
