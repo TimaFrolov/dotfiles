@@ -4,7 +4,6 @@
 }:
 {
   tima.dev.enable = true;
-  imports = [ ../package/neovim.nix ];
 
   security.lsm = [ "selinux" ];
   virtualisation.containers.enable = true;

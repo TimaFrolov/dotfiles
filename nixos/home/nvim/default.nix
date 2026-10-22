@@ -5,6 +5,15 @@
   ...
 }:
 {
+  home.packages = with pkgs; [
+    luajit
+    luajitPackages.luarocks
+    luajitPackages.jsregexp
+    lua-language-server
+    tree-sitter
+    nodejs
+  ];
+
   programs.nixvim = {
     enable = true;
     extraConfigLuaPre = "require('tima')";

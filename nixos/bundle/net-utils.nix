@@ -18,5 +18,6 @@
     ethtool
     conntrack-tools
     httpie
+    wget
   ];
 }

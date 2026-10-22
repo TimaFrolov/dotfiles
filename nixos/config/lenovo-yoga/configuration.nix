@@ -10,6 +10,7 @@
     ../../bundle/intel-video.nix
     ../../bundle/disk-utils.nix
     ../../bundle/utils.nix
+    ../../bundle/doc-utils.nix
     ../../bundle/net-utils.nix
     ../../bundle/dev.nix
     ../../bundle/dev-latex.nix
