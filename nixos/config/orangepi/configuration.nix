@@ -16,6 +16,7 @@
     ../../services/certbot.nix
     ../../services/jitsi.nix
     ../../services/nginx.nix
+    ../../services/rustfs.nix
     inputs.agenix.nixosModules.default
   ];
 
