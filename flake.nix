@@ -13,8 +13,15 @@
   };
 
   inputs = {
+    # Base
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default-linux";
+    flake-parts = {
+      url = "github:hercules-ci/flake-parts";
+      inputs.nixpkgs-lib.follows = "nixpkgs";
+    };
+
+    # nixpkgs patches
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
     nixpkgs-patch-hyprland-tzdir = {
       url = "https://github.com/NixOS/nixpkgs/pull/571665.diff";
@@ -24,10 +31,8 @@
       url = "https://github.com/NixOS/nixpkgs/pull/576865.diff";
       flake = false;
     };
-    flake-parts = {
-      url = "github:hercules-ci/flake-parts";
-      inputs.nixpkgs-lib.follows = "nixpkgs";
-    };
+
+    # Home manager, development inputs, GUI packages
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -46,12 +51,15 @@
       url = "github:alexays/waybar";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+    ## Custom locale
     en_RU = {
       url = "github:timafrolov/en_ru";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
-    jail-nix.url = "sourcehut:~alexdavid/jail.nix";
+
+    # Secret management
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
