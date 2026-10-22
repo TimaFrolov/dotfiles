@@ -20,6 +20,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/571665.diff";
       flake = false;
     };
+    nixpkgs-patch-security-php = {
+      url = "https://github.com/NixOS/nixpkgs/pull/576865.diff";
+      flake = false;
+    };
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
       inputs.nixpkgs-lib.follows = "nixpkgs";
