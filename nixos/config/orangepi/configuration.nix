@@ -35,4 +35,6 @@
   tima.dev.nvim = true;
 
   systemd.services.sshd.unitConfig.StartLimitIntervalSec = 0;
+
+  services.jitsi-videobridge.nat = (import inputs.secrets).orangepi-jitsi-addresses;
 }

@@ -1,5 +1,4 @@
 {
-  config,
   ...
 }:
 {
@@ -16,5 +15,5 @@
       lockdown = true;
     };
   };
-  networking.firewall.allowedUDPPorts = [ (config.jitsi-videobridge.ice.udp.port or 10000) ];
+  services.jitsi-videobridge.openFirewall = true;
 }
