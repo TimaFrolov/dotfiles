@@ -13,8 +13,8 @@
     inputs.catppuccin.homeModules.catppuccin
   ]
   ++ lib.optional (osConfig.hardware.graphics.enable or false) home/bundle/desktop.nix
-  ++ lib.optionals (osConfig.tima.dev.nvim or false) [
-    home/nvim
+  ++ lib.optional (osConfig.tima.dev.nvim or false) home/nvim
+  ++ lib.optionals (osConfig.tima.dev.enable or false) [
     home/package/opencode.nix
     home/package/jail.nix
   ];
