@@ -122,7 +122,8 @@ for direction, vimkey in pairs(directions) do
 end
 
 for i = 0, 9 do
-  local ws = "name:" .. tostring(i)
+  local ws = "name:ws" .. tostring(i)
+  hl.workspace_rule({ workspace = ws, default_name = tostring(i) })
   hl.bind(mainMod .. " + " .. i, hl.dsp.focus({ workspace = ws }))
   hl.bind(mainMod .. " + SHIFT + " .. i, hy3.move_to_workspace(ws, { follow = false }))
 end
@@ -146,7 +147,7 @@ hl.bind(mainMod .. " + A", hy3.change_focus("raise"))
 hl.bind(mainMod .. " + I", hy3.change_focus("lower"))
 
 hl.bind(mainMod .. " + Q", hl.dsp.workspace.toggle_special(""))
-hl.bind(mainMod .. " + SHIFT + Q", hy3.move_to_workspace("special:", { follow = false }))
+hl.bind(mainMod .. " + SHIFT + Q", hy3.move_to_workspace("special", { follow = false }))
 
 hl.bind(mainMod .. " + mouse:272", hl.dsp.window.drag(), { mouse = true })
 hl.bind(mainMod .. " + mouse:273", hl.dsp.window.resize(), { mouse = true })
@@ -194,7 +195,7 @@ hl.define_submap("open", "reset", function()
   hl.bind("a", hl.dsp.exec_cmd(menu("drun")))
   hl.bind("c", hl.dsp.exec_cmd(menu("run")))
   hl.bind("t", hl.dsp.exec_cmd("Telegram", {
-    workspace = "special:",
+    workspace = "special",
     float = true,
     move = { 450, 100 },
     size = { 970, 830 }
