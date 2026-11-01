@@ -23,12 +23,8 @@
 
     # nixpkgs patches
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-hyprland-tzdir = {
-      url = "https://github.com/NixOS/nixpkgs/pull/571665.diff";
-      flake = false;
-    };
-    nixpkgs-patch-security-php = {
-      url = "https://github.com/NixOS/nixpkgs/pull/576865.diff";
+    nixpkgs-patch-hy3-0_57_0 = {
+      url = "https://github.com/NixOS/nixpkgs/pull/581675.diff";
       flake = false;
     };
 
