@@ -66,6 +66,7 @@ in
 
       formatter = true;
       lsp = true;
+      subagent_depth = 2;
 
       command."review-pr-update" = {
         description = "Re-review a PR after it was updated with new commits";
