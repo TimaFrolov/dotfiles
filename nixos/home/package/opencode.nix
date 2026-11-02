@@ -7,39 +7,42 @@
   ...
 }:
 let
-  opencode-sandbox = jail pkgs "opencode" pkgs.opencode (
-    combinators:
-    with combinators;
-    lib.optional (osConfig.networking or { } ? hostName) (set-hostname osConfig.networking.hostName)
-    ++ [
-      network
-      no-new-session
-      (fwd-env "EDITOR")
+  opencode-pkg = pkgs.opencode;
+  opencode-sandbox =
+    (jail pkgs "opencode" opencode-pkg (
+      combinators:
+      with combinators;
+      lib.optional (osConfig.networking or { } ? hostName) (set-hostname osConfig.networking.hostName)
+      ++ [
+        network
+        no-new-session
+        (fwd-env "EDITOR")
 
-      (readonly (noescape "~/.config/opencode"))
-      (readonly (noescape "~/.local/share/nix/trusted-settings.json"))
-      # (readonly (noescape "~/.config/git"))
-      (persist "opencode" (noescape "~/.config/gh"))
-      (persist "opencode" (noescape "~/.config/git"))
+        (readonly (noescape "~/.config/opencode"))
+        (readonly (noescape "~/.local/share/nix/trusted-settings.json"))
+        # (readonly (noescape "~/.config/git"))
+        (persist "opencode" (noescape "~/.config/gh"))
+        (persist "opencode" (noescape "~/.config/git"))
 
-      (readwrite (noescape "~/.local/share/opencode"))
-      (readwrite (noescape "~/.local/state/opencode"))
-      (readwrite (noescape "~/.cache/opencode"))
-      (create-readwrite (noescape "~/.local/share/uv"))
-      (create-readwrite (noescape "~/.cache/uv"))
+        (readwrite (noescape "~/.local/share/opencode"))
+        (readwrite (noescape "~/.local/state/opencode"))
+        (readwrite (noescape "~/.cache/opencode"))
+        (create-readwrite (noescape "~/.local/share/uv"))
+        (create-readwrite (noescape "~/.cache/uv"))
 
-      (readonly-paths-from-var "ROBIND_DIRS" ":")
-      (mount-cwd-git-dir "GITDIR_RW")
-      (readonly-paths-from-var "FORTIFY_RO" ":")
+        (readonly-paths-from-var "ROBIND_DIRS" ":")
+        (mount-cwd-git-dir "GITDIR_RW")
+        (readonly-paths-from-var "FORTIFY_RO" ":")
 
-      (readonly "/nix")
-      (readonly "/etc/nix")
-      (readonly "/etc/static/nix")
-      (add-ro-bin-path "/run/current-system/sw")
-      (add-ro-bin-path "/etc/profiles/per-user/${config.home.username}")
-    ]
-    ++ lib.optional (osConfig.programs.nix-ld.enable or false) (readonly "/lib64")
-  );
+        (readonly "/nix")
+        (readonly "/etc/nix")
+        (readonly "/etc/static/nix")
+        (add-ro-bin-path "/run/current-system/sw")
+        (add-ro-bin-path "/etc/profiles/per-user/${config.home.username}")
+      ]
+      ++ lib.optional (osConfig.programs.nix-ld.enable or false) (readonly "/lib64")
+    )).overrideAttrs
+      { inherit (opencode-pkg) version; };
 in
 {
   programs.opencode = {

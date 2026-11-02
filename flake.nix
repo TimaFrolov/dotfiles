@@ -55,6 +55,12 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    # Other packages
+    opencode = {
+      url = "github:anomalyco/opencode?ref=v1.19.5";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     # Secret management
     agenix = {
       url = "github:ryantm/agenix";
@@ -79,6 +85,7 @@
       jail-nix,
       nixvim,
       waybar,
+      opencode,
       agenix,
       ...
     }:
@@ -91,6 +98,7 @@
           nixpkgs.overlays = [
             waybar.overlays.default
             agenix.overlays.default
+            opencode.overlays.default
           ];
         }
         ./nixos/package/options.nix
