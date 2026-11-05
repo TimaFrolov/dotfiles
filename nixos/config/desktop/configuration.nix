@@ -24,7 +24,6 @@
     ../../package/vscode.nix
     ../../bundle/virtualisation.nix
     ../../bundle/games.nix
-    ../../bundle/crypto-currency.nix
     ../../package/opencl.nix
     ../../package/ivpn/ivpn.nix
     ../../bundle/dev-asm.nix
