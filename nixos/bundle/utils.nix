@@ -21,5 +21,7 @@
     p7zip
     evtest
     iprange
+    zip
+    unzip
   ];
 }
