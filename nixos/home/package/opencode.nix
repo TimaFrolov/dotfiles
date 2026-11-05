@@ -51,7 +51,7 @@ in
     package = opencode-sandbox;
 
     settings = {
-      model = "nano-gpt/qwen/qwen3.8-flash";
+      model = "deepseek/deepseek-v4.1-flash:thinking";
 
       share = "manual";
       autoupdate = false;
