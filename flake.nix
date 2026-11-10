@@ -23,8 +23,16 @@
 
     # nixpkgs patches
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-hy3-0_57_0 = {
-      url = "https://github.com/NixOS/nixpkgs/pull/581675.diff";
+    nixpkgs-patch-brave = {
+      url = "https://github.com/NixOS/nixpkgs/pull/584534.diff";
+      flake = false;
+    };
+    nixpkgs-patch-asm-lsp = {
+      url = "https://github.com/NixOS/nixpkgs/pull/585280.diff";
+      flake = false;
+    };
+    nixpkgs-patch-hyprland-bincache = {
+      url = "https://github.com/NixOS/nixpkgs/pull/581387.diff";
       flake = false;
     };
 
