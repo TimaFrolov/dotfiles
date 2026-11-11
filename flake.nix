@@ -35,6 +35,10 @@
       url = "https://github.com/NixOS/nixpkgs/pull/581387.diff";
       flake = false;
     };
+    nixpkgs-patch-rustfs = {
+      url = "https://github.com/NixOS/nixpkgs/pull/584912.diff";
+      flake = false;
+    };
 
     # Home manager, development inputs, GUI packages
     home-manager = {
