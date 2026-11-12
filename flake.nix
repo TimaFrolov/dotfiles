@@ -23,14 +23,6 @@
 
     # nixpkgs patches
     nixpkgs-patcher.url = "github:gepbird/nixpkgs-patcher";
-    nixpkgs-patch-asm-lsp = {
-      url = "https://github.com/NixOS/nixpkgs/pull/585280.diff";
-      flake = false;
-    };
-    nixpkgs-patch-hyprland-bincache = {
-      url = "https://github.com/NixOS/nixpkgs/pull/581387.diff";
-      flake = false;
-    };
 
     # Home manager, development inputs, GUI packages
     home-manager = {
