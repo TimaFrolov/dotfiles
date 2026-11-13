@@ -92,6 +92,7 @@
   services.nix-serve = {
     enable = true;
     openFirewall = true;
+    package = pkgs.nix-serve-ng;
     secretKeyFile = config.age.secrets.nix-serve.path;
   };
 }
